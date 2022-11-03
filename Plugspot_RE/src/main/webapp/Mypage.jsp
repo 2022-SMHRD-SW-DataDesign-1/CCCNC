@@ -9,10 +9,7 @@
 </head>
 <body>
 <% 
-
 MemberDTO info = (MemberDTO)session.getAttribute("info"); 
-
-
 %>
 
 <fieldset>
