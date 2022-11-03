@@ -5,4 +5,19 @@
   
 
 <mapper namespace="com.plugspot.db.Mapper">
+	<insert id="join" parameterType="MemberDTO">
+		insert into t_member values(#{member_num}, #{password},'d','default')
+	</insert>
+	<select id="idCheck" parameterType="String" resultType="boolean">
+		select case when count(*)>0 then 1
+		else 0
+		end result
+		from t_member where member_num = #{member_num}
+	</select>
+	<select id="Login" parameterType="MemberDTO" resultType="MemberDTO">
+		select * from t_member where member_num=#{member_num} and password=#{password}
+	</select>
+	<update id = "update" parameterType="MemberDTO">
+		update t_member set password = #{password}
+	</update>
 </mapper>

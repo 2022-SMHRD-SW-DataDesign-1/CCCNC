@@ -4,4 +4,56 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>JoinProgram</servlet-name>
+  	<display-name>JoinProgram</display-name>
+  	<description></description>
+  	<servlet-class>com.plugspot.controller.JoinProgram</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>idcheck</servlet-name>
+  	<display-name>idcheck</display-name>
+  	<description></description>
+  	<servlet-class>com.plugspot.controller.idcheck</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>LoginService</servlet-name>
+  	<display-name>LoginService</display-name>
+  	<description></description>
+  	<servlet-class>com.plugspot.controller.LoginService</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>LogoutService</servlet-name>
+  	<display-name>LogoutService</display-name>
+  	<description></description>
+  	<servlet-class>com.plugspot.controller.LogoutService</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>UpdateService</servlet-name>
+  	<display-name>UpdateService</display-name>
+  	<description></description>
+  	<servlet-class>com.plugspot.controller.UpdateService</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+  	<servlet-name>JoinProgram</servlet-name>
+  	<url-pattern>/JoinProgram</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>idcheck</servlet-name>
+  	<url-pattern>/idcheck</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>LoginService</servlet-name>
+  	<url-pattern>/LoginService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>LogoutService</servlet-name>
+  	<url-pattern>/LogoutService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UpdateService</servlet-name>
+  	<url-pattern>/UpdateService</url-pattern>
+  </servlet-mapping>
+
 </web-app>
