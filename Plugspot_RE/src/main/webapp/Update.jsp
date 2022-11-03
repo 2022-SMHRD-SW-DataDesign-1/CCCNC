@@ -24,7 +24,7 @@
 
 
 <fieldset>
-<form>
+<form action="UpdateService" method="post">
 변경할 패스워드:<input type="password" name="password" placeholder="PW를 입력하세요">
 <input type="submit" value="비밀번호수정">
 </form>

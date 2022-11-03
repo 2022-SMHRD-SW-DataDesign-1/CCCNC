@@ -19,12 +19,13 @@ public class UpdateService extends HttpServlet  {
 		HttpSession session = request.getSession();
 				
 				 MemberDTO info = (MemberDTO) session.getAttribute("info");
-				 
-				 String member_num = info.getMember_num();
-				 String password = info.getPassword();
-				 
 				
-				MemberDTO dto= new MemberDTO(member_num,password);
+				 request.setCharacterEncoding("utf-8");
+				 String member_num = info.getMember_num();
+				 String password = request.getParameter("password");
+				 String filename = info.getFilename();
+				
+				MemberDTO dto= new MemberDTO(member_num,password,filename);
 				MemberDAO dao = new MemberDAO();
 				int row = dao.update(dto);
 				
@@ -34,6 +35,7 @@ public class UpdateService extends HttpServlet  {
 
 					session.setAttribute("info", dto);
 					moveURL = "Mypage.jsp";
+					System.out.println(password);
 				    System.out.println("정보수정 완료");
 				}
 				else {

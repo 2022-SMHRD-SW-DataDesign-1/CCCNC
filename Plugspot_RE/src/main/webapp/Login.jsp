@@ -17,7 +17,7 @@
 	<legend>login</legend>
 		<form action="LoginService" method="post">
 			ID :<input type = "text" name="member_num"><br>
-			PW:<input type = "text" name="password"><br>
+			PW:<input type = "password" name="password"><br>
 			<input type ="submit" value="로그인">
 		</form>
 	</fieldset>
