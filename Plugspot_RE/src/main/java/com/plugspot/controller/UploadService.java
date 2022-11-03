@@ -3,6 +3,7 @@ package com.plugspot.controller;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.net.http.HttpConnectTimeoutException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -63,14 +64,18 @@ public class UploadService  extends HttpServlet {
 		System.out.println("member_num : "+member_num);
 	
 		uploadDTO dto = new uploadDTO(member_num,filename);
+		MemberDTO dto2 = (MemberDTO)session.getAttribute("info");
+		dto2.setFilename(filename);
+		dto2.setMember_num(member_num);
 		
 		int row = new uploadDAO().upload(dto);
 		String moveURL="";
 		if(row>0) {
 			moveURL = "Mypage.jsp";
 			System.out.print("업로드 성공");
+			session.setAttribute("info",dto2);
 		}else {
-			moveURL = "Mypage.jsp";
+			moveURL = "Update.jsp";
 			System.out.println("업로드 실패");
 		}
 		RequestDispatcher rd = request.getRequestDispatcher(moveURL);
