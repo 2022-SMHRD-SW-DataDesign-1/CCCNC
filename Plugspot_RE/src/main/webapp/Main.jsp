@@ -20,7 +20,7 @@ text-align:center;
 	<legend>Main</legend>
 		<a href = "Join.jsp"><button>회원가입</button></a>
 		<a href = "Login.jsp"><button>로그인</button></a>
-		<a href="LogoutService.jsp"><button>로그아웃</button></a>
+		<a href="LogoutService"><button>로그아웃</button></a>
 	</fieldset>
 </body>
 

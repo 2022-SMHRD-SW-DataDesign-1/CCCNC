@@ -1,4 +1,6 @@
 select * from table T_MEMBER
 
 
-insert into t_member values ('1','2','3','4');
+update t_member set filename = 'sdafsas' where member_num = 92785713
+
+select * from T_MEMBER;

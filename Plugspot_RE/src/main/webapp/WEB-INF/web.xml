@@ -34,6 +34,12 @@
   	<description></description>
   	<servlet-class>com.plugspot.controller.UpdateService</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>UploadService</servlet-name>
+  	<display-name>UploadService</display-name>
+  	<description></description>
+  	<servlet-class>com.plugspot.controller.UploadService</servlet-class>
+  </servlet>
 
   <servlet-mapping>
   	<servlet-name>JoinProgram</servlet-name>
@@ -54,6 +60,10 @@
   <servlet-mapping>
   	<servlet-name>UpdateService</servlet-name>
   	<url-pattern>/UpdateService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UploadService</servlet-name>
+  	<url-pattern>/UploadService</url-pattern>
   </servlet-mapping>
 
 </web-app>

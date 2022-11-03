@@ -18,6 +18,6 @@
 		select * from t_member where member_num=#{member_num} and password=#{password}
 	</select>
 	<update id = "update" parameterType="MemberDTO">
-		update t_member set password = #{password}
+		update t_member set password = #{password} where member_num = #{member_num}
 	</update>
 </mapper>
