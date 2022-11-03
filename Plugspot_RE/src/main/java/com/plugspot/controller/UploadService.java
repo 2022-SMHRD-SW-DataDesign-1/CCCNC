@@ -9,9 +9,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.ibatis.session.SqlSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.plugspot.model.MemberDTO;
 import com.plugspot.model.uploadDAO;
 import com.plugspot.model.uploadDTO;
 
@@ -20,8 +24,10 @@ public class UploadService  extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		HttpSession session = request.getSession();
 		String savePath = request.getServletContext().getRealPath("image");		
+		MemberDTO info = (MemberDTO)session.getAttribute("info");
+		String member_num = info.getMember_num();
 		System.out.println(savePath);
 		
 	
@@ -54,8 +60,9 @@ public class UploadService  extends HttpServlet {
 		
 	
 		System.out.println("filename : "+filename);
+		System.out.println("member_num : "+member_num);
 	
-		uploadDTO dto = new uploadDTO();
+		uploadDTO dto = new uploadDTO(member_num,filename);
 		
 		int row = new uploadDAO().upload(dto);
 		String moveURL="";

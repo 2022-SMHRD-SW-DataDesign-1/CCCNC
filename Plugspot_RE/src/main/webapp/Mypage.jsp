@@ -10,7 +10,6 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <body>
 <% MemberDTO info = (MemberDTO)session.getAttribute("info");  %>
-
 <fieldset>
 	<legend>내 정보</legend>
 		<form id="frm" action="UploadService" method="post" enctype="multipart/form-data">
