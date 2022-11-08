@@ -36,16 +36,10 @@
 
 		<%
 		kakaoDAO dao = new kakaoDAO();
-	
-	  ArrayList<kakaoDTO> list = new ArrayList<kakaoDTO>();
-	if(list!=null){
-		String do_city = dao.kakao().get(0).getDo_city();
-		System.out.print(do_city);
 		
-	
-	}
-	
-	%>
+	  	ArrayList<kakaoDTO> list = dao.kakao();
+	    %>
+	    var max = [new kakao.maps.LatLng(<%=list.get(1).getCity_latitude() %>,<%=list.get(1).getCity_longitude()%>)]
 		var soso = [new kakao.maps.LatLng(35.841269,128.60173400000002),
 			new kakao.maps.LatLng(36.141027445026,127.43021087693),
 			 new kakao.maps.LatLng(37.263201,127.028574),
@@ -75,7 +69,11 @@
 				image : markerImage
 			
 			});
+			kakao.maps.event.addListener(marker,'click',function(mouseEvent){
+				console.log(marker.latLng);
+			});
 			marker.setMap(map);
+			
 
 		}
 		var i, marker;
@@ -95,6 +93,9 @@
 				position : soso[i],
 				image : markerImage
 			
+			});
+			kakao.maps.event.addListener(marker,'click',function(mouseEvent){
+				console.log(marker.latLng);
 			});
 			marker.setMap(map);
 
@@ -117,10 +118,15 @@
 				image : markerImage
 			
 			});
+			kakao.maps.event.addListener(marker,'click',function(mouseEvent){
+				console.log(marker.latLng);
+			});
 			marker.setMap(map);
 
 		}
 	
+
+		
 		
 	</script>
 	</form>

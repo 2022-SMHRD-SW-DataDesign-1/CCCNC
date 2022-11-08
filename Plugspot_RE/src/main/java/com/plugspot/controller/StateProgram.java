@@ -27,9 +27,9 @@ public class StateProgram extends HttpServlet {
 			
 		 request.setCharacterEncoding("utf-8");
 		 String member_num = info.getMember_num();
-		 String charge_state_name = request.getParameter("charge_state_name");
-		 
-			ChargeDTO dto = new ChargeDTO();
+		 float latitude = 
+		 float longtitude = 
+			ChargeDTO dto = new ChargeDTO(member_num,);
 			MemberDTO dto2 = (MemberDTO)session.getAttribute("info");
 			dto2.setMember_num(member_num);
 			

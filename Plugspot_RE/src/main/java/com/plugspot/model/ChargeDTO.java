@@ -1,9 +1,12 @@
 package com.plugspot.model;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 public class ChargeDTO {
 
-	
+
 	private String member_num;
-	private String charge_state_name;
-	
+	private float LATITUDE;
+	private float LONGTITUDE;
 }

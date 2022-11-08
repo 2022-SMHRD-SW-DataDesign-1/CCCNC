@@ -13,7 +13,7 @@
 <p><em>지도를 클릭해주세요!</em></p> 
 <div id="clickLatlng"></div>
 
-<form id="StateProgram" method="post">
+<form action="StateProgram" method="post">
 <fieldset>
 <legend> 내 충전소 정보</legend>
 <%
@@ -33,7 +33,7 @@ MemberDTO info = (MemberDTO)session.getAttribute("info");
 <button onclick="sejong()" name="세종">세종</button>
 <button onclick="gyeonggi()" name="경기도">경기도</button>
 </P>
-	<input type="submit" value="주소 등록">
+
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
@@ -80,47 +80,50 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
 		marker.setMap(map);
 		markers.push(marker);
 	}
+	console.log(markers.length)
 	function setMarkers(map){
 		for(var i=0; i<markers.length; i++) {
 			marker[i].setMap(map);
 		}
 	}
+	
 	 function seoul(){
 		 var moveLatLon = new kakao.maps.LatLng(37.56638, 126.977902);
-		 map.seoul(moveLatLon);
+		 map.panTo(moveLatLon);
 	 }
 	 function busan(){
 		 var moveLatLon = new kakao.maps.LatLng(35.179572, 129.075577);
-		 map.busan(moveLatLon);
+		 map.panTo(moveLatLon);
 	 }
 	 function daegu(){
 		 var moveLatLon = new kakao.maps.LatLng(35.841269, 128.60173400000002);
-		 map.daegu(moveLatLon);
+		 map.panTo(moveLatLon);
 	 }
 	 function incheon(){
 		 var moveLatLon = new kakao.maps.LatLng(37.455791, 126.705401);
-		 map.incheon(moveLatLon);
+		 map.panTo(moveLatLon);
 	 }
 	 function gwangju(){
 		 var moveLatLon = new kakao.maps.LatLng(35.160015, 126.851329);
-		 map.gwangju(moveLatLon);
+		 map.panTo(moveLatLon);
 	 }
 	 function daejeon(){
 		 var moveLatLon = new kakao.maps.LatLng(36.349637,127.383316);
-		 map.daejeon(moveLatLon);
+		 map.panTo(moveLatLon);
 	 }
 	 function ulsan(){
 		 var moveLatLon = new kakao.maps.LatLng(35.538756,129.311327);
-		 map.ulsan(moveLatLon);
+		 map.panTo(moveLatLon);
 	 }
 	 function sejong(){
 		 var moveLatLon = new kakao.maps.LatLng(36.480862,127.29075700000001);
-		 map.sejong(moveLatLon);
+		 map.panTo(moveLatLon);
 	 }
 	 function gyeonggi(){
 		 var moveLatLon = new kakao.maps.LatLng(37.263201,127.028574);
-		 map.gyeonggi(moveLatLon);
+		 map.panTo(moveLatLon);
 	 }
+	 
 </script>
 
 
@@ -128,8 +131,8 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
 
 
 
-
 </fieldset>
+<button type="submit" value="위치등록">위치등록</button>
 </form>
 
 
