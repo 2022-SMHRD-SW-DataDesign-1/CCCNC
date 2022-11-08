@@ -1,3 +1,5 @@
+<%@page import="com.plugspot.model.ChargeDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.plugspot.model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -9,11 +11,12 @@
 </head>
 <body>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f867e2332325dabbf2acc1f5355d06f"></script>
+<script type="text/javascript" src="./js/jquery-3.6.1.min.js"></script>
 <div id="map" style="width:100%;height:350px;"></div>
 <p><em>지도를 클릭해주세요!</em></p> 
 <div id="clickLatlng"></div>
 
-<form action="StateProgram" method="post">
+
 <fieldset>
 <legend> 내 충전소 정보</legend>
 <%
@@ -51,8 +54,15 @@ var marker = new kakao.maps.Marker({
 // 지도에 마커를 표시합니다
 marker.setMap(map);
 
+var lat;
+var lng; 
+
+let latList = [];
+let lngList = [];
+
 // 지도에 클릭 이벤트를 등록합니다
 // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
+
 kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
     
     // 클릭한 위도, 경도 정보를 가져옵니다 
@@ -61,8 +71,18 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
     // 마커 위치를 클릭한 위치로 옮깁니다
     marker.setPosition(latlng);
     
-    var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
-    message += '경도는 ' + latlng.getLng() + ' 입니다';
+    
+    lat = latlng.getLat();
+    lng = latlng.getLng(); 
+    
+    latList.push(lat);
+    lngList.push(lng);
+    
+    var message = '클릭한 위치의 위도는 ' + lat + ' 이고, ';
+    message += '경도는 ' + lng + ' 입니다';
+    
+    console.log(latList);
+    console.log(lngList);
     
     var resultDiv = document.getElementById('clickLatlng'); 
     resultDiv.innerHTML = message;
@@ -132,8 +152,27 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
 
 
 </fieldset>
-<button type="submit" value="위치등록">위치등록</button>
-</form>
+<button onclick="insertTable()" >위치등록</button>
+
+<script type="text/javascript">
+function insertTable() {
+	console.log("위도")
+	console.log(latList);
+	console.log("경도")
+	console.log(lngList);
+	$.ajax({
+		url : 'StateProgram',
+		data : {'latiList':latList.toString(),
+				'longList':lngList.toString(),
+				'data_test' : "data_test"},
+		type : 'post',
+		success : function(data){
+			console.log(data);
+			alert("주소등록에 성공하셨습니다");
+		}
+	}); 	
+}
+</script>
 
 
 

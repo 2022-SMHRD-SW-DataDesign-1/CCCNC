@@ -1,6 +1,8 @@
 package com.plugspot.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
 import com.plugspot.model.ChargeDAO;
 import com.plugspot.model.ChargeDTO;
 import com.plugspot.model.MemberDTO;
@@ -27,28 +30,37 @@ public class StateProgram extends HttpServlet {
 			
 		 request.setCharacterEncoding("utf-8");
 		 String member_num = info.getMember_num();
-		 float latitude = Float.parseFloat((request.getParameter("lati")));
-		 float longtitude = Float.parseFloat((request.getParameter("long")));
-			ChargeDTO dto = new ChargeDTO(member_num,latitude,longtitude);
-			MemberDTO dto2 = (MemberDTO)session.getAttribute("info");
-			dto2.setMember_num(member_num);
+		 String[] latitude =  request.getParameter("latiList").split(",");
+		 String[] longtitude = request.getParameter("longList").split(",");
+		 
+		 
+		 System.out.println(latitude);
+		 System.out.println(longtitude);
+			ChargeDTO dto = null;
+			int row = 0;
+			for(int i=0; i<latitude.length; i++) {
+				 
+				 dto = new ChargeDTO(member_num,latitude[i],longtitude[i]);
+				 row = new ChargeDAO().state(dto);
+				 
+				
+			}
 			
-			//System.out.println("charge_state_name : "+charge_state_name);
 			System.out.println("member_num : "+member_num);
 			
 
-			int row = new ChargeDAO().state(dto);
 			
-			if(row>0) {
-				
-				System.out.print("업로드 성공");
-				session.setAttribute("info",dto2);
-			}else {
-				
-				System.out.println("업로드 실패");
-			}
-			RequestDispatcher rd = request.getRequestDispatcher("./Mypage.jsp");
-			rd.forward(request, response);
+			
+			  if(row>0) {
+			  
+			  System.out.print("업로드 성공"); session.setAttribute("info",dto); }else {
+			  
+			  System.out.println("업로드 실패"); }
+			 
+			  
+			  PrintWriter out = response.getWriter();
+			  out.println("<insertTable>");
+			
 		}	
 	
 

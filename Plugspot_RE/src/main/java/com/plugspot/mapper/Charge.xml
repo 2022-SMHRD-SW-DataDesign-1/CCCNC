@@ -5,7 +5,7 @@
   
   <mapper namespace="com.plugspot.mapper.Charge">
   <insert id="state" parameterType="ChargeDTO">
-  insert into T_STATION_LOCATION values (CS_SEQ.nextval(), #{member_num},#{LATITUDE},#{LONGTITUDE} )
+  insert into T_STATION_LOCATION values (CS_SEQ.nextval, #{member_num},#{LATITUDE},#{LONGTITUDE} )
   </insert>
   
   </mapper>

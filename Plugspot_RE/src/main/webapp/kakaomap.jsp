@@ -39,10 +39,11 @@
 	});
 	
 	var i, marker;
-	<% for(kakaoDTO kvo : list){%> 		
+	<% for(kakaoDTO kvo : list){ %>
+ 		
 		if(kvo.getLoc_seq()=="1"){ 
             i=0;
-			var max = [new kakao.maps.LatLng(<%=kvo.getCity_latitude() %>,<%=kvo.getCity_longitude()%>)]
+            var max = [new kakao.maps.LatLng(<%=kvo.getCity_latitude() %>,<%=kvo.getCity_longitude()%>)]
 			var imageSrc = 'marker/max.png', imageSize = new kakao.maps.Size(25, 25); 
 			var imageOption = {
 					offset : new kakao.maps.Point(18,15)
@@ -53,17 +54,53 @@
 						image : markerImage
 						
 				});
-				marker.id=<%=kvo.getLoc_seq()%>;				
+			marker.id=<%=kvo.getLoc_seq()%>;				
 				kakao.maps.event.addListener(marker,'click',function(mouseEvent){
 				          console.log(marker.id);	
 				});
 				marker.setMap(map);
 				i++;
 						
-			<%  }//if
+				<% }else if(kvo.getLoc_seq()=="1"){ %>
+	            i=0;
+				var max = [new kakao.maps.LatLng(<%=kvo.getCity_latitude() %>,<%=kvo.getCity_longitude()%>)]
+				var imageSrc = 'marker/soso.png', imageSize = new kakao.maps.Size(20, 20); 
+				var imageOption = {
+						offset : new kakao.maps.Point(18,15)
+				};										
+				var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize,imageOption);
+				var marker = new kakao.maps.Marker({							
+					        position : soso[i],
+							image : markerImage
+							
+					});
+					marker.id=<%=kvo.getLoc_seq()%>;				
+					kakao.maps.event.addListener(marker,'click',function(mouseEvent){
+					          console.log(marker.id);	
+					});
+					marker.setMap(map);
+					i++;//if
 			
-		} %>//for
-		
+		<%}else{ %>
+        i=0;
+		var max = [new kakao.maps.LatLng(<%=kvo.getCity_latitude() %>,<%=kvo.getCity_longitude()%>)]
+		var imageSrc = 'marker/min.png', imageSize = new kakao.maps.Size(15, 15); 
+		var imageOption = {
+				offset : new kakao.maps.Point(18,15)
+		};										
+		var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize,imageOption);
+		var marker = new kakao.maps.Marker({							
+			        position : min[i],
+					image : markerImage
+					
+			});
+			marker.id=<%=kvo.getLoc_seq()%>;				
+			kakao.maps.event.addListener(marker,'click',function(mouseEvent){
+			          console.log(marker.id);	
+			});
+			marker.setMap(map);
+			i++;//if %>//for
+		}
 	
 
 		

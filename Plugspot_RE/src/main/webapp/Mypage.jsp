@@ -21,7 +21,17 @@ MemberDTO info = (MemberDTO)session.getAttribute("info");
 			사업자등록증 : <img src="./image/<%=info.getFilename() %>">
 			<a href = "Update.jsp"><button>등록증 수정</button></a>
 			<a href = "Mycharge.jsp"><button>충전소 위치 등록</button></a>
+			
 </fieldset>
+<script>
+var openWin;
+function openChild(){
+	window.name="insertTable";
+	openWin = window.open("")
+	
+}
 
+
+</script>
 </body>
 </html>

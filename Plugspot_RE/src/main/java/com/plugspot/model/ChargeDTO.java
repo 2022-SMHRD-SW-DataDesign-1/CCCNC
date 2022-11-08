@@ -7,6 +7,6 @@ public class ChargeDTO {
 
 
 	private String member_num;
-	private float LATITUDE;
-	private float LONGTITUDE;
+	private String LATITUDE;
+	private String LONGTITUDE;
 }
