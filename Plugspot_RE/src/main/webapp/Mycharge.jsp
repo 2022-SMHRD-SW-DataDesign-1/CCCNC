@@ -13,7 +13,7 @@
 <p><em>지도를 클릭해주세요!</em></p> 
 <div id="clickLatlng"></div>
 
-<form id="StateProgram">
+<form id="StateProgram" method="post">
 <fieldset>
 <legend> 내 충전소 정보</legend>
 <%
@@ -33,6 +33,7 @@ MemberDTO info = (MemberDTO)session.getAttribute("info");
 <button onclick="sejong()" name="세종">세종</button>
 <button onclick="gyeonggi()" name="경기도">경기도</button>
 </P>
+	<input type="submit" value="주소 등록">
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
@@ -122,7 +123,7 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
 	 }
 </script>
 
-	<input type="submit" values="주소 등록">
+
 
 
 
