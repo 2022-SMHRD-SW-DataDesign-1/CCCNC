@@ -1,3 +1,6 @@
+<%@page import="com.plugspot.model.kakaoDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.plugspot.model.kakaoDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,6 +13,7 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 
 <body>
+
 	<p style="margin-top: -12px"></p>
 	<div id="map" style="width: 200px; height: 240px;"></div>
 	<script type="text/javascript"
@@ -30,10 +34,18 @@
 		 
 		});
 
-		var max = [ new kakao.maps.LatLng(36.480862,127.29075700000001),
-	        new kakao.maps.LatLng(35.160015,126.851329),
-	        new kakao.maps.LatLng(35.538756,129.311327)
-	        ];
+		<%
+		kakaoDAO dao = new kakaoDAO();
+	
+	  ArrayList<kakaoDTO> list = new ArrayList<kakaoDTO>();
+	if(list!=null){
+		String do_city = dao.kakao().get(0).getDo_city();
+		System.out.print(do_city);
+		
+	
+	}
+	
+	%>
 		var soso = [new kakao.maps.LatLng(35.841269,128.60173400000002),
 			new kakao.maps.LatLng(36.141027445026,127.43021087693),
 			 new kakao.maps.LatLng(37.263201,127.028574),
@@ -108,11 +120,9 @@
 			marker.setMap(map);
 
 		}
-		
-		var positions=[
-			
-		]
+	
 		
 	</script>
+	</form>
 </body>
 </html>
