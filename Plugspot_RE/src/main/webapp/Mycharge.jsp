@@ -80,7 +80,7 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
 		marker.setMap(map);
 		markers.push(marker);
 	}
-	console.log(markers.length)
+	
 	function setMarkers(map){
 		for(var i=0; i<markers.length; i++) {
 			marker[i].setMap(map);

@@ -27,13 +27,13 @@ public class StateProgram extends HttpServlet {
 			
 		 request.setCharacterEncoding("utf-8");
 		 String member_num = info.getMember_num();
-		 float latitude = 
-		 float longtitude = 
-			ChargeDTO dto = new ChargeDTO(member_num,);
+		 float latitude = Float.parseFloat((request.getParameter("lati")));
+		 float longtitude = Float.parseFloat((request.getParameter("long")));
+			ChargeDTO dto = new ChargeDTO(member_num,latitude,longtitude);
 			MemberDTO dto2 = (MemberDTO)session.getAttribute("info");
 			dto2.setMember_num(member_num);
 			
-			System.out.println("charge_state_name : "+charge_state_name);
+			//System.out.println("charge_state_name : "+charge_state_name);
 			System.out.println("member_num : "+member_num);
 			
 
