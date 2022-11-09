@@ -9,11 +9,17 @@
 	  	ArrayList<kakaoDTO> list = dao.kakao();
 	  	System.out.print(list.get(0).getSATURATION());
 	  	int index_list[] ={0,1,2,3,4,5,6,7,8,9,39,57,68,83,97,119,142,159};
-	  	ArrayList<Integer> city_num = new ArrayList();
+	  	ArrayList<kakaoDTO> list2 = new ArrayList();
 	  	
 	  	for(int i =0;i<list.size();i++){
-	  		if(index_list[i]==list.get(i).getLoc_seq()){
-	  			city_num.add(list.get(i).getLoc_seq());
+	  		for(int j=0;j<index_list.length;j++){
+		  		if(index_list[j]==list.get(i).getLoc_seq()){
+		  			list2.add(list.get(i));
+		  		}
+	  		}
+	  	}
+	  	for(int k=0;k<list2.size();k++){
+	  		System.out.println(list2.get(k).getSATURATION());
 	  	}
 %>	  	
 <!DOCTYPE html>
@@ -28,7 +34,7 @@
 <body>
 <form action="kakaoService" method="post">
 	<p style="margin-top: -12px"></p>
-	<div id="map" style="width: 200px; height: 240px;"></div>
+	<div id="map" style="width: 600px; height: 720px;"></div> <!-- 200,240 -->
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f867e2332325dabbf2acc1f5355d06f&libraries=services,clusterer,drawing"></script>
 	<script type="text/javascript"
@@ -48,11 +54,11 @@
 	});
 	
 	var i, marker;
-	<% for(kakaoDTO kvo : list){ %>
+	<% for(kakaoDTO kvo : list2){ %>
 		 <% if(kvo.getSATURATION()>1.0){%>		  
             i=0;
             var max = [new kakao.maps.LatLng(<%=kvo.getCity_latitude() %>,<%=kvo.getCity_longitude()%>)]
-			var imageSrc = 'marker/max.png',  imageSize = new kakao.maps.Size(12, 12); 
+			var imageSrc = 'marker/max.png',  imageSize = new kakao.maps.Size(32, 32); 
 			var imageOption = {
 					offset : new kakao.maps.Point(9,9)
 			};										
@@ -72,7 +78,7 @@
 			 <%}else if(kvo.getSATURATION()>0.7&&kvo.getSATURATION()>0.4){%>
 	          	i=0;
 				var soso = [new kakao.maps.LatLng(<%=kvo.getCity_latitude() %>,<%=kvo.getCity_longitude()%>)]
-				var imageSrc = 'marker/soso.png', imageSize = new kakao.maps.Size(8, 8); 
+				var imageSrc = 'marker/soso.png', imageSize = new kakao.maps.Size(40, 40); 
 				var imageOption = {
 						offset : new kakao.maps.Point(9,9)
 				};										
@@ -93,7 +99,7 @@
         
 		var min = [new kakao.maps.LatLng(<%=kvo.getCity_latitude() %>,<%=kvo.getCity_longitude()%>)]
 		i=0;
-		var imageSrc = 'marker/min.png', imageSize = new kakao.maps.Size(5, 5); 
+		var imageSrc = 'marker/min.png', imageSize = new kakao.maps.Size(40, 40); 
 		var imageOption = {
 				offset : new kakao.maps.Point(9,9)
 		};										
