@@ -34,7 +34,7 @@ fieldset {
 		<a href="LogoutService"><button>로그아웃</button></a>
 		<%}%>
 
-
+ 
 	</fieldset>
 	
 
@@ -51,13 +51,13 @@ fieldset {
 	
 <fieldset style="display:block;height: 750px;">	
 
+<fieldset style="display:inline;width:650px;height:720px;">
+<!-- 시별지도 -->
+<iframe src="./City.jsp" frameborder="1" scrolling="no" style="display:inline;height:350px;width:450px"></iframe>
 
-
-
-
-
-
-
+<!-- 바차트 -->
+<iframe src="./Caruse.jsp" frameborder="1" scrolling="no" style="display:inline;height:350px;width:450px"></iframe>
+</fieldset>
 <!-- 포화도 전체 -->
 
 <fieldset style="display:inline;width:650px;height:720px;border-width: 0px">
@@ -100,6 +100,10 @@ fieldset {
 <!------------------------------------------------------------------------------------>
 
 </fieldset>
+<iframe src="./Chargenum.jsp" frameborder="1" scrolling="no" style="display:inline;height:350px;width:450px"></iframe>
+<iframe src="./AvgChargenum.jsp" frameborder="1" scrolling="no" style="display:inline;height:350px;width:450px"></iframe>
+
+
 </body>
 
 </html>
