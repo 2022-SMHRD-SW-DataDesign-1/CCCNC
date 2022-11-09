@@ -165,6 +165,7 @@ function insertTable() {
 		success : function(data){
 			console.log(data);
 			alert("주소등록에 성공하셨습니다");
+			location.href="Mypage.jsp";
 		}
 	}); 	
 }
