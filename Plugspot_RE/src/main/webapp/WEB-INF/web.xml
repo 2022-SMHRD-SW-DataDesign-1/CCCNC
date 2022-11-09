@@ -52,6 +52,12 @@
   	<description></description>
   	<servlet-class>com.plugspot.controller.kakaoService</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>rankService</servlet-name>
+  	<display-name>rankService</display-name>
+  	<description></description>
+  	<servlet-class>com.plugspot.controller.rankService</servlet-class>
+  </servlet>
 
   <servlet-mapping>
   	<servlet-name>JoinProgram</servlet-name>
@@ -84,6 +90,10 @@
   <servlet-mapping>
   	<servlet-name>kakaoService</servlet-name>
   	<url-pattern>/kakaoService</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>rankService</servlet-name>
+  	<url-pattern>/rankService</url-pattern>
   </servlet-mapping>
 
 </web-app>
