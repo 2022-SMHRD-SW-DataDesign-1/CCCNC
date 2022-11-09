@@ -8,6 +8,13 @@
 		kakaoDAO dao = new kakaoDAO();		
 	  	ArrayList<kakaoDTO> list = dao.kakao();
 	  	System.out.print(list.get(0).getSATURATION());
+	  	int index_list[] ={0,1,2,3,4,5,6,7,8,9,39,57,68,83,97,119,142,159};
+	  	ArrayList<Integer> city_num = new ArrayList();
+	  	
+	  	for(int i =0;i<list.size();i++){
+	  		if(index_list[i]==list.get(i).getLoc_seq()){
+	  			city_num.add(list.get(i).getLoc_seq());
+	  	}
 %>	  	
 <!DOCTYPE html>
 <html>
