@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.plugspot.model.RankDTO"%>
 <%@page import="java.net.http.HttpClient.Redirect"%>
 <%@page import="com.plugspot.model.MemberDTO"%>
@@ -36,94 +37,38 @@ MemberDTO info = (MemberDTO)session.getAttribute("info");
 	</fieldset>
 	
 	<%
-/* 		RankDTO ranklist = (RankDTO)session.getAttribute("ranklist");
+	ArrayList<RankDTO> ranklist = (ArrayList)session.getAttribute("ranklist");
+	if(ranklist==null){
 		response.sendRedirect("rankService");
-		System.out.print(ranklist.getDo_city()); */
+	}else{
+	System.out.print("메인으로 출력테스트"+ ranklist.get(0).getDo_city()); 
+	}
 	%>
+<!-----------------------------------------순위---------------------------------------->	
 	<fieldset>
         <form class="ranking">
             <table class="info_table02">
                 <caption class="title"> 자동차 등록 대수</caption>
-                <colgroup>
-                    <col class="col01">
-                    <col class="col01">
-                    <col class="col01">
-                    <col class="col01">
-                    <col class="col01">
-                    <col class="col01">
-                    <col class="col02">
-                </colgroup>
                 <thead>
                     <tr>
                         <th scope="col" class="th03">순위</th>
                         <th scope="col" class="th01">도시</th>
                         <th scope="col" class="th01">자동차등록수</th>
-
                     </tr>
                 </thead>
                 <tbody>
-
+					<% for(int i=0;i<ranklist.size();i++){ %>
                     <tr>
-                        <th scope="row" class="bg"><span class="zone">1</span></th>
-                        <td class="bg">제주</td>
-                        <td class="bg"></td>
-
+                        <th><span class="zone"><%=i+1%></span></th>
+                        <td><%= ranklist.get(i).getDo_city()%></td>
+                        <td><%= ranklist.get(i).getCar_num()%></td>
                     </tr>
-
-                    <tr>
-                        <th scope="row"><span class="zone">2</span></th>
-                        <td>울산</td>
-                        <td></td>
-
-                    </tr>
-
-                    <tr>
-                        <th scope="row" class="bg"><span class="zone">3</span></th>
-                        <td class="bg">인천</td>
-                        <td class="bg"></td>
-
-                    </tr>
-
-                    <tr>
-                        <th scope="row"><span class="zone">4</span></th>
-                        <td>광주</td>
-                        <td></td>
-
-                    </tr>
-
-                    <tr>
-                        <th scope="row" class="bg"><span class="zone">5</span></th>
-                        <td class="bg">부산</td>
-                        <td class="bg"></td>
-
-                    </tr>
-
-                    <tr>
-                        <th scope="row"><span class="zone">6</span></th>
-                        <td>서울</td>
-                        <td></td>
-
-                    </tr>
-
-                    <tr>
-                        <th scope="row" class="bg"><span class="zone">7</span></th>
-                        <td class="bg">대전</td>
-                        <td class="bg"></td>
-
-                    </tr>
-
-                    <tr>
-                        <th scope="row"><span class="zone">8</span></th>
-                        <td>대구</td>
-                        <td></td>
-
-                    </tr>
-
+					<%} %>
                 </tbody>
             </table>
         </form>
     </fieldset>
-	
+<!------------------------------------------------------------------------------------>		
 	
 	
 	
