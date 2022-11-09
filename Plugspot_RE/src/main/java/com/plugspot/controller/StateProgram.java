@@ -2,6 +2,8 @@ package com.plugspot.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -27,26 +29,27 @@ public class StateProgram extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		 MemberDTO info = (MemberDTO) session.getAttribute("info");
-			
+		 System.out.println("여긴가?1");
+		 ArrayList<ChargeDTO> mystate = new ChargeDAO().mystate(info.getMember_num());
+		 System.out.println("여긴가?2");
+		 
 		 request.setCharacterEncoding("utf-8");
 		 String member_num = info.getMember_num();
 		 String[] latitude =  request.getParameter("latiList").split(",");
 		 String[] longtitude = request.getParameter("longList").split(",");
 		 
-		 
 		
 			ChargeDTO dto = null;
 			int row = 0;
 			for(int i=0; i<latitude.length; i++) {
-				 
-				 dto = new ChargeDTO(member_num,latitude[i],longtitude[i]);
-				 row = new ChargeDAO().state(dto);
-				 
-				
+				BigDecimal latitude_bd = new BigDecimal(latitude[i]);
+				BigDecimal longtitude_bd = new BigDecimal(longtitude[i]);
+				 dto = new ChargeDTO(member_num,latitude_bd,longtitude_bd);
+				 row = new ChargeDAO().state(dto); //insert
 			}
-			
-			
-			
+				mystate = new ChargeDAO().mystate(info.getMember_num()); //select
+				System.out.println("state_mystate : "+mystate);
+				session.setAttribute("mystate", mystate);
 
 			
 			

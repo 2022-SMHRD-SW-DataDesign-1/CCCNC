@@ -7,5 +7,7 @@
   <insert id="state" parameterType="ChargeDTO">
   insert into T_STATION_LOCATION values (CS_SEQ.nextval, #{member_num},#{LATITUDE},#{LONGTITUDE} )
   </insert>
-  
+  <select id="mystate" parameterType="String" resultType="ChargeDTO">
+  select LATITUDE, LONGTITUDE from T_STATION_LOCATION where member_num = #{member_num}
+  </select>
   </mapper>

@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.plugspot.model.ChargeDTO"%>
 <%@page import="com.plugspot.model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -11,11 +12,8 @@
 <body>
 <% 
 MemberDTO info = (MemberDTO)session.getAttribute("info"); 
-ChargeDTO state=null;
-if(session.getAttribute("state")!=null){
-   state = (ChargeDTO)session.getAttribute("state");
-}
-
+ArrayList<ChargeDTO> list = (ArrayList) session.getAttribute("mystate");
+System.out.print(list);
 %>
 
 <fieldset>
@@ -27,9 +25,18 @@ if(session.getAttribute("state")!=null){
 			사업자등록증 : <img src="./image/<%=info.getFilename() %>">
 			<a href = "Update.jsp"><button>등록증 수정</button></a>
 			<a href = "Mycharge.jsp"><button>충전소 위치 등록</button></a>
-			<% if(session.getAttribute("state")!=null){ %>
-			   My 충전소 : <%=state.getLATITUDE()%> : <%=state.getLONGTITUDE() %>
-			<% } %>
+			
+			<% if(list!=null){ %>
+			<% for(int i =0; i<list.size(); i++){ %>
+			   My 충전소 : <p><%=list.get(i).getLATITUDE()%> : <%=list.get(i).getLONGTITUDE() %>
+			            <%}}else{System.out.print("출력불가");%>
+			               <%} %>
+			               
+			               
+			
+			
+			
+			</p>
 			
 </fieldset>
 

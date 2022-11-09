@@ -1,3 +1,4 @@
+<%@page import="com.plugspot.model.ChargeDAO"%>
 <%@page import="com.plugspot.model.ChargeDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.plugspot.model.MemberDTO"%>
@@ -22,7 +23,7 @@
 <%
 
 MemberDTO info = (MemberDTO)session.getAttribute("info");
-			
+
 %>
 사업자등록번호:<%=info.getMember_num()%>
 <P>
@@ -35,8 +36,9 @@ MemberDTO info = (MemberDTO)session.getAttribute("info");
 <button onclick="ulsan()" name="울산">울산</button>
 <button onclick="sejong()" name="세종">세종</button>
 <button onclick="gyeonggi()" name="경기도">경기도</button>
-</P>
 
+</P>
+<a href="Mypage.jsp"><button>내 정보 이동</button></a>
 <script>
 var mapContainer = document.getElementById('map'), 
     mapOption = { 
