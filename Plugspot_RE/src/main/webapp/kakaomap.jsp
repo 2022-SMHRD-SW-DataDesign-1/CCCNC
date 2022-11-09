@@ -41,8 +41,8 @@
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f867e2332325dabbf2acc1f5355d06f&libraries=clusterer"></script>
 	<script>
 	var map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
-		center : new kakao.maps.LatLng(36.2683, 127.6358), // 지도의 중심좌표 
-		level : 15
+		center : new kakao.maps.LatLng(35.1083, 127.6358), // 지도의 중심좌표 
+		level : 13
 	
 	});
 	
