@@ -19,7 +19,6 @@ public class kakaoDAO {
 		session.close();
 		
 		return list;
-		
-		
 	}
+
 }

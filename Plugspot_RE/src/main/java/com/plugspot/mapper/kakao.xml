@@ -5,9 +5,9 @@
   
   <mapper namespace="com.plugspot.mapper.kakao">
   <select id="kakao" parameterType="kakaoDTO" resultType="kakaoDTO">
-  select c.loc_seq,city_latitude,c.city_longitude,s.saturation
- from t_do_city c,t_city_saturation s
- where s.loc_seq = c.loc_seq
+ 	select c.do_city,c.loc_seq,city_latitude,c.city_longitude,s.saturation
+ 	from t_do_city c,t_city_saturation s
+ 	where s.loc_seq = c.loc_seq
   
   </select>
   </mapper>

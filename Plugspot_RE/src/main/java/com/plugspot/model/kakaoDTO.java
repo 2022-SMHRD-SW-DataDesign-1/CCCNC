@@ -15,6 +15,7 @@ import lombok.Setter;
 
 public class kakaoDTO {
 	
+	private String do_city;
 	private int loc_seq;
 	private double city_latitude;
 	private double city_longitude;

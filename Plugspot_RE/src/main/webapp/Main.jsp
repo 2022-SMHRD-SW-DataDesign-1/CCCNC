@@ -50,91 +50,15 @@ fieldset {
 	%>
 <!-- 포화도 전체 -->
 
- <fieldset style="display:inline">
+<fieldset style="display:inline;width:650px">
 <!-----------------------------------------카카오맵포화도--------------------------------->
-<iframe src="./kakaomap.jsp" frameborder="1" scrolling="no" style="display:inline;height:50vh;width:600px"></iframe>
+
+<iframe src="./kakaomap.jsp" frameborder="1" scrolling="no" style="display:block;height:50vh;width:100%"></iframe>
+
 <!----------------------------------------포화도표-------------------------------------->
-        <table class="info_table02" style="width:600px;">
-            <caption class="title" >지역별 충전소 충전기의 상태 현황</caption>
-            <thead>
-                <tr >
-                    <th scope="col" class="th03">지역</th>
-                    <th scope="col" class="th01">위도</th>
-                    <th scope="col" class="th01">경도</th>
-                    <th scope="col" class="th01">포화도</th>
-
-                </tr>
-            </thead>
-            <tbody>
-
-                <tr>
-                    <th scope="row" class="bg"><span class="zone">서울</span></th>
-                    <td class="bg">258</td>
-                    <td class="bg">455</td>
-                    <td class="bg blue">387</td>
-                </tr>
-
-                <tr>
-                    <th scope="row"><span class="zone">인천</span></th>
-                    <td>881</td>
-                    <td>2301</td>
-                    <td class="blue">2011</td>
-                </tr>
-
-                <tr>
-                    <th scope="row" class="bg"><span class="zone">대전</span></th>
-                    <td class="bg">424</td>
-                    <td class="bg">851</td>
-                    <td class="bg blue">688</td>
-
-                </tr>
-
-                <tr>
-                    <th scope="row"><span class="zone">대구</span></th>
-                    <td>371</td>
-                    <td>684</td>
-                    <td class="blue">561</td>
-
-                </tr>
-
-                <tr>
-                    <th scope="row" class="bg"><span class="zone">광주</span></th>
-                    <td class="bg">118</td>
-                    <td class="bg">254</td>
-                    <td class="bg blue">214</td>
-
-                </tr>
-
-                <tr>
-                    <th scope="row"><span class="zone">부산</span></th>
-                    <td>258</td>
-                    <td>682</td>
-                    <td class="blue">575</td>
-
-                </tr>
-
-                <tr>
-                    <th scope="row" class="bg"><span class="zone">울산</span></th>
-                    <td class="bg">142</td>
-                    <td class="bg">361</td>
-                    <td class="bg blue">301</td>
-
-                </tr>
-
-                <tr>
-                    <th scope="row"><span class="zone">제주</span></th>
-                    <td>184</td>
-                    <td>408</td>
-                    <td class="blue">323</td>
-
-                </tr>
-
-
-
-            </tbody>
-        </table>
-    </fieldset>
-    <br>
+<iframe src="./Saturation.jsp" frameborder="1" scrolling="yes" style="display:block;height:20vh;width:100%"></iframe>
+</fieldset>
+<br>
 
 <!------------------------------------------------------------------------------------>
 

@@ -13,7 +13,12 @@
 </head>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 
-<body>
+<body style="
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+">
 <%
 		kakaoDAO dao = new kakaoDAO();		
 	  	ArrayList<kakaoDTO> list = dao.kakao();
@@ -33,8 +38,8 @@
 	  	}
 %>	  	
 <form action="kakaoService" method="post">
-	<p style="margin-top: -12px"></p>
-	<div id="map" style="width: 600px; height: 720px;"></div> <!-- 200,240 -->
+	<p style="margin-top: -30px"></p>
+	<div id="map" style="width: 650px; height: 720px;"></div> <!-- 200,240 -->
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f867e2332325dabbf2acc1f5355d06f&libraries=services,clusterer,drawing"></script>
 	<script type="text/javascript"
