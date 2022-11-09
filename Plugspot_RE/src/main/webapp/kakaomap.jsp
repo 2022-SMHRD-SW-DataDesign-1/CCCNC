@@ -4,6 +4,16 @@
 <%@page import="com.plugspot.model.kakaoDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>마커 클러스터러 사용하기</title>
+
+</head>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+<body>
 <%
 		kakaoDAO dao = new kakaoDAO();		
 	  	ArrayList<kakaoDTO> list = dao.kakao();
@@ -22,16 +32,6 @@
 	  		System.out.println(list2.get(k).getSATURATION());
 	  	}
 %>	  	
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>마커 클러스터러 사용하기</title>
-
-</head>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-
-<body>
 <form action="kakaoService" method="post">
 	<p style="margin-top: -12px"></p>
 	<div id="map" style="width: 600px; height: 720px;"></div> <!-- 200,240 -->
