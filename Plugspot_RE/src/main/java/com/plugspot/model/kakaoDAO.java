@@ -15,6 +15,7 @@ public class kakaoDAO {
 		
 		SqlSession session = sqlSessionFactory.openSession(true);
 		ArrayList<kakaoDTO> list = (ArrayList)session.selectList("kakao");
+		System.out.println(list.size());
 		session.close();
 		
 		return list;

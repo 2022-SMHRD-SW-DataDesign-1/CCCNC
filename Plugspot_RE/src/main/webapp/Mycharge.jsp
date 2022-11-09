@@ -38,20 +38,20 @@ MemberDTO info = (MemberDTO)session.getAttribute("info");
 </P>
 
 <script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+var mapContainer = document.getElementById('map'), 
     mapOption = { 
-        center: new kakao.maps.LatLng(37.56638, 126.977902), // 지도의 중심좌표
-        level: 10 // 지도의 확대 레벨
+        center: new kakao.maps.LatLng(37.56638, 126.977902), 
+        level: 10 
     };
 
-var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+var map = new kakao.maps.Map(mapContainer, mapOption); 
 
-// 지도를 클릭한 위치에 표출할 마커입니다
+
 var marker = new kakao.maps.Marker({ 
-    // 지도 중심좌표에 마커를 생성합니다 
+    
     position: map.getCenter() 
 }); 
-// 지도에 마커를 표시합니다
+
 marker.setMap(map);
 
 var lat;
@@ -60,15 +60,14 @@ var lng;
 let latList = [];
 let lngList = [];
 
-// 지도에 클릭 이벤트를 등록합니다
-// 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
+
 
 kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
     
-    // 클릭한 위도, 경도 정보를 가져옵니다 
+   
     var latlng = mouseEvent.latLng; 
     
-    // 마커 위치를 클릭한 위치로 옮깁니다
+    
     marker.setPosition(latlng);
     
     
@@ -156,10 +155,7 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
 
 <script type="text/javascript">
 function insertTable() {
-	console.log("위도")
-	console.log(latList);
-	console.log("경도")
-	console.log(lngList);
+
 	$.ajax({
 		url : 'StateProgram',
 		data : {'latiList':latList.toString(),

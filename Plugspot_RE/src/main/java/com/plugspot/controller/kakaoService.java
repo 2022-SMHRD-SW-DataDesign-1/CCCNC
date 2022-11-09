@@ -22,17 +22,17 @@ public class kakaoService extends HttpServlet {
 	
 		request.setCharacterEncoding("UTF-8");
 		
-		String do_city = request.getParameter("do_city");
-		String city_latitude = request.getParameter("city_latitude");
-		String city_longitude = request.getParameter("city_longitude");
+		int loc_seq = Integer.parseInt(request.getParameter("loc_seq"));
+		double city_latitude = Integer.parseInt(request.getParameter("city_latitude"));
+		double city_longitude = Integer.parseInt(request.getParameter("city_longitude"));
+		double SATURATION = Integer.parseInt(request.getParameter("SATURATION"));
 		
 		
-		System.out.println(do_city);
 		System.out.println(city_latitude);
 		System.out.println(city_longitude);
 		
 		
-		 kakaoDTO dto =new kakaoDTO(do_city, city_latitude, city_longitude);
+		 kakaoDTO dto =new kakaoDTO(loc_seq, city_latitude, city_longitude,SATURATION);
 		 ArrayList<kakaoDTO> info = new kakaoDAO().kakao();
 		
 		 String moveURL = null;

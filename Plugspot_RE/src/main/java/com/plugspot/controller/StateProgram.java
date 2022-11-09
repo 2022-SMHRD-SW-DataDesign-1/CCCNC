@@ -34,8 +34,7 @@ public class StateProgram extends HttpServlet {
 		 String[] longtitude = request.getParameter("longList").split(",");
 		 
 		 
-		 System.out.println(latitude);
-		 System.out.println(longtitude);
+		
 			ChargeDTO dto = null;
 			int row = 0;
 			for(int i=0; i<latitude.length; i++) {
@@ -46,7 +45,7 @@ public class StateProgram extends HttpServlet {
 				
 			}
 			
-			System.out.println("member_num : "+member_num);
+			
 			
 
 			

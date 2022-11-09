@@ -1,3 +1,4 @@
+<%@page import="com.plugspot.model.ChargeDTO"%>
 <%@page import="com.plugspot.model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -10,6 +11,7 @@
 <body>
 <% 
 MemberDTO info = (MemberDTO)session.getAttribute("info"); 
+
 %>
 
 <fieldset>
@@ -23,15 +25,9 @@ MemberDTO info = (MemberDTO)session.getAttribute("info");
 			<a href = "Mycharge.jsp"><button>충전소 위치 등록</button></a>
 			
 </fieldset>
-<script>
-var openWin;
-function openChild(){
-	window.name="insertTable";
-	openWin = window.open("")
-	
-}
 
 
-</script>
+
+
 </body>
 </html>
