@@ -52,7 +52,7 @@ public class StateProgram extends HttpServlet {
 			
 			  if(row>0) {
 			  
-			  System.out.print("업로드 성공"); session.setAttribute("info",dto); }else {
+			  System.out.print("업로드 성공"); session.setAttribute("state",dto); }else {
 			  
 			  System.out.println("업로드 실패"); }
 			 
