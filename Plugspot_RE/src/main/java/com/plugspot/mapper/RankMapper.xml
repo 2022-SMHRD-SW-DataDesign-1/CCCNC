@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.plugspot.mapper.RankMapper">
+	<select id="rank" resultType="RankDTO">
+		select do_city,car_num
+		from t_do_city_carnum
+		order by car_num desc
+	</select>
+</mapper>
