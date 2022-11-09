@@ -1,3 +1,5 @@
+<%@page import="com.plugspot.model.kakaoDTO"%>
+<%@page import="com.plugspot.model.kakaoDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.plugspot.model.RankDTO"%>
 <%@page import="java.net.http.HttpClient.Redirect"%>
@@ -20,7 +22,7 @@ fieldset {
 	<%
 	MemberDTO info = (MemberDTO) session.getAttribute("info");
 	%>
-	<fieldset>
+	<fieldset style = "display:block">
 		<legend>Main</legend>
 		<%if (info == null) {%>
 			<a href="Login.jsp"><button>로그인</button></a> <a href="Join.jsp"><button>회원가입</button></a>
@@ -46,47 +48,12 @@ fieldset {
 		System.out.print("메인으로 출력테스트" + ranklist.get(0).getDo_city());
 	}
 	%>
-	<!-----------------------------------------순위---------------------------------------->
-	<fieldset>
-
-		<form class="ranking">
-			<table class="info_table02">
-				<caption class="title">자동차 등록 대수</caption>
-				<thead>
-					<tr>
-						<th scope="col" class="th03">순위</th>
-						<th scope="col" class="th01">도시</th>
-						<th scope="col" class="th01">자동차등록수</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% if(ranklist!=null){%>
-					<%for (int i = 0; i < ranklist.size(); i++) {%>
-					<tr>
-						<th><span class="zone"><%=i + 1%></span></th>
-						<td><%=ranklist.get(i).getDo_city()%></td>
-						<td><%=ranklist.get(i).getCar_num()%></td>
-					</tr>
-					<%}}%>
-				</tbody>
-			</table>
-		</form>
-	</fieldset> 
-	<!------------------------------------------------------------------------------------>
-
-<!------------------------------------------------------------------------------------>
+<!-----------------------------------------카카오맵포화도--------------------------------->
+<iframe src="./kakaomap.jsp" frameborder="1" scrolling="no" style="display:inline;height:80vh;width:30vw"></iframe>
+<!----------------------------------------포화도표-------------------------------------->
  <fieldset>
         <table class="info_table02">
             <caption class="title">지역별 충전소 충전기의 상태 현황</caption>
-            <colgroup>
-                <col class="col01">
-                <col class="col01">
-                <col class="col01">
-                <col class="col01">
-                <col class="col01">
-                <col class="col01">
-                <col class="col02">
-            </colgroup>
             <thead>
                 <tr>
                     <th scope="col" class="th03">지역</th>
@@ -167,12 +134,38 @@ fieldset {
     </fieldset>
     <br>
 
+<!------------------------------------------------------------------------------------>
 
 
 
+	
+<!-----------------------------------------순위---------------------------------------->
+	<fieldset>
 
-
-
+		<form class="ranking">
+			<table class="info_table02">
+				<caption class="title">자동차 등록 대수</caption>
+				<thead>
+					<tr>
+						<th scope="col" class="th03">순위</th>
+						<th scope="col" class="th01">도시</th>
+						<th scope="col" class="th01">자동차등록수</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% if(ranklist!=null){%>
+					<%for (int i = 0; i < ranklist.size(); i++) {%>
+					<tr>
+						<th><span class="zone"><%=i + 1%></span></th>
+						<td><%=ranklist.get(i).getDo_city()%></td>
+						<td><%=ranklist.get(i).getCar_num()%></td>
+					</tr>
+					<%}}%>
+				</tbody>
+			</table>
+		</form>
+	</fieldset> 
+<!------------------------------------------------------------------------------------>
 
 
 </body>
