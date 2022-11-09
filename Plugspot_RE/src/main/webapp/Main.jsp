@@ -50,7 +50,7 @@ fieldset {
 	%>
 <!-- 포화도 전체 -->
 
- <fieldset>
+ <fieldset style="display:inline">
 <!-----------------------------------------카카오맵포화도--------------------------------->
 <iframe src="./kakaomap.jsp" frameborder="1" scrolling="no" style="display:inline;height:50vh;width:600px"></iframe>
 <!----------------------------------------포화도표-------------------------------------->
