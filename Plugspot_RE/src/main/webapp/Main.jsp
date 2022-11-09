@@ -36,9 +36,9 @@ MemberDTO info = (MemberDTO)session.getAttribute("info");
 	</fieldset>
 	
 	<%
+/* 		RankDTO ranklist = (RankDTO)session.getAttribute("ranklist");
 		response.sendRedirect("rankService");
-		RankDTO ranklist = (RankDTO)session.getAttribute("ranklist");
-		System.out.print(ranklist.getDo_city());
+		System.out.print(ranklist.getDo_city()); */
 	%>
 	<fieldset>
         <form class="ranking">
