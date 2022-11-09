@@ -48,27 +48,34 @@ fieldset {
 		System.out.print("메인으로 출력테스트" + ranklist.get(0).getDo_city());
 	}
 	%>
+	
+<fieldset style="display:block;height: 750px;">	
+
+
+
+
+
+
+
+
 <!-- 포화도 전체 -->
 
-<fieldset style="display:inline;width:650px">
+<fieldset style="display:inline;width:650px;height:720px;border-width: 0px">
 <!-----------------------------------------카카오맵포화도--------------------------------->
 
-<iframe src="./kakaomap.jsp" frameborder="1" scrolling="no" style="display:block;height:50vh;width:100%"></iframe>
+<iframe src="./kakaomap.jsp" frameborder="1" scrolling="no" style="display:block;height:80%;width:100%"></iframe>
 
 <!----------------------------------------포화도표-------------------------------------->
-<iframe src="./Saturation.jsp" frameborder="1" scrolling="yes" style="display:block;height:20vh;width:100%"></iframe>
+<iframe src="./Saturation.jsp" frameborder="1" scrolling="yes" style="display:block;height:20%;width:100%"></iframe>
 </fieldset>
-<br>
 
 <!------------------------------------------------------------------------------------>
-
-
 	
 <!-----------------------------------------순위---------------------------------------->
-	<fieldset>
+	<fieldset style="height: 720px;">
 
 		<form class="ranking">
-			<table class="info_table02">
+			<table class="info_table02" >
 				<caption class="title">자동차 등록 대수</caption>
 				<thead>
 					<tr>
@@ -77,22 +84,22 @@ fieldset {
 						<th scope="col" class="th01">자동차등록수</th>
 					</tr>
 				</thead>
-				<tbody>
 					<% if(ranklist!=null){%>
 					<%for (int i = 0; i < ranklist.size(); i++) {%>
+				<tbody style="height:100%">
 					<tr>
 						<th><span class="zone"><%=i + 1%></span></th>
-						<td><%=ranklist.get(i).getDo_city()%></td>
-						<td><%=ranklist.get(i).getCar_num()%></td>
+						<td style="width:150px;height:100%"><%=ranklist.get(i).getDo_city()%></td>
+						<td style="width:150px;height:100%"><%=ranklist.get(i).getCar_num()%></td>
 					</tr>
-					<%}}%>
 				</tbody>
+					<%}}%>
 			</table>
 		</form>
 	</fieldset> 
 <!------------------------------------------------------------------------------------>
 
-
+</fieldset>
 </body>
 
 </html>
