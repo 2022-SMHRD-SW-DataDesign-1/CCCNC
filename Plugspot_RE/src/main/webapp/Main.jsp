@@ -48,14 +48,16 @@ fieldset {
 		System.out.print("메인으로 출력테스트" + ranklist.get(0).getDo_city());
 	}
 	%>
-<!-----------------------------------------카카오맵포화도--------------------------------->
-<iframe src="./kakaomap.jsp" frameborder="1" scrolling="no" style="display:inline;height:80vh;width:30vw"></iframe>
-<!----------------------------------------포화도표-------------------------------------->
+<!-- 포화도 전체 -->
+
  <fieldset>
-        <table class="info_table02">
-            <caption class="title">지역별 충전소 충전기의 상태 현황</caption>
+<!-----------------------------------------카카오맵포화도--------------------------------->
+<iframe src="./kakaomap.jsp" frameborder="1" scrolling="no" style="display:inline;height:50vh;width:600px"></iframe>
+<!----------------------------------------포화도표-------------------------------------->
+        <table class="info_table02" style="width:600px;">
+            <caption class="title" >지역별 충전소 충전기의 상태 현황</caption>
             <thead>
-                <tr>
+                <tr >
                     <th scope="col" class="th03">지역</th>
                     <th scope="col" class="th01">위도</th>
                     <th scope="col" class="th01">경도</th>
@@ -135,7 +137,6 @@ fieldset {
     <br>
 
 <!------------------------------------------------------------------------------------>
-
 
 
 	
