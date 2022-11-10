@@ -102,7 +102,7 @@
 					          console.log(marker.id);	
 					});
 					marker.setMap(map);
-					i++;
+					i++;8/20
 			
 		 <%}else{ %>
         
