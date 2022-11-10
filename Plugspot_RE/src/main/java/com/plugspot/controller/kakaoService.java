@@ -1,7 +1,6 @@
 package com.plugspot.controller;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -23,10 +22,10 @@ public class kakaoService extends HttpServlet {
 	
 		request.setCharacterEncoding("UTF-8");
 		
-		BigDecimal	loc_seq = BigDecimal.valueOf(Integer.parseInt(request.getParameter("loc_seq")));
-		BigDecimal city_latitude = BigDecimal.valueOf(Integer.parseInt(request.getParameter("city_latitude")));
-		BigDecimal city_longitude = BigDecimal.valueOf(Integer.parseInt(request.getParameter("city_longitude")));
-		BigDecimal SATURATION = BigDecimal.valueOf(Integer.parseInt(request.getParameter("SATURATION")));
+		int loc_seq = Integer.parseInt(request.getParameter("loc_seq"));
+		double city_latitude = Integer.parseInt(request.getParameter("city_latitude"));
+		double city_longitude = Integer.parseInt(request.getParameter("city_longitude"));
+		double SATURATION = Integer.parseInt(request.getParameter("SATURATION"));
 		
 		
 		System.out.println(city_latitude);
