@@ -58,6 +58,13 @@
   	<description></description>
   	<servlet-class>com.plugspot.controller.rankService</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>pwcheck</servlet-name>
+  	<display-name>pwcheck</display-name>
+  	<description></description>
+  	<servlet-class>com.plugspot.controller.pwcheck</servlet-class>
+  </servlet>
+
 
   <servlet-mapping>
   	<servlet-name>JoinProgram</servlet-name>
@@ -95,5 +102,10 @@
   	<servlet-name>rankService</servlet-name>
   	<url-pattern>/rankService</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>pwcheck</servlet-name>
+  	<url-pattern>/pwcheck</url-pattern>
+  </servlet-mapping>
+
 
 </web-app>
