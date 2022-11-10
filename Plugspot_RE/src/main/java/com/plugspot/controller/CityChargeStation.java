@@ -1,6 +1,7 @@
 package com.plugspot.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
@@ -21,7 +22,7 @@ public class CityChargeStation extends HttpServlet {
 
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		HttpSession session = request.getSession();
 		request.setCharacterEncoding("UTF-8");
 		
 		BigDecimal charge_num = BigDecimal.valueOf(Integer.parseInt(request.getParameter("charge_num")));
@@ -33,25 +34,16 @@ public class CityChargeStation extends HttpServlet {
 		System.out.println(latitude);
 		System.out.println(longitude);
 		
-		
+		 
 		 CityChargeDTO dto =new CityChargeDTO(charge_num, charge_state_name, latitude, longitude);
 		 ArrayList<CityChargeDTO> station = new CityChargeDAO().station();
+		 
+		 session.setAttribute("station", station);
+		 
 		
-		 String moveURL = null;
+		 PrintWriter out = response.getWriter();
+		  out.println("CityChargeStation.jsp");
 			
-			if(station==null) {
-				System.out.println("실험 실패");
-				moveURL = "Main.jsp";
-			}else {
-				System.out.println("실험 성공");
-				
-				HttpSession session = request.getSession();
-				session.setAttribute("kakao",info);
-				
-				moveURL= "Main.jsp";
-			}
-			RequestDispatcher rd = request.getRequestDispatcher(moveURL);
-			rd.forward(request, response);
 	}
 
 

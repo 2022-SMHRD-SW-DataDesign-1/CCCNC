@@ -18,5 +18,6 @@ public class CityChargeDAO {
 		
 		return list;
 	}
+	
 
 }

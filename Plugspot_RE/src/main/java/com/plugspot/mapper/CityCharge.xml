@@ -5,8 +5,7 @@
   
 
 <mapper namespace="com.plugspot.mapper.CityCharge">
-<select id="station" parameterType="CityChargeDTO" resultType="CityChargeDTO">
-		select * from T_CHARGER_NUM where CHARGE_NUM=#{CHARGE_NUM} and CHARGE_STATE_NAME=#{CHARGE_STATE_NAME}
-		and LATITUDE=#{LATITUDE} and LONGITUDE=#{LONGITUDE}
+	<select id="station"  resultType="CityChargeDTO">
+		select * from T_CHARGER_NUM
 	</select>
 </mapper>

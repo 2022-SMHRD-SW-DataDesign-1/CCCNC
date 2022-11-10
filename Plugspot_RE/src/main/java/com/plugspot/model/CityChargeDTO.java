@@ -13,8 +13,8 @@ import lombok.Setter;
 @Setter
 
 public class CityChargeDTO {
-	private BigDecimal charge_num;
-	@NonNull private String charge_state_name;
-	@NonNull private BigDecimal latitude;
-	@NonNull private BigDecimal longitude;
+	 private BigDecimal charge_num;
+	 private String charge_state_name;
+	 private BigDecimal latitude;
+	 private BigDecimal longitude;
 }
