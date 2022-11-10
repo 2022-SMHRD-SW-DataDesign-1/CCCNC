@@ -45,9 +45,9 @@
 	<p style="margin-top: -30px"></p>
 	<div id="map" style="width: 650px; height: 720px;"></div> <!-- 200,240 -->
 	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8ce79007cc7dd52019d1824cc7d87f18&libraries=services,clusterer,drawing"></script>
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f867e2332325dabbf2acc1f5355d06f&libraries=services,clusterer,drawing"></script>
 	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8ce79007cc7dd52019d1824cc7d87f18&libraries=clusterer"></script>
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f867e2332325dabbf2acc1f5355d06f&libraries=clusterer"></script>
 	<script>
 	var map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
 		center : new kakao.maps.LatLng(35.1083, 127.6358), // 지도의 중심좌표 
@@ -102,7 +102,7 @@
 					          console.log(marker.id);	
 					});
 					marker.setMap(map);
-					i++;8/20
+					i++;
 			
 		 <%}else{ %>
         
@@ -127,7 +127,11 @@
 		  
 		<%}%> 
 		<%}%>
-		
+		function clicker(num){
+			kakao.maps.event.addListener(marker[num],'click',function(mouseEvent){
+		          console.log(marker.id);	
+		});
+		}
 	
 
 		
