@@ -22,7 +22,7 @@ public class kakaoService extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		request.setCharacterEncoding("UTF-8");
-		
+		//big
 		BigDecimal	loc_seq = BigDecimal.valueOf(Integer.parseInt(request.getParameter("loc_seq")));
 		BigDecimal city_latitude = BigDecimal.valueOf(Integer.parseInt(request.getParameter("city_latitude")));
 		BigDecimal city_longitude = BigDecimal.valueOf(Integer.parseInt(request.getParameter("city_longitude")));
