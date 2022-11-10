@@ -19,12 +19,12 @@ text-align:center;
 <body>
 <fieldset>
 <legend>Join</legend>
-<form action="JoinProgram" method="post">
+<form id="joinForm" method="post">
 ID:<input type = "text" name="member_num" id="inputE"><br>
 PW:<input type="password" name="password" id="pw"><br>
- 비밀번호확인:<input type="password" name="password" id="pw2"><br>
-<li><input type="button" value="비밀번호확인" onkeydown="checkP()"> <!-- onclick="checkP()" --> </li>
-		<li><span id="resultCheckP"></span></li> 
+비밀번호확인:<input type="password" name="password" id="pw2"><br>
+<li><input type="button" value="비밀번호확인"  onclick="checkP()"> </li>
+		<li><span id="resultCheckP"></span></li>  
 <li><input type="button" value="사업자등록번호중복체크" onclick="checkE()"></li>
 		<li><span id="resultCheckE"></span></li>
 
@@ -34,99 +34,64 @@ PW:<input type="password" name="password" id="pw"><br>
 </fieldset>
 	
 <script>
- function checkE(){
-	let inputE = $('#inputE').val();
-	console.log(inputE);
-
-	$.ajax({
-		url : 'idcheck',
-		data : {'inputE' : inputE },
-		type : 'get',
-		dataType :'json',
-		success : function(data) {
-			console.log(data);
-
-			if (data == true) {
-				$("#resultCheckE").text("사용 불가해 이자식아.");
-				$("#joinBtn").attr("disabled", true);
-			} else {
-				$("#resultCheckE").text("사용해 이자식아.");
-				$("#joinBtn").attr("disabled", false);
-			}
-		},
-		error : function() {
-			console.log("통신실패");
-		}
-	});
-}
-
-/* function checkP(){
-	var pw = $("#pw").val();
-	var pw2 = $("#pw2").val();
-	if(pw != pw2){
-	$("#resultCheckP").text("다르다고 했냐 안했냐?");	
-	$("#joinBtn").attr("disabled", true);
-	} else{
-		$("#resultCheckP").text("이제는 써도될듯?");
-		$("#joinBtn").attr("disabled", false);
-	}
-	} 
-	 */
- function checkS(){
-	let inputE = $('#inputE').val();
-	var pw = $("#pw").val();2
-	var pw2 = $("#pw2").val();
-	$.ajax({
-	url : 'idcheck',
-	data : {'inputE' : inputE },
-	type : 'get',
-	dataType :'json',
-	success : function(data) {
-		console.log(data);
-		
-		if (data == true && pw == pw2) {
-			
-			alert('회원가입성공');
-			location.href="Login.jsp";
-			
-		}else{
-			alert('회원가입실패');
-			location.href="Join.jsp";
-		}
-	},
+	let pwCheck = false;
+	let idCheck = false;
 	
-	});
-} 
-function checkP() {
-	let pw = $("#pw").val();
-	let pw2 = $("#pw2").val();
-	console.log(pw);
-	console.log(pw2);
-	$.ajax({
-		// 요청서버 url
-		url : "pwcheck",
-		// 요청할 때 같이 보내줄 데이터
-		data : {"pw" : pw,
-				"pw2" : pw2},
-		// 요청 타입
-		type : 'get',
-		// 통신 성공 function(넘겨준데이터)
-		success : function(data) {
-			console.log(typeof data);
-			if (data == 'false') {
-		$("#resultCheckP").text("같아요~");
-		$("#privacyUpdateSubmit").attr("disabled",false);
-			} else {
-		$("#resultCheckP").text("달라요~");
-		$("#privacyUpdateSubmit").attr("disabled",true);
+	function checkE(){
+		let inputE = $('#inputE').val();
+		console.log(inputE);
+		
+		$.ajax({
+			url : 'idcheck',
+			data : {'inputE' : inputE },
+			type : 'get',
+			dataType :'json',
+			success : function(data) {
+				console.log(data);
+				if (data == true) {
+					$("#resultCheckE").text("사용 불가해 이자식아.");
+					$("#joinBtn").attr("disabled", true);
+					idCheck = false;
+				} else {
+					$("#resultCheckE").text("사용해 이자식아.");
+					$("#joinBtn").attr("disabled", false);
+					idCheck = true;
+				}
+			},
+			error : function() {
+				console.log("통신실패");
 			}
-		},
-		// 통신 실패
-		error : function() {
-			console.log("조샀다 !");
+			
+		});
+	}
+	
+	function checkP(){
+		var pw = $("#pw").val();
+		var pw2 = $("#pw2").val();
+		if(pw != pw2){
+			$("#resultCheckP").text("다르다고 했냐 안했냐?");	
+			$("#joinBtn").attr("disabled", true);
+			pwCheck = false;
+		} else{
+			$("#resultCheckP").text("이제는 써도될듯?");
+			$("#joinBtn").attr("disabled", false);
+			pwCheck= true;
 		}
-	})
-}
+	} 
+ 
+	function checkS() {
+		if(pwCheck && idCheck){
+			$("#joinForm").attr("action","JoinProgram");
+		}
+		else{
+			$("#joinForm").attr("action","Join.jsp");
+			alert("가입정보가 일치하지 않습니다.");
+		}
+	}
+
+	 
+
+
 
 </script>
 </body>
