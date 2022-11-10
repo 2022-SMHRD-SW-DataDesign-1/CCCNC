@@ -64,6 +64,12 @@
   	<description></description>
   	<servlet-class>com.plugspot.controller.pwcheck</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>CityChargeStation</servlet-name>
+  	<display-name>CityChargeStation</display-name>
+  	<description></description>
+  	<servlet-class>com.plugspot.controller.CityChargeStation</servlet-class>
+  </servlet>
 
 
   <servlet-mapping>
@@ -105,6 +111,10 @@
   <servlet-mapping>
   	<servlet-name>pwcheck</servlet-name>
   	<url-pattern>/pwcheck</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>CityChargeStation</servlet-name>
+  	<url-pattern>/CityChargeStation</url-pattern>
   </servlet-mapping>
 
 

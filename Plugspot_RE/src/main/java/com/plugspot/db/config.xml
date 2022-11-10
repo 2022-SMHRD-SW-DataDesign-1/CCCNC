@@ -10,6 +10,7 @@
     <typeAlias type = "com.plugspot.model.kakaoDTO" alias="kakaoDTO"/>
     <typeAlias type = "com.plugspot.model.ChargeDTO" alias="ChargeDTO"/>
     <typeAlias type = "com.plugspot.model.RankDTO" alias="RankDTO"/>
+    <typeAlias type = "com.plugspot.model.CityChargeDTO" alias="CityChargeDTO"/>
   </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -28,5 +29,6 @@
     <mapper resource="com/plugspot/mapper/Charge.xml"/>
     <mapper resource="com/plugspot/mapper/kakao.xml"/>
     <mapper resource="com/plugspot/mapper/RankMapper.xml"/>
+     <mapper resource="com/plugspot/mapper/CityCharge.xml"/>
   </mappers>
 </configuration>

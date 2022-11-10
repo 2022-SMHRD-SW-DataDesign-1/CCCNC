@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+
+<mapper namespace="com.plugspot.mapper.CityCharge">
+<select id="station" parameterType="CityChargeDTO" resultType="CityChargeDTO">
+		select * from T_CHARGER_NUM where CHARGE_NUM=#{CHARGE_NUM} and CHARGE_STATE_NAME=#{CHARGE_STATE_NAME}
+		and LATITUDE=#{LATITUDE} and LONGITUDE=#{LONGITUDE}
+	</select>
+</mapper>
