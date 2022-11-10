@@ -1,3 +1,4 @@
+<%@page import="java.math.BigDecimal"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.plugspot.model.kakaoDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -20,6 +21,8 @@
     margin-bottom: 0px;
 ">
 <%
+		
+
 		kakaoDAO dao = new kakaoDAO();		
 	  	ArrayList<kakaoDTO> list = dao.kakao();
 	  	System.out.print(list.get(0).getSATURATION());
@@ -28,7 +31,7 @@
 	  	
 	  	for(int i =0;i<list.size();i++){
 	  		for(int j=0;j<index_list.length;j++){
-		  		if(index_list[j]==list.get(i).getLoc_seq()){
+		  		if(index_list[j]==(list.get(i).getLoc_seq()).intValue()){
 		  			list2.add(list.get(i));
 		  		}
 	  		}
@@ -36,6 +39,7 @@
 	  	for(int k=0;k<list2.size();k++){
 	  		System.out.println(list2.get(k).getSATURATION());
 	  	}
+	  	
 %>	  	
 <form action="kakaoService" method="post">
 	<p style="margin-top: -30px"></p>
@@ -60,7 +64,7 @@
 	
 	var i, marker;
 	<% for(kakaoDTO kvo : list2){ %>
-		 <% if(kvo.getSATURATION()>1.0){%>		  
+		 <% if((kvo.getSATURATION()).doubleValue()>1.0){%>		  
             i=0;
             var max = [new kakao.maps.LatLng(<%=kvo.getCity_latitude() %>,<%=kvo.getCity_longitude()%>)]
 			var imageSrc = 'marker/max.png',  imageSize = new kakao.maps.Size(32, 32); 
@@ -80,7 +84,7 @@
 				marker.setMap(map);
 				i++;
 		 
-			 <%}else if(kvo.getSATURATION()>0.7&&kvo.getSATURATION()>0.4){%>
+			 <%}else if(kvo.getSATURATION().doubleValue()>0.7&&kvo.getSATURATION().doubleValue()>0.4){%>
 	          	i=0;
 				var soso = [new kakao.maps.LatLng(<%=kvo.getCity_latitude() %>,<%=kvo.getCity_longitude()%>)]
 				var imageSrc = 'marker/soso.png', imageSize = new kakao.maps.Size(40, 40); 

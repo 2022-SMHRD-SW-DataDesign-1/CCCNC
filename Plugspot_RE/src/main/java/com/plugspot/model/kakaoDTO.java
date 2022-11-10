@@ -1,6 +1,8 @@
 package com.plugspot.model;
 
 
+import java.math.BigDecimal;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NonNull;
@@ -16,8 +18,8 @@ import lombok.Setter;
 public class kakaoDTO {
 	
 	private String do_city;
-	@NonNull private int loc_seq;
-	@NonNull private double city_latitude;
-	@NonNull private double city_longitude;
-	@NonNull private double SATURATION;
+	@NonNull private BigDecimal loc_seq;
+	@NonNull private BigDecimal city_latitude;
+	@NonNull private BigDecimal city_longitude;
+	@NonNull private BigDecimal SATURATION;
 }

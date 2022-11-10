@@ -19,7 +19,7 @@
 	  	
 	  	for(int i =0;i<list.size();i++){
 	  		for(int j=0;j<index_list.length;j++){
-		  		if(index_list[j]==list.get(i).getLoc_seq()){
+		  		if(index_list[j]==(list.get(i).getLoc_seq().intValue())){
 		  			list2.add(list.get(i));
 		  		}
 	  		}
