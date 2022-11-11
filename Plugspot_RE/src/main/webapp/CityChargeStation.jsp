@@ -1,4 +1,6 @@
 
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
+<%@page import="java.math.BigDecimal"%>
 <%@page import="com.plugspot.model.fastDTO"%>
 <%@page import="com.plugspot.model.fastDAO"%>
 <%@page import="com.plugspot.model.CityChargeDTO"%>
@@ -23,6 +25,7 @@ CityChargeDAO dao = new CityChargeDAO();
 ArrayList<CityChargeDTO> station = dao.station();
 fastDAO dao2  = new fastDAO();
 ArrayList<fastDTO> fast = dao2.fast();
+System.out.println(fast.size());
 %>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f867e2332325dabbf2acc1f5355d06f"></script>
 <div id="staticMap" style="width:600px;height:350px;"></div>
@@ -147,9 +150,32 @@ for (var i = 0; i < positions.length; i ++) {
     </script>
     <!-- 급속 -->
     <script>
+    let seoulfastchartList = [];
+    
+  //BigDecimal[] dataList=new BigDecimal[fast.size()]; 
+    //for(int i=0; i<fast.size(); i++){ 
+   
+       seoulfastchartList.push(<%=fast.get(0).getOne_week_charge()%>);
+       seoulfastchartList.push(<%=fast.get(0).getTwo_week_charge()%>);
+       seoulfastchartList.push(<%=fast.get(0).getTree_week_charge()%>);
+       seoulfastchartList.push(<%=fast.get(0).getFour_week_charge()%>);
+       seoulfastchartList.push(<%=fast.get(0).getFive_week_charge()%>);
+       seoulfastchartList.push(<%=fast.get(0).getSix_week_charge()%>);
+       seoulfastchartList.push(<%=fast.get(0).getSeven_week_charge()%>);
+       seoulfastchartList.push(<%=fast.get(0).getEight_week_charge()%>);
+       seoulfastchartList.push(<%=fast.get(0).getNine_week_charge()%>);
+       seoulfastchartList.push(<%=fast.get(0).getTen_week_charge()%>);
+       seoulfastchartList.push(<%=fast.get(0).getEleven_week_charge()%>);
+       seoulfastchartList.push(<%=fast.get(0).getTwelve_week_charge()%>);
+       
+      
+    		
+   
         new Chart(document.getElementById('myChart2').getContext('2d'), {
             type: 'bar',
+            
             data: {
+            	
                 labels: ['1주', '2주', '3주', '4주', '5주', '6주', '7주', '8주', '9주', '10주', '11주', '12주'],
                 datasets: [
                     {
@@ -166,7 +192,7 @@ for (var i = 0; i < positions.length; i ++) {
                         type: 'bar', // 'bar' type, 전체 타입과 같다면 생략가능
                         backgroundColor: 'rgb(254,122,112)',
                         borderColor: 'rgb(254,122,112)',
-                        data: [10, 20, 30, 40, 50, 60, 80, 70, 90, 100, 80, 70]
+                        data: seoulfastchartList,
                     }
                 ]
             },
