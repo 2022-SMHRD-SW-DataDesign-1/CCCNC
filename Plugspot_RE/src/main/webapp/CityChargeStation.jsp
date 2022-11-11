@@ -1,4 +1,6 @@
 
+<%@page import="com.plugspot.model.lowDTO"%>
+<%@page import="com.plugspot.model.lowDAO"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="java.math.BigDecimal"%>
 <%@page import="com.plugspot.model.fastDTO"%>
@@ -25,7 +27,8 @@ CityChargeDAO dao = new CityChargeDAO();
 ArrayList<CityChargeDTO> station = dao.station();
 fastDAO dao2  = new fastDAO();
 ArrayList<fastDTO> fast = dao2.fast();
-System.out.println(fast.size());
+lowDAO dao3 = new lowDAO();
+ArrayList<lowDTO> low = dao3.low();
 %>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f867e2332325dabbf2acc1f5355d06f"></script>
 <div id="staticMap" style="width:600px;height:350px;"></div>
@@ -80,8 +83,279 @@ for (var i = 0; i < positions.length; i ++) {
    // marker.setMap(map)
 }
 </script>
+<!-- 완속 -->
 <script>
+let seoullowchartList = [];
 
+seoullowchartList.push(<%=low.get(0).getOne_week_charge()%>);
+seoullowchartList.push(<%=low.get(0).getTwo_week_charge()%>);
+seoullowchartList.push(<%=low.get(0).getTree_week_charge()%>);
+seoullowchartList.push(<%=low.get(0).getFour_week_charge()%>);
+seoullowchartList.push(<%=low.get(0).getFive_week_charge()%>);
+seoullowchartList.push(<%=low.get(0).getSix_week_charge()%>);
+seoullowchartList.push(<%=low.get(0).getSeven_week_charge()%>);
+seoullowchartList.push(<%=low.get(0).getEight_week_charge()%>);
+seoullowchartList.push(<%=low.get(0).getNine_week_charge()%>);
+seoullowchartList.push(<%=low.get(0).getTen_week_charge()%>);
+seoullowchartList.push(<%=low.get(0).getEleven_week_charge()%>);
+seoullowchartList.push(<%=low.get(0).getTwelve_week_charge()%>);
+</script>
+<script>
+let busanlowchartList = [];
+
+busanlowchartList.push(<%=low.get(1).getOne_week_charge()%>);
+busanlowchartList.push(<%=low.get(1).getTwo_week_charge()%>);
+busanlowchartList.push(<%=low.get(1).getTree_week_charge()%>);
+busanlowchartList.push(<%=low.get(1).getFour_week_charge()%>);
+busanlowchartList.push(<%=low.get(1).getFive_week_charge()%>);
+busanlowchartList.push(<%=low.get(1).getSix_week_charge()%>);
+busanlowchartList.push(<%=low.get(1).getSeven_week_charge()%>);
+busanlowchartList.push(<%=low.get(1).getEight_week_charge()%>);
+busanlowchartList.push(<%=low.get(1).getNine_week_charge()%>);
+busanlowchartList.push(<%=low.get(1).getTen_week_charge()%>);
+busanlowchartList.push(<%=low.get(1).getEleven_week_charge()%>);
+busanlowchartList.push(<%=low.get(1).getTwelve_week_charge()%>);
+</script>
+<script>
+let daegulowchartList = [];
+
+daegulowchartList.push(<%=low.get(2).getOne_week_charge()%>);
+daegulowchartList.push(<%=low.get(2).getTwo_week_charge()%>);
+daegulowchartList.push(<%=low.get(2).getTree_week_charge()%>);
+daegulowchartList.push(<%=low.get(2).getFour_week_charge()%>);
+daegulowchartList.push(<%=low.get(2).getFive_week_charge()%>);
+daegulowchartList.push(<%=low.get(2).getSix_week_charge()%>);
+daegulowchartList.push(<%=low.get(2).getSeven_week_charge()%>);
+daegulowchartList.push(<%=low.get(2).getEight_week_charge()%>);
+daegulowchartList.push(<%=low.get(2).getNine_week_charge()%>);
+daegulowchartList.push(<%=low.get(2).getTen_week_charge()%>);
+daegulowchartList.push(<%=low.get(2).getEleven_week_charge()%>);
+daegulowchartList.push(<%=low.get(2).getTwelve_week_charge()%>);
+</script>
+<script>
+let incheonlowchartList = [];
+
+incheonlowchartList.push(<%=low.get(3).getOne_week_charge()%>);
+incheonlowchartList.push(<%=low.get(3).getTwo_week_charge()%>);
+incheonlowchartList.push(<%=low.get(3).getTree_week_charge()%>);
+incheonlowchartList.push(<%=low.get(3).getFour_week_charge()%>);
+incheonlowchartList.push(<%=low.get(3).getFive_week_charge()%>);
+incheonlowchartList.push(<%=low.get(3).getSix_week_charge()%>);
+incheonlowchartList.push(<%=low.get(3).getSeven_week_charge()%>);
+incheonlowchartList.push(<%=low.get(3).getEight_week_charge()%>);
+incheonlowchartList.push(<%=low.get(3).getNine_week_charge()%>);
+incheonlowchartList.push(<%=low.get(3).getTen_week_charge()%>);
+incheonlowchartList.push(<%=low.get(3).getEleven_week_charge()%>);
+incheonlowchartList.push(<%=low.get(3).getTwelve_week_charge()%>);
+</script>
+<script>
+let gwangjulowchartList = [];
+
+gwangjulowchartList.push(<%=low.get(4).getOne_week_charge()%>);
+gwangjulowchartList.push(<%=low.get(4).getTwo_week_charge()%>);
+gwangjulowchartList.push(<%=low.get(4).getTree_week_charge()%>);
+gwangjulowchartList.push(<%=low.get(4).getFour_week_charge()%>);
+gwangjulowchartList.push(<%=low.get(4).getFive_week_charge()%>);
+gwangjulowchartList.push(<%=low.get(4).getSix_week_charge()%>);
+gwangjulowchartList.push(<%=low.get(4).getSeven_week_charge()%>);
+gwangjulowchartList.push(<%=low.get(4).getEight_week_charge()%>);
+gwangjulowchartList.push(<%=low.get(4).getNine_week_charge()%>);
+gwangjulowchartList.push(<%=low.get(4).getTen_week_charge()%>);
+gwangjulowchartList.push(<%=low.get(4).getEleven_week_charge()%>);
+gwangjulowchartList.push(<%=low.get(4).getTwelve_week_charge()%>);
+</script>
+<script>
+let daejeonlowchartList= [];
+
+daejeonlowchartList.push(<%=low.get(5).getOne_week_charge()%>);
+daejeonlowchartList.push(<%=low.get(5).getTwo_week_charge()%>);
+daejeonlowchartList.push(<%=low.get(5).getTree_week_charge()%>);
+daejeonlowchartList.push(<%=low.get(5).getFour_week_charge()%>);
+daejeonlowchartList.push(<%=low.get(5).getFive_week_charge()%>);
+daejeonlowchartList.push(<%=low.get(5).getSix_week_charge()%>);
+daejeonlowchartList.push(<%=low.get(5).getSeven_week_charge()%>);
+daejeonlowchartList.push(<%=low.get(5).getEight_week_charge()%>);
+daejeonlowchartList.push(<%=low.get(5).getNine_week_charge()%>);
+daejeonlowchartList.push(<%=low.get(5).getTen_week_charge()%>);
+daejeonlowchartList.push(<%=low.get(5).getEleven_week_charge()%>);
+daejeonlowchartList.push(<%=low.get(5).getTwelve_week_charge()%>);
+</script>
+<script>
+let ulsanlowchartList = [];
+
+ulsanlowchartList.push(<%=low.get(6).getOne_week_charge()%>);
+ulsanlowchartList.push(<%=low.get(6).getTwo_week_charge()%>);
+ulsanlowchartList.push(<%=low.get(6).getTree_week_charge()%>);
+ulsanlowchartList.push(<%=low.get(6).getFour_week_charge()%>);
+ulsanlowchartList.push(<%=low.get(6).getFive_week_charge()%>);
+ulsanlowchartList.push(<%=low.get(6).getSix_week_charge()%>);
+ulsanlowchartList.push(<%=low.get(6).getSeven_week_charge()%>);
+ulsanlowchartList.push(<%=low.get(6).getEight_week_charge()%>);
+ulsanlowchartList.push(<%=low.get(6).getNine_week_charge()%>);
+ulsanlowchartList.push(<%=low.get(6).getTen_week_charge()%>);
+ulsanlowchartList.push(<%=low.get(6).getEleven_week_charge()%>);
+ulsanlowchartList.push(<%=low.get(6).getTwelve_week_charge()%>);
+</script>
+<script>
+let sejeonglowchartList = [];
+
+sejeonglowchartList.push(<%=low.get(7).getOne_week_charge()%>);
+sejeonglowchartList.push(<%=low.get(7).getTwo_week_charge()%>);
+sejeonglowchartList.push(<%=low.get(7).getTree_week_charge()%>);
+sejeonglowchartList.push(<%=low.get(7).getFour_week_charge()%>);
+sejeonglowchartList.push(<%=low.get(7).getFive_week_charge()%>);
+sejeonglowchartList.push(<%=low.get(7).getSix_week_charge()%>);
+sejeonglowchartList.push(<%=low.get(7).getSeven_week_charge()%>);
+sejeonglowchartList.push(<%=low.get(7).getEight_week_charge()%>);
+sejeonglowchartList.push(<%=low.get(7).getNine_week_charge()%>);
+sejeonglowchartList.push(<%=low.get(7).getTen_week_charge()%>);
+sejeonglowchartList.push(<%=low.get(7).getEleven_week_charge()%>);
+sejeonglowchartList.push(<%=low.get(7).getTwelve_week_charge()%>);
+</script>
+<script>
+let gyeonggidolowchartList = [];
+
+gyeonggidolowchartList.push(<%=low.get(8).getOne_week_charge()%>);
+gyeonggidolowchartList.push(<%=low.get(8).getTwo_week_charge()%>);
+gyeonggidolowchartList.push(<%=low.get(8).getTree_week_charge()%>);
+gyeonggidolowchartList.push(<%=low.get(8).getFour_week_charge()%>);
+gyeonggidolowchartList.push(<%=low.get(8).getFive_week_charge()%>);
+gyeonggidolowchartList.push(<%=low.get(8).getSix_week_charge()%>);
+gyeonggidolowchartList.push(<%=low.get(8).getSeven_week_charge()%>);
+gyeonggidolowchartList.push(<%=low.get(8).getEight_week_charge()%>);
+gyeonggidolowchartList.push(<%=low.get(8).getNine_week_charge()%>);
+gyeonggidolowchartList.push(<%=low.get(8).getTen_week_charge()%>);
+gyeonggidolowchartList.push(<%=low.get(8).getEleven_week_charge()%>);
+gyeonggidolowchartList.push(<%=low.get(8).getTwelve_week_charge()%>);
+</script>
+<script>
+let GangwondolowchartList = [];
+
+GangwondolowchartList.push(<%=low.get(9).getOne_week_charge()%>);
+GangwondolowchartList.push(<%=low.get(9).getTwo_week_charge()%>);
+GangwondolowchartList.push(<%=low.get(9).getTree_week_charge()%>);
+GangwondolowchartList.push(<%=low.get(9).getFour_week_charge()%>);
+GangwondolowchartList.push(<%=low.get(9).getFive_week_charge()%>);
+GangwondolowchartList.push(<%=low.get(9).getSix_week_charge()%>);
+GangwondolowchartList.push(<%=low.get(9).getSeven_week_charge()%>);
+GangwondolowchartList.push(<%=low.get(9).getEight_week_charge()%>);
+GangwondolowchartList.push(<%=low.get(9).getNine_week_charge()%>);
+GangwondolowchartList.push(<%=low.get(9).getTen_week_charge()%>);
+GangwondolowchartList.push(<%=low.get(9).getEleven_week_charge()%>);
+GangwondolowchartList.push(<%=low.get(9).getTwelve_week_charge()%>);
+</script>
+<script>
+let ChungcheongbukdolowchartList =[];
+
+ChungcheongbukdolowchartList.push(<%=low.get(10).getOne_week_charge()%>);
+ChungcheongbukdolowchartList.push(<%=low.get(10).getTwo_week_charge()%>);
+ChungcheongbukdolowchartList.push(<%=low.get(10).getTree_week_charge()%>);
+ChungcheongbukdolowchartList.push(<%=low.get(10).getFour_week_charge()%>);
+ChungcheongbukdolowchartList.push(<%=low.get(10).getFive_week_charge()%>);
+ChungcheongbukdolowchartList.push(<%=low.get(10).getSix_week_charge()%>);
+ChungcheongbukdolowchartList.push(<%=low.get(10).getSeven_week_charge()%>);
+ChungcheongbukdolowchartList.push(<%=low.get(10).getEight_week_charge()%>);
+ChungcheongbukdolowchartList.push(<%=low.get(10).getNine_week_charge()%>);
+ChungcheongbukdolowchartList.push(<%=low.get(10).getTen_week_charge()%>);
+ChungcheongbukdolowchartList.push(<%=low.get(10).getEleven_week_charge()%>);
+ChungcheongbukdolowchartList.push(<%=low.get(10).getTwelve_week_charge()%>);
+</script>
+<script>
+let ChungcheongnamdolowchartList =[];
+
+ChungcheongnamdolowchartList.push(<%=low.get(11).getOne_week_charge()%>);
+ChungcheongnamdolowchartList.push(<%=low.get(11).getTwo_week_charge()%>);
+ChungcheongnamdolowchartList.push(<%=low.get(11).getTree_week_charge()%>);
+ChungcheongnamdolowchartList.push(<%=low.get(11).getFour_week_charge()%>);
+ChungcheongnamdolowchartList.push(<%=low.get(11).getFive_week_charge()%>);
+ChungcheongnamdolowchartList.push(<%=low.get(11).getSix_week_charge()%>);
+ChungcheongnamdolowchartList.push(<%=low.get(11).getSeven_week_charge()%>);
+ChungcheongnamdolowchartList.push(<%=low.get(11).getEight_week_charge()%>);
+ChungcheongnamdolowchartList.push(<%=low.get(11).getNine_week_charge()%>);
+ChungcheongnamdolowchartList.push(<%=low.get(11).getTen_week_charge()%>);
+ChungcheongnamdolowchartList.push(<%=low.get(11).getEleven_week_charge()%>);
+ChungcheongnamdolowchartList.push(<%=low.get(11).getTwelve_week_charge()%>);
+</script>
+<script>
+let JeollabukdolowchartList = [];
+
+JeollabukdolowchartList.push(<%=low.get(12).getOne_week_charge()%>);
+JeollabukdolowchartList.push(<%=low.get(12).getTwo_week_charge()%>);
+JeollabukdolowchartList.push(<%=low.get(12).getTree_week_charge()%>);
+JeollabukdolowchartList.push(<%=low.get(12).getFour_week_charge()%>);
+JeollabukdolowchartList.push(<%=low.get(12).getFive_week_charge()%>);
+JeollabukdolowchartList.push(<%=low.get(12).getSix_week_charge()%>);
+JeollabukdolowchartList.push(<%=low.get(12).getSeven_week_charge()%>);
+JeollabukdolowchartList.push(<%=low.get(12).getEight_week_charge()%>);
+JeollabukdolowchartList.push(<%=low.get(12).getNine_week_charge()%>);
+JeollabukdolowchartList.push(<%=low.get(12).getTen_week_charge()%>);
+JeollabukdolowchartList.push(<%=low.get(12).getEleven_week_charge()%>);
+JeollabukdolowchartList.push(<%=low.get(12).getTwelve_week_charge()%>);
+</script>
+<script>
+let JeollanamdolowchartList = [];
+
+JeollanamdolowchartList.push(<%=low.get(13).getOne_week_charge()%>);
+JeollanamdolowchartList.push(<%=low.get(13).getTwo_week_charge()%>);
+JeollanamdolowchartList.push(<%=low.get(13).getTree_week_charge()%>);
+JeollanamdolowchartList.push(<%=low.get(13).getFour_week_charge()%>);
+JeollanamdolowchartList.push(<%=low.get(13).getFive_week_charge()%>);
+JeollanamdolowchartList.push(<%=low.get(13).getSix_week_charge()%>);
+JeollanamdolowchartList.push(<%=low.get(13).getSeven_week_charge()%>);
+JeollanamdolowchartList.push(<%=low.get(13).getEight_week_charge()%>);
+JeollanamdolowchartList.push(<%=low.get(13).getNine_week_charge()%>);
+JeollanamdolowchartList.push(<%=low.get(13).getTen_week_charge()%>);
+JeollanamdolowchartList.push(<%=low.get(13).getEleven_week_charge()%>);
+JeollanamdolowchartList.push(<%=low.get(13).getTwelve_week_charge()%>);
+</script>
+<script>
+let GyeongsangbukdolowchartList = [];
+
+GyeongsangbukdolowchartList.push(<%=low.get(14).getOne_week_charge()%>);
+GyeongsangbukdolowchartList.push(<%=low.get(14).getTwo_week_charge()%>);
+GyeongsangbukdolowchartList.push(<%=low.get(14).getTree_week_charge()%>);
+GyeongsangbukdolowchartList.push(<%=low.get(14).getFour_week_charge()%>);
+GyeongsangbukdolowchartList.push(<%=low.get(14).getFive_week_charge()%>);
+GyeongsangbukdolowchartList.push(<%=low.get(14).getSix_week_charge()%>);
+GyeongsangbukdolowchartList.push(<%=low.get(14).getSeven_week_charge()%>);
+GyeongsangbukdolowchartList.push(<%=low.get(14).getEight_week_charge()%>);
+GyeongsangbukdolowchartList.push(<%=low.get(14).getNine_week_charge()%>);
+GyeongsangbukdolowchartList.push(<%=low.get(14).getTen_week_charge()%>);
+GyeongsangbukdolowchartList.push(<%=low.get(14).getEleven_week_charge()%>);
+GyeongsangbukdolowchartList.push(<%=low.get(14).getTwelve_week_charge()%>);
+</script>
+<script>
+let GyeongsangnamdolowchartList = [];
+
+GyeongsangnamdolowchartList.push(<%=low.get(15).getOne_week_charge()%>);
+GyeongsangnamdolowchartList.push(<%=low.get(15).getTwo_week_charge()%>);
+GyeongsangnamdolowchartList.push(<%=low.get(15).getTree_week_charge()%>);
+GyeongsangnamdolowchartList.push(<%=low.get(15).getFour_week_charge()%>);
+GyeongsangnamdolowchartList.push(<%=low.get(15).getFive_week_charge()%>);
+GyeongsangnamdolowchartList.push(<%=low.get(15).getSix_week_charge()%>);
+GyeongsangnamdolowchartList.push(<%=low.get(15).getSeven_week_charge()%>);
+GyeongsangnamdolowchartList.push(<%=low.get(15).getEight_week_charge()%>);
+GyeongsangnamdolowchartList.push(<%=low.get(15).getNine_week_charge()%>);
+GyeongsangnamdolowchartList.push(<%=low.get(15).getTen_week_charge()%>);
+GyeongsangnamdolowchartList.push(<%=low.get(15).getEleven_week_charge()%>);
+GyeongsangnamdolowchartList.push(<%=low.get(15).getTwelve_week_charge()%>);
+
+</script>
+<script>
+let jejulowchartList = [];
+
+jejulowchartList.push(<%=low.get(16).getOne_week_charge()%>);
+jejulowchartList.push(<%=low.get(16).getTwo_week_charge()%>);
+jejulowchartList.push(<%=low.get(16).getTree_week_charge()%>);
+jejulowchartList.push(<%=low.get(16).getFour_week_charge()%>);
+jejulowchartList.push(<%=low.get(16).getFive_week_charge()%>);
+jejulowchartList.push(<%=low.get(16).getSix_week_charge()%>);
+jejulowchartList.push(<%=low.get(16).getSeven_week_charge()%>);
+jejulowchartList.push(<%=low.get(16).getEight_week_charge()%>);
+jejulowchartList.push(<%=low.get(16).getNine_week_charge()%>);
+jejulowchartList.push(<%=low.get(16).getTen_week_charge()%>);
+jejulowchartList.push(<%=low.get(16).getEleven_week_charge()%>);
+jejulowchartList.push(<%=low.get(16).getTwelve_week_charge()%>);
 </script>
 <!-- 완속 -->
 <script>
@@ -105,7 +379,7 @@ for (var i = 0; i < positions.length; i ++) {
                         type: 'bar', // 'bar' type, 전체 타입과 같다면 생략가능
                         backgroundColor: 'rgb(118,158,252)',
                         borderColor: 'rgb(118,158,252)',
-                        data: [10, 20, 30, 40, 50, 60, 80, 70, 90, 100, 80, 70]
+                        data: seoullowchartList,
                     }
                 ]
             },
@@ -120,6 +394,8 @@ for (var i = 0; i < positions.length; i ++) {
                     yAxes: [{
                         stacked: true,
                         ticks: {
+                        	min:0,
+                        	max:48,
                             fontColor: 'black' // y축 폰트 color
                         },
                         scaleLabel: {
@@ -222,185 +498,215 @@ for (var i = 0; i < positions.length; i ++) {
     incheonfastchartList.push(<%=fast.get(3).getTwelve_week_charge()%>);
     </script>
     <script>
+    let gwangjufastchartList=[];
+    
+    gwangjufastchartList.push(<%=fast.get(4).getOne_week_charge()%>);
+    gwangjufastchartList.push(<%=fast.get(4).getTwo_week_charge()%>);
+    gwangjufastchartList.push(<%=fast.get(4).getTree_week_charge()%>);
+    gwangjufastchartList.push(<%=fast.get(4).getFour_week_charge()%>);
+    gwangjufastchartList.push(<%=fast.get(4).getFive_week_charge()%>); 
+    gwangjufastchartList.push(<%=fast.get(4).getSix_week_charge()%>);
+    gwangjufastchartList.push(<%=fast.get(4).getSeven_week_charge()%>);
+    gwangjufastchartList.push(<%=fast.get(4).getEight_week_charge()%>);
+    gwangjufastchartList.push(<%=fast.get(4).getNine_week_charge()%>);
+    gwangjufastchartList.push(<%=fast.get(4).getTen_week_charge()%>);
+    gwangjufastchartList.push(<%=fast.get(4).getEleven_week_charge()%>);
+    gwangjufastchartList.push(<%=fast.get(4).getTwelve_week_charge()%>);
+    </script>
+    <script>
+    let daejeonfastchartList=[];
+    
+    daejeonfastchartList.push(<%=fast.get(5).getOne_week_charge()%>);
+    daejeonfastchartList.push(<%=fast.get(5).getTwo_week_charge()%>);
+    daejeonfastchartList.push(<%=fast.get(5).getTree_week_charge()%>);
+    daejeonfastchartList.push(<%=fast.get(5).getFour_week_charge()%>);
+    daejeonfastchartList.push(<%=fast.get(5).getFive_week_charge()%>); 
+    daejeonfastchartList.push(<%=fast.get(5).getSix_week_charge()%>);
+    daejeonfastchartList.push(<%=fast.get(5).getSeven_week_charge()%>);
+    daejeonfastchartList.push(<%=fast.get(5).getEight_week_charge()%>);
+    daejeonfastchartList.push(<%=fast.get(5).getNine_week_charge()%>);
+    daejeonfastchartList.push(<%=fast.get(5).getTen_week_charge()%>);
+    daejeonfastchartList.push(<%=fast.get(5).getEleven_week_charge()%>);
+    daejeonfastchartList.push(<%=fast.get(5).getTwelve_week_charge()%>);
+    </script>
+    <script>
     let ulsanfastchartList = [];
     
-    ulsanfastchartList.push(<%=fast.get(4).getOne_week_charge()%>);
-    ulsanfastchartList.push(<%=fast.get(4).getTwo_week_charge()%>);
-    ulsanfastchartList.push(<%=fast.get(4).getTree_week_charge()%>);
-    ulsanfastchartList.push(<%=fast.get(4).getFour_week_charge()%>);
-    ulsanfastchartList.push(<%=fast.get(4).getFive_week_charge()%>); 
-    ulsanfastchartList.push(<%=fast.get(4).getSix_week_charge()%>);
-    ulsanfastchartList.push(<%=fast.get(4).getSeven_week_charge()%>);
-    ulsanfastchartList.push(<%=fast.get(4).getEight_week_charge()%>);
-    ulsanfastchartList.push(<%=fast.get(4).getNine_week_charge()%>);
-    ulsanfastchartList.push(<%=fast.get(4).getTen_week_charge()%>);
-    ulsanfastchartList.push(<%=fast.get(4).getEleven_week_charge()%>);
-    ulsanfastchartList.push(<%=fast.get(4).getTwelve_week_charge()%>);
+    ulsanfastchartList.push(<%=fast.get(6).getOne_week_charge()%>);
+    ulsanfastchartList.push(<%=fast.get(6).getTwo_week_charge()%>);
+    ulsanfastchartList.push(<%=fast.get(6).getTree_week_charge()%>);
+    ulsanfastchartList.push(<%=fast.get(6).getFour_week_charge()%>);
+    ulsanfastchartList.push(<%=fast.get(6).getFive_week_charge()%>); 
+    ulsanfastchartList.push(<%=fast.get(6).getSix_week_charge()%>);
+    ulsanfastchartList.push(<%=fast.get(6).getSeven_week_charge()%>);
+    ulsanfastchartList.push(<%=fast.get(6).getEight_week_charge()%>);
+    ulsanfastchartList.push(<%=fast.get(6).getNine_week_charge()%>);
+    ulsanfastchartList.push(<%=fast.get(6).getTen_week_charge()%>);
+    ulsanfastchartList.push(<%=fast.get(6).getEleven_week_charge()%>);
+    ulsanfastchartList.push(<%=fast.get(6).getTwelve_week_charge()%>);
     
     </script>
     
     <script>
     let sejongfastchartList = [];
     
-    sejongfastchartList.push(<%=fast.get(5).getOne_week_charge()%>);
-    sejongfastchartList.push(<%=fast.get(5).getTwo_week_charge()%>);
-    sejongfastchartList.push(<%=fast.get(5).getTree_week_charge()%>);
-    sejongfastchartList.push(<%=fast.get(5).getFour_week_charge()%>);
-    sejongfastchartList.push(<%=fast.get(5).getFive_week_charge()%>); 
-    sejongfastchartList.push(<%=fast.get(5).getSix_week_charge()%>);
-    sejongfastchartList.push(<%=fast.get(5).getSeven_week_charge()%>);
-    sejongfastchartList.push(<%=fast.get(5).getEight_week_charge()%>);
-    sejongfastchartList.push(<%=fast.get(5).getNine_week_charge()%>);
-    sejongfastchartList.push(<%=fast.get(5).getTen_week_charge()%>);
-    sejongfastchartList.push(<%=fast.get(5).getEleven_week_charge()%>);
-    sejongfastchartList.push(<%=fast.get(5).getTwelve_week_charge()%>);
-
+    sejongfastchartList.push(<%=fast.get(7).getOne_week_charge()%>);
+    sejongfastchartList.push(<%=fast.get(7).getTwo_week_charge()%>);
+    sejongfastchartList.push(<%=fast.get(7).getTree_week_charge()%>);
+    sejongfastchartList.push(<%=fast.get(7).getFour_week_charge()%>);
+    sejongfastchartList.push(<%=fast.get(7).getFive_week_charge()%>); 
+    sejongfastchartList.push(<%=fast.get(7).getSix_week_charge()%>);
+    sejongfastchartList.push(<%=fast.get(7).getSeven_week_charge()%>);
+    sejongfastchartList.push(<%=fast.get(7).getEight_week_charge()%>);
+    sejongfastchartList.push(<%=fast.get(7).getNine_week_charge()%>);
+    sejongfastchartList.push(<%=fast.get(7).getTen_week_charge()%>);
+    sejongfastchartList.push(<%=fast.get(7).getEleven_week_charge()%>);
+    sejongfastchartList.push(<%=fast.get(7).getTwelve_week_charge()%>);
     </script>
     
     <script>
     let gyeonggidofastchartList = [];
     
-    gyeonggidofastchartList.push(<%=fast.get(6).getOne_week_charge()%>);
-    gyeonggidofastchartList.push(<%=fast.get(6).getTwo_week_charge()%>);
-    gyeonggidofastchartList.push(<%=fast.get(6).getTree_week_charge()%>);
-    gyeonggidofastchartList.push(<%=fast.get(6).getFour_week_charge()%>);
-    gyeonggidofastchartList.push(<%=fast.get(6).getFive_week_charge()%>); 
-    gyeonggidofastchartList.push(<%=fast.get(6).getSix_week_charge()%>);
-    gyeonggidofastchartList.push(<%=fast.get(6).getSeven_week_charge()%>);
-    gyeonggidofastchartList.push(<%=fast.get(6).getEight_week_charge()%>);
-    gyeonggidofastchartList.push(<%=fast.get(6).getNine_week_charge()%>);
-    gyeonggidofastchartList.push(<%=fast.get(6).getTen_week_charge()%>);
-    gyeonggidofastchartList.push(<%=fast.get(6).getEleven_week_charge()%>);
-    gyeonggidofastchartList.push(<%=fast.get(6).getTwelve_week_charge()%>);
+    gyeonggidofastchartList.push(<%=fast.get(8).getOne_week_charge()%>);
+    gyeonggidofastchartList.push(<%=fast.get(8).getTwo_week_charge()%>);
+    gyeonggidofastchartList.push(<%=fast.get(8).getTree_week_charge()%>);
+    gyeonggidofastchartList.push(<%=fast.get(8).getFour_week_charge()%>);
+    gyeonggidofastchartList.push(<%=fast.get(8).getFive_week_charge()%>); 
+    gyeonggidofastchartList.push(<%=fast.get(8).getSix_week_charge()%>);
+    gyeonggidofastchartList.push(<%=fast.get(8).getSeven_week_charge()%>);
+    gyeonggidofastchartList.push(<%=fast.get(8).getEight_week_charge()%>);
+    gyeonggidofastchartList.push(<%=fast.get(8).getNine_week_charge()%>);
+    gyeonggidofastchartList.push(<%=fast.get(8).getTen_week_charge()%>);
+    gyeonggidofastchartList.push(<%=fast.get(8).getEleven_week_charge()%>);
+    gyeonggidofastchartList.push(<%=fast.get(8).getTwelve_week_charge()%>);
     </script>
     <script>
      let GangwondofastchartList = [];
      
-     GangwondofastchartList.push(<%=fast.get(7).getOne_week_charge()%>);
-    GangwondofastchartList.push(<%=fast.get(7).getTwo_week_charge()%>);
-    GangwondofastchartList.push(<%=fast.get(7).getTree_week_charge()%>);
-    GangwondofastchartList.push(<%=fast.get(7).getFour_week_charge()%>);
-    GangwondofastchartList.push(<%=fast.get(7).getFive_week_charge()%>); 
-    GangwondofastchartList.push(<%=fast.get(7).getSix_week_charge()%>);
-    GangwondofastchartList.push(<%=fast.get(7).getSeven_week_charge()%>);
-    GangwondofastchartList.push(<%=fast.get(7).getEight_week_charge()%>);
-    GangwondofastchartList.push(<%=fast.get(7).getNine_week_charge()%>);
-    GangwondofastchartList.push(<%=fast.get(7).getTen_week_charge()%>);
-    GangwondofastchartList.push(<%=fast.get(7).getEleven_week_charge()%>);
-    GangwondofastchartList.push(<%=fast.get(7).getTwelve_week_charge()%>);
+     GangwondofastchartList.push(<%=fast.get(9).getOne_week_charge()%>);
+    GangwondofastchartList.push(<%=fast.get(9).getTwo_week_charge()%>);
+    GangwondofastchartList.push(<%=fast.get(9).getTree_week_charge()%>);
+    GangwondofastchartList.push(<%=fast.get(9).getFour_week_charge()%>);
+    GangwondofastchartList.push(<%=fast.get(9).getFive_week_charge()%>); 
+    GangwondofastchartList.push(<%=fast.get(9).getSix_week_charge()%>);
+    GangwondofastchartList.push(<%=fast.get(9).getSeven_week_charge()%>);
+    GangwondofastchartList.push(<%=fast.get(9).getEight_week_charge()%>);
+    GangwondofastchartList.push(<%=fast.get(9).getNine_week_charge()%>);
+    GangwondofastchartList.push(<%=fast.get(9).getTen_week_charge()%>);
+    GangwondofastchartList.push(<%=fast.get(9).getEleven_week_charge()%>);
+    GangwondofastchartList.push(<%=fast.get(9).getTwelve_week_charge()%>);
     </script>
-    <script>
+   <script>
     let ChungcheongbukdofastchartList =[];
     
-    ChungcheongbukdofastchartList.push(<%=fast.get(8).getOne_week_charge()%>);
-    ChungcheongbukdofastchartList.push(<%=fast.get(8).getTwo_week_charge()%>);
-    ChungcheongbukdofastchartList.push(<%=fast.get(8).getTree_week_charge()%>);
-    ChungcheongbukdofastchartList.push(<%=fast.get(8).getFour_week_charge()%>);
-    ChungcheongbukdofastchartList.push(<%=fast.get(8).getFive_week_charge()%>); 
-    ChungcheongbukdofastchartList.push(<%=fast.get(8).getSix_week_charge()%>);
-    ChungcheongbukdofastchartList.push(<%=fast.get(8).getSeven_week_charge()%>);
-    ChungcheongbukdofastchartList.push(<%=fast.get(8).getEight_week_charge()%>);
-    ChungcheongbukdofastchartList.push(<%=fast.get(8).getNine_week_charge()%>);
-    ChungcheongbukdofastchartList.push(<%=fast.get(8).getTen_week_charge()%>);
-    ChungcheongbukdofastchartList.push(<%=fast.get(8).getEleven_week_charge()%>);
-    ChungcheongbukdofastchartList.push(<%=fast.get(8).getTwelve_week_charge()%>);
-    
+    ChungcheongbukdofastchartList.push(<%=fast.get(10).getOne_week_charge()%>);
+    ChungcheongbukdofastchartList.push(<%=fast.get(10).getTwo_week_charge()%>);
+    ChungcheongbukdofastchartList.push(<%=fast.get(10).getTree_week_charge()%>);
+    ChungcheongbukdofastchartList.push(<%=fast.get(10).getFour_week_charge()%>);
+    ChungcheongbukdofastchartList.push(<%=fast.get(10).getFive_week_charge()%>); 
+    ChungcheongbukdofastchartList.push(<%=fast.get(10).getSix_week_charge()%>);
+    ChungcheongbukdofastchartList.push(<%=fast.get(10).getSeven_week_charge()%>);
+    ChungcheongbukdofastchartList.push(<%=fast.get(10).getEight_week_charge()%>);
+    ChungcheongbukdofastchartList.push(<%=fast.get(10).getNine_week_charge()%>);
+    ChungcheongbukdofastchartList.push(<%=fast.get(10).getTen_week_charge()%>);
+    ChungcheongbukdofastchartList.push(<%=fast.get(10).getEleven_week_charge()%>);
+    ChungcheongbukdofastchartList.push(<%=fast.get(10).getTwelve_week_charge()%>);
     </script>
     <script>
     let CuhngcheongnamdofastchartList =[];
     
-    CuhngcheongnamdofastchartList.push(<%=fast.get(9).getOne_week_charge()%>);
-    CuhngcheongnamdofastchartList.push(<%=fast.get(9).getTwo_week_charge()%>);
-    CuhngcheongnamdofastchartList.push(<%=fast.get(9).getTree_week_charge()%>);
-    CuhngcheongnamdofastchartList.push(<%=fast.get(9).getFour_week_charge()%>);
-    CuhngcheongnamdofastchartList.push(<%=fast.get(9).getFive_week_charge()%>); 
-    CuhngcheongnamdofastchartList.push(<%=fast.get(9).getSix_week_charge()%>);
-    CuhngcheongnamdofastchartList.push(<%=fast.get(9).getSeven_week_charge()%>);
-    CuhngcheongnamdofastchartList.push(<%=fast.get(9).getEight_week_charge()%>);
-    CuhngcheongnamdofastchartList.push(<%=fast.get(9).getNine_week_charge()%>);
-    CuhngcheongnamdofastchartList.push(<%=fast.get(9).getTen_week_charge()%>);
-    CuhngcheongnamdofastchartList.push(<%=fast.get(9).getEleven_week_charge()%>);
-    CuhngcheongnamdofastchartList.push(<%=fast.get(9).getTwelve_week_charge()%>);
-    </script>
-    <script>
-    let JeollanamdofastchartList = [];
-    
-    JeollanamdofastchartList.push(<%=fast.get(10).getOne_week_charge()%>);
-    JeollanamdofastchartList.push(<%=fast.get(10).getTwo_week_charge()%>);
-    JeollanamdofastchartList.push(<%=fast.get(10).getTree_week_charge()%>);
-    JeollanamdofastchartList.push(<%=fast.get(10).getFour_week_charge()%>);
-    JeollanamdofastchartList.push(<%=fast.get(10).getFive_week_charge()%>); 
-    JeollanamdofastchartList.push(<%=fast.get(10).getSix_week_charge()%>);
-    JeollanamdofastchartList.push(<%=fast.get(10).getSeven_week_charge()%>);
-    JeollanamdofastchartList.push(<%=fast.get(10).getEight_week_charge()%>);
-    JeollanamdofastchartList.push(<%=fast.get(10).getNine_week_charge()%>);
-    JeollanamdofastchartList.push(<%=fast.get(10).getTen_week_charge()%>);
-    JeollanamdofastchartList.push(<%=fast.get(10).getEleven_week_charge()%>);
-    JeollanamdofastchartList.push(<%=fast.get(10).getTwelve_week_charge()%>);
+    CuhngcheongnamdofastchartList.push(<%=fast.get(11).getOne_week_charge()%>);
+    CuhngcheongnamdofastchartList.push(<%=fast.get(11).getTwo_week_charge()%>);
+    CuhngcheongnamdofastchartList.push(<%=fast.get(11).getTree_week_charge()%>);
+    CuhngcheongnamdofastchartList.push(<%=fast.get(11).getFour_week_charge()%>);
+    CuhngcheongnamdofastchartList.push(<%=fast.get(11).getFive_week_charge()%>); 
+    CuhngcheongnamdofastchartList.push(<%=fast.get(11).getSix_week_charge()%>);
+    CuhngcheongnamdofastchartList.push(<%=fast.get(11).getSeven_week_charge()%>);
+    CuhngcheongnamdofastchartList.push(<%=fast.get(11).getEight_week_charge()%>);
+    CuhngcheongnamdofastchartList.push(<%=fast.get(11).getNine_week_charge()%>);
+    CuhngcheongnamdofastchartList.push(<%=fast.get(11).getTen_week_charge()%>);
+    CuhngcheongnamdofastchartList.push(<%=fast.get(11).getEleven_week_charge()%>);
+    CuhngcheongnamdofastchartList.push(<%=fast.get(11).getTwelve_week_charge()%>);
     </script>
     <script>
     let JeollabukdofastchartList = [];
     
-    JeollabukdofastchartList.push(<%=fast.get(11).getOne_week_charge()%>);
-    JeollabukdofastchartList.push(<%=fast.get(11).getTwo_week_charge()%>);
-    JeollabukdofastchartList.push(<%=fast.get(11).getTree_week_charge()%>);
-    JeollabukdofastchartList.push(<%=fast.get(11).getFour_week_charge()%>);
-    JeollabukdofastchartList.push(<%=fast.get(11).getFive_week_charge()%>); 
-    JeollabukdofastchartList.push(<%=fast.get(11).getSix_week_charge()%>);
-    JeollabukdofastchartList.push(<%=fast.get(11).getSeven_week_charge()%>);
-    JeollabukdofastchartList.push(<%=fast.get(11).getEight_week_charge()%>);
-    JeollabukdofastchartList.push(<%=fast.get(11).getNine_week_charge()%>);
-    JeollabukdofastchartList.push(<%=fast.get(11).getTen_week_charge()%>);
-    JeollabukdofastchartList.push(<%=fast.get(11).getEleven_week_charge()%>);
-    JeollabukdofastchartList.push(<%=fast.get(11).getTwelve_week_charge()%>);
+    JeollabukdofastchartList.push(<%=fast.get(12).getOne_week_charge()%>);
+    JeollabukdofastchartList.push(<%=fast.get(12).getTwo_week_charge()%>);
+    JeollabukdofastchartList.push(<%=fast.get(12).getTree_week_charge()%>);
+    JeollabukdofastchartList.push(<%=fast.get(12).getFour_week_charge()%>);
+    JeollabukdofastchartList.push(<%=fast.get(12).getFive_week_charge()%>); 
+    JeollabukdofastchartList.push(<%=fast.get(12).getSix_week_charge()%>);
+    JeollabukdofastchartList.push(<%=fast.get(12).getSeven_week_charge()%>);
+    JeollabukdofastchartList.push(<%=fast.get(12).getEight_week_charge()%>);
+    JeollabukdofastchartList.push(<%=fast.get(12).getNine_week_charge()%>);
+    JeollabukdofastchartList.push(<%=fast.get(12).getTen_week_charge()%>);
+    JeollabukdofastchartList.push(<%=fast.get(12).getEleven_week_charge()%>);
+    JeollabukdofastchartList.push(<%=fast.get(12).getTwelve_week_charge()%>);
+    </script>
+    <script>
+    let JeollanamdofastchartList = [];
+    
+    JeollanamdofastchartList.push(<%=fast.get(13).getOne_week_charge()%>);
+    JeollanamdofastchartList.push(<%=fast.get(13).getTwo_week_charge()%>);
+    JeollanamdofastchartList.push(<%=fast.get(13).getTree_week_charge()%>);
+    JeollanamdofastchartList.push(<%=fast.get(13).getFour_week_charge()%>);
+    JeollanamdofastchartList.push(<%=fast.get(13).getFive_week_charge()%>); 
+    JeollanamdofastchartList.push(<%=fast.get(13).getSix_week_charge()%>);
+    JeollanamdofastchartList.push(<%=fast.get(13).getSeven_week_charge()%>);
+    JeollanamdofastchartList.push(<%=fast.get(13).getEight_week_charge()%>);
+    JeollanamdofastchartList.push(<%=fast.get(13).getNine_week_charge()%>);
+    JeollanamdofastchartList.push(<%=fast.get(13).getTen_week_charge()%>);
+    JeollanamdofastchartList.push(<%=fast.get(13).getEleven_week_charge()%>);
+    JeollanamdofastchartList.push(<%=fast.get(13).getTwelve_week_charge()%>);
     </script>
     <script>
     let GyeongsangbukdofastchartList = [];
     
-    GyeongsangbukdofastchartList.push(<%=fast.get(12).getOne_week_charge()%>);
-    GyeongsangbukdofastchartList.push(<%=fast.get(12).getTwo_week_charge()%>);
-    GyeongsangbukdofastchartList.push(<%=fast.get(12).getTree_week_charge()%>);
-    GyeongsangbukdofastchartList.push(<%=fast.get(12).getFour_week_charge()%>);
-    GyeongsangbukdofastchartList.push(<%=fast.get(12).getFive_week_charge()%>); 
-    GyeongsangbukdofastchartList.push(<%=fast.get(12).getSix_week_charge()%>);
-    GyeongsangbukdofastchartList.push(<%=fast.get(12).getSeven_week_charge()%>);
-    GyeongsangbukdofastchartList.push(<%=fast.get(12).getEight_week_charge()%>);
-    GyeongsangbukdofastchartList.push(<%=fast.get(12).getNine_week_charge()%>);
-    GyeongsangbukdofastchartList.push(<%=fast.get(12).getTen_week_charge()%>);
-    GyeongsangbukdofastchartList.push(<%=fast.get(12).getEleven_week_charge()%>);
-    GyeongsangbukdofastchartList.push(<%=fast.get(12).getTwelve_week_charge()%>);
+    GyeongsangbukdofastchartList.push(<%=fast.get(14).getOne_week_charge()%>);
+    GyeongsangbukdofastchartList.push(<%=fast.get(14).getTwo_week_charge()%>);
+    GyeongsangbukdofastchartList.push(<%=fast.get(14).getTree_week_charge()%>);
+    GyeongsangbukdofastchartList.push(<%=fast.get(14).getFour_week_charge()%>);
+    GyeongsangbukdofastchartList.push(<%=fast.get(14).getFive_week_charge()%>); 
+    GyeongsangbukdofastchartList.push(<%=fast.get(14).getSix_week_charge()%>);
+    GyeongsangbukdofastchartList.push(<%=fast.get(14).getSeven_week_charge()%>);
+    GyeongsangbukdofastchartList.push(<%=fast.get(14).getEight_week_charge()%>);
+    GyeongsangbukdofastchartList.push(<%=fast.get(14).getNine_week_charge()%>);
+    GyeongsangbukdofastchartList.push(<%=fast.get(14).getTen_week_charge()%>);
+    GyeongsangbukdofastchartList.push(<%=fast.get(14).getEleven_week_charge()%>);
+    GyeongsangbukdofastchartList.push(<%=fast.get(14).getTwelve_week_charge()%>);
     </script>
     <script>
     let GyeongsangnamdofastchartList = [];
     
-    GyeongsangnamdofastchartList.push(<%=fast.get(13).getOne_week_charge()%>);
-    GyeongsangnamdofastchartList.push(<%=fast.get(13).getTwo_week_charge()%>);
-    GyeongsangnamdofastchartList.push(<%=fast.get(13).getTree_week_charge()%>);
-    GyeongsangnamdofastchartList.push(<%=fast.get(13).getFour_week_charge()%>);
-    GyeongsangnamdofastchartList.push(<%=fast.get(13).getFive_week_charge()%>); 
-    GyeongsangnamdofastchartList.push(<%=fast.get(13).getSix_week_charge()%>);
-    GyeongsangnamdofastchartList.push(<%=fast.get(13).getSeven_week_charge()%>);
-    GyeongsangnamdofastchartList.push(<%=fast.get(13).getEight_week_charge()%>);
-    GyeongsangnamdofastchartList.push(<%=fast.get(13).getNine_week_charge()%>);
-    GyeongsangnamdofastchartList.push(<%=fast.get(13).getTen_week_charge()%>);
-    GyeongsangnamdofastchartList.push(<%=fast.get(13).getEleven_week_charge()%>);
-    GyeongsangnamdofastchartList.push(<%=fast.get(13).getTwelve_week_charge()%>);
+    GyeongsangnamdofastchartList.push(<%=fast.get(15).getOne_week_charge()%>);
+    GyeongsangnamdofastchartList.push(<%=fast.get(15).getTwo_week_charge()%>);
+    GyeongsangnamdofastchartList.push(<%=fast.get(15).getTree_week_charge()%>);
+    GyeongsangnamdofastchartList.push(<%=fast.get(15).getFour_week_charge()%>);
+    GyeongsangnamdofastchartList.push(<%=fast.get(15).getFive_week_charge()%>); 
+    GyeongsangnamdofastchartList.push(<%=fast.get(15).getSix_week_charge()%>);
+    GyeongsangnamdofastchartList.push(<%=fast.get(15).getSeven_week_charge()%>);
+    GyeongsangnamdofastchartList.push(<%=fast.get(15).getEight_week_charge()%>);
+    GyeongsangnamdofastchartList.push(<%=fast.get(15).getNine_week_charge()%>);
+    GyeongsangnamdofastchartList.push(<%=fast.get(15).getTen_week_charge()%>);
+    GyeongsangnamdofastchartList.push(<%=fast.get(15).getEleven_week_charge()%>);
+    GyeongsangnamdofastchartList.push(<%=fast.get(15).getTwelve_week_charge()%>);
     </script>
     <script>
     let jejufastchartList = []; 
     
-    jejufastchartList.push(<%=fast.get(14).getOne_week_charge()%>);
-    jejufastchartList.push(<%=fast.get(14).getTwo_week_charge()%>);
-    jejufastchartList.push(<%=fast.get(14).getTree_week_charge()%>);
-    jejufastchartList.push(<%=fast.get(14).getFour_week_charge()%>);
-    jejufastchartList.push(<%=fast.get(14).getFive_week_charge()%>); 
-    jejufastchartList.push(<%=fast.get(14).getSix_week_charge()%>);
-    jejufastchartList.push(<%=fast.get(14).getSeven_week_charge()%>);
-    jejufastchartList.push(<%=fast.get(14).getEight_week_charge()%>);
-    jejufastchartList.push(<%=fast.get(14).getNine_week_charge()%>);
-    jejufastchartList.push(<%=fast.get(14).getTen_week_charge()%>);
-    jejufastchartList.push(<%=fast.get(14).getEleven_week_charge()%>);
-    jejufastchartList.push(<%=fast.get(14).getTwelve_week_charge()%>);
+    jejufastchartList.push(<%=fast.get(16).getOne_week_charge()%>);
+    jejufastchartList.push(<%=fast.get(16).getTwo_week_charge()%>);
+    jejufastchartList.push(<%=fast.get(16).getTree_week_charge()%>);
+    jejufastchartList.push(<%=fast.get(16).getFour_week_charge()%>);
+    jejufastchartList.push(<%=fast.get(16).getFive_week_charge()%>); 
+    jejufastchartList.push(<%=fast.get(16).getSix_week_charge()%>);
+    jejufastchartList.push(<%=fast.get(16).getSeven_week_charge()%>);
+    jejufastchartList.push(<%=fast.get(16).getEight_week_charge()%>);
+    jejufastchartList.push(<%=fast.get(16).getNine_week_charge()%>);
+    jejufastchartList.push(<%=fast.get(16).getTen_week_charge()%>);
+    jejufastchartList.push(<%=fast.get(16).getEleven_week_charge()%>);
+    jejufastchartList.push(<%=fast.get(16).getTwelve_week_charge()%>);
     </script>
     <!-- 급속 -->
     <script>
@@ -426,7 +732,7 @@ for (var i = 0; i < positions.length; i ++) {
                         type: 'bar', // 'bar' type, 전체 타입과 같다면 생략가능
                         backgroundColor: 'rgb(254,122,112)',
                         borderColor: 'rgb(254,122,112)',
-                        data: busanfastchartList,
+                        data: seoulfastchartList,
                     }
                 ]
             },
