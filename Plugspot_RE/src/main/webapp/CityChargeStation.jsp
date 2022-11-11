@@ -1,5 +1,5 @@
 
-<%@page import="com.plugspot.controller.lowavg"%>
+
 <%@page import="com.plugspot.model.avgDTO"%>
 <%@page import="com.plugspot.model.avgDAO"%>
 <%@page import="com.plugspot.model.lowDTO"%>
@@ -72,7 +72,6 @@ let positions = [];
 	
  <%}%>
 
-console.log(avg.get(0).getOne_week_charge());
 
 var marker, i; 
 for (var i = 0; i < positions.length; i ++) {
