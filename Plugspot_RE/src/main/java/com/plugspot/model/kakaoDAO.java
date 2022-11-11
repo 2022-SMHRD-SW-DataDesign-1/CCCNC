@@ -11,6 +11,7 @@ import com.plugspot.db.SqlSessionManager;
 
 public class kakaoDAO {
 	private SqlSessionFactory sqlSessionFactory =SqlSessionManager.getSqlSession();
+	
 	public ArrayList<kakaoDTO> kakao() {
 		
 		SqlSession session = sqlSessionFactory.openSession(true);
@@ -20,5 +21,5 @@ public class kakaoDAO {
 		
 		return list;
 	}
-
+	
 }
