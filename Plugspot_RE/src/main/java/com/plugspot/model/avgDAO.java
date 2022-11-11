@@ -7,16 +7,25 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.plugspot.db.SqlSessionManager;
 
-public class fastDAO {
+public class avgDAO {
 	private SqlSessionFactory sqlSessionFactory =SqlSessionManager.getSqlSession();
-	public ArrayList<fastDTO> fast() {
+	public ArrayList<avgDTO> avg() {
 		
 		SqlSession session = sqlSessionFactory.openSession(true);
-		ArrayList<fastDTO> list = (ArrayList)session.selectList("fast");
+		ArrayList<avgDTO> list = (ArrayList)session.selectList("avg");
 		System.out.println(list.size());
 		session.close();
-
+		
 		return list;
 	}
-	
+	public ArrayList<avgDTO> lowavg() {
+		
+		SqlSession session = sqlSessionFactory.openSession(true);
+		ArrayList<avgDTO> list = (ArrayList)session.selectList("lowavg");
+		System.out.println(list.size());
+		session.close();
+		
+		return list;
+	}
 }
+

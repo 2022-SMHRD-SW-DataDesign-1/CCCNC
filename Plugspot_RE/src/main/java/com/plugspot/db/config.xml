@@ -13,6 +13,7 @@
     <typeAlias type = "com.plugspot.model.CityChargeDTO" alias="CityChargeDTO"/>
     <typeAlias type = "com.plugspot.model.fastDTO" alias="fastDTO"/>
     <typeAlias type = "com.plugspot.model.lowDTO" alias="lowDTO"/>
+    <typeAlias type = "com.plugspot.model.avgDTO" alias="avgDTO"/>
   </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -34,5 +35,6 @@
      <mapper resource="com/plugspot/mapper/CityCharge.xml"/>
      <mapper resource="com/plugspot/mapper/fast.xml"/>
      <mapper resource="com/plugspot/mapper/low.xml"/>
+     <mapper resource="com/plugspot/mapper/avg.xml"/>
   </mappers>
 </configuration>

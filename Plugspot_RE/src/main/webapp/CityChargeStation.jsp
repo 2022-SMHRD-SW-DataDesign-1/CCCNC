@@ -1,4 +1,7 @@
 
+<%@page import="com.plugspot.controller.lowavg"%>
+<%@page import="com.plugspot.model.avgDTO"%>
+<%@page import="com.plugspot.model.avgDAO"%>
 <%@page import="com.plugspot.model.lowDTO"%>
 <%@page import="com.plugspot.model.lowDAO"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
@@ -29,7 +32,12 @@ fastDAO dao2  = new fastDAO();
 ArrayList<fastDTO> fast = dao2.fast();
 lowDAO dao3 = new lowDAO();
 ArrayList<lowDTO> low = dao3.low();
+avgDAO dao4 = new avgDAO();
+ArrayList<avgDTO> avg = dao4.avg();
+avgDAO dao5 = new avgDAO();
+ArrayList<avgDTO> avg2 = dao5.lowavg();
 %>
+
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f867e2332325dabbf2acc1f5355d06f"></script>
 <div id="staticMap" style="width:600px;height:350px;"></div>
 <script>
@@ -64,7 +72,7 @@ let positions = [];
 	
  <%}%>
 
-console.log(positions);
+console.log(avg.get(0).getOne_week_charge());
 
 var marker, i; 
 for (var i = 0; i < positions.length; i ++) {
@@ -82,6 +90,40 @@ for (var i = 0; i < positions.length; i ++) {
     });
    // marker.setMap(map)
 }
+</script>
+<!-- 급속평균 -->
+ <script>
+let avgfastchartList = [];
+
+avgfastchartList.push(<%=avg.get(0).getOne_week_charge()%>);
+avgfastchartList.push(<%=avg.get(0).getTwo_week_charge()%>);
+avgfastchartList.push(<%=avg.get(0).getTree_week_charge()%>);
+avgfastchartList.push(<%=avg.get(0).getFour_week_charge()%>);
+avgfastchartList.push(<%=avg.get(0).getFive_week_charge()%>);
+avgfastchartList.push(<%=avg.get(0).getSix_week_charge()%>);
+avgfastchartList.push(<%=avg.get(0).getSeven_week_charge()%>);
+avgfastchartList.push(<%=avg.get(0).getEight_week_charge()%>);
+avgfastchartList.push(<%=avg.get(0).getNine_week_charge()%>);
+avgfastchartList.push(<%=avg.get(0).getTen_week_charge()%>);
+avgfastchartList.push(<%=avg.get(0).getEleven_week_charge()%>);
+avgfastchartList.push(<%=avg.get(0).getTwelve_week_charge()%>);
+</script> 
+<!-- 완속평균 -->
+<script>
+let avglowchartList = [];
+
+avglowchartList.push(<%=avg2.get(0).getOne_week_charge()%>);
+avglowchartList.push(<%=avg2.get(0).getTwo_week_charge()%>);
+avglowchartList.push(<%=avg2.get(0).getTree_week_charge()%>);
+avglowchartList.push(<%=avg2.get(0).getFour_week_charge()%>);
+avglowchartList.push(<%=avg2.get(0).getFive_week_charge()%>);
+avglowchartList.push(<%=avg2.get(0).getSix_week_charge()%>);
+avglowchartList.push(<%=avg2.get(0).getSeven_week_charge()%>);
+avglowchartList.push(<%=avg2.get(0).getEight_week_charge()%>);
+avglowchartList.push(<%=avg2.get(0).getNine_week_charge()%>);
+avglowchartList.push(<%=avg2.get(0).getTen_week_charge()%>);
+avglowchartList.push(<%=avg2.get(0).getEleven_week_charge()%>);
+avglowchartList.push(<%=avg2.get(0).getTwelve_week_charge()%>);
 </script>
 <!-- 완속 -->
 <script>
@@ -368,7 +410,7 @@ jejulowchartList.push(<%=low.get(16).getTwelve_week_charge()%>);
                     {
                         label: '전체도시의 평균충전량',
                         type: 'line',
-                        data: [50, 30, 40, 50, 60, 90, 80, 50, 60, 70, 80, 70],
+                        data: avglowchartList,
                         backgroundColor: 'rgb(129,229,82)',
                         borderColor: 'rgb(129,229,82)',
                         fill: false,
@@ -721,7 +763,7 @@ jejulowchartList.push(<%=low.get(16).getTwelve_week_charge()%>);
                     {
                         label: '전체도시의 평균충전량',
                         type: 'line',
-                        data: [10, 20, 30, 40, 50, 60, 80, 70, 90, 100, 80, 70],
+                        data: avgfastchartList,
                         backgroundColor: 'rgb(129,229,82)',
                         borderColor: 'rgb(129,229,82)',
                         fill: false,

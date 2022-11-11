@@ -88,6 +88,19 @@
   	<description></description>
   	<servlet-class>com.plugspot.controller.lowcharge</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>avg</servlet-name>
+  	<display-name>avg</display-name>
+  	<description></description>
+  	<servlet-class>com.plugspot.controller.avg</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>lowavg</servlet-name>
+  	<display-name>lowavg</display-name>
+  	<description></description>
+  	<servlet-class>com.plugspot.controller.lowavg</servlet-class>
+  </servlet>
+  
 
 
   <servlet-mapping>
@@ -146,4 +159,13 @@
   	<servlet-name>lowcharge</servlet-name>
   	<url-pattern>/lowcharge</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>avg</servlet-name>
+  	<url-pattern>/avg</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>lowavg</servlet-name>
+  	<url-pattern>/lowavg</url-pattern>
+  </servlet-mapping>
+
 </web-app>
