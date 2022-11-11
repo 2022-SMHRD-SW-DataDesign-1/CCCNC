@@ -70,6 +70,12 @@
   	<description></description>
   	<servlet-class>com.plugspot.controller.CityChargeStation</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>Chart_inner</servlet-name>
+  	<display-name>Chart_inner</display-name>
+  	<description></description>
+  	<servlet-class>com.plugspot.controller.Chart_inner</servlet-class>
+  </servlet>
 
 
   <servlet-mapping>
@@ -116,6 +122,8 @@
   	<servlet-name>CityChargeStation</servlet-name>
   	<url-pattern>/CityChargeStation</url-pattern>
   </servlet-mapping>
-
-
+  <servlet-mapping>
+  	<servlet-name>Chart_inner</servlet-name>
+  	<url-pattern>/Chart_inner</url-pattern>
+  </servlet-mapping>
 </web-app>

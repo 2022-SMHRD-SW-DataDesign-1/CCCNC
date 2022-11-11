@@ -18,25 +18,39 @@ fieldset {
 }
 </style>
 </head>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <body>
-	<%
+<script type="text/javascript">
+	
+</script>
+<%
 	MemberDTO info = (MemberDTO) session.getAttribute("info");
 	%>
-	<fieldset style = "display:block">
+	<fieldset style="display: block">
 		<legend>Main</legend>
-		<%if (info == null) {%>
-			<a href="Login.jsp"><button>로그인</button></a> <a href="Join.jsp"><button>회원가입</button></a>
-		<%} else {%>
-			<a href="./Update.jsp"><button>개인정보수정</button></a>
-		<%if (info.getMember_num().equals("admin")) {%>
-			<a href="./Mypage.jsp">내정보보기</a>
-		<%}%>
+		<%
+		if (info == null) {
+		%>
+		<a href="Login.jsp"><button>로그인</button></a> <a href="Join.jsp"><button>회원가입</button></a>
+		<%
+		} else {
+		%>
+		<a href="./Update.jsp"><button>개인정보수정</button></a>
+		<%
+		if (info.getMember_num().equals("admin")) {
+		%>
+		<a href="./Mypage.jsp">내정보보기</a>
+		<%
+		}
+		%>
 		<a href="LogoutService"><button>로그아웃</button></a>
-		<%}%>
+		<%
+		}
+		%>
 
- 
+
 	</fieldset>
-	
+
 
 
 	<%
@@ -45,65 +59,89 @@ fieldset {
 		response.sendRedirect("rankService");
 		System.out.print("rankService");
 	} else {
-		System.out.print("메인으로 출력테스트" + ranklist.get(0).getDo_city());
+		System.out.println("메인으로 출력테스트" + ranklist.get(0).getDo_city());
 	}
 	%>
-	
-<fieldset style="display:block;height: 750px;">	
+	<fieldset style="display: block; height: 750px;">
 
-<fieldset style="display:inline;width:650px;height:720px;">
-<!-- 시별지도 -->
-<iframe src="./City.jsp" frameborder="1" scrolling="no" style="display:inline;height:350px;width:450px"></iframe>
+		<fieldset style="display: inline; width: 650px; height: 720px;">
+			<!-- 시별지도 -->
+			<% String num_data = request.getParameter("num_data"); %>
+			
+			<% String num_data_d="0";
+				if(num_data==null){
+					num_data_d="0";
+				}else{
+					num_data_d=num_data;
+				} %>
+			
+			
+<%-- 			<iframe src="./City.jsp?num_data=<%=num_data_d %>" frameborder="1" scrolling="no"style="display: inline; height: 350px; width: 450px"></iframe> --%>
 
-<!-- 바차트 -->
-<iframe src="./Caruse.jsp" frameborder="1" scrolling="no" style="display:inline;height:350px;width:450px"></iframe>
-</fieldset>
-<!-- 포화도 전체 -->
+			<!-- 바차트 -->
+			<iframe src="./Caruse.jsp" frameborder="1" scrolling="no"
+				style="display: inline; height: 350px; width: 450px"></iframe>
+		</fieldset>
+		<!-- 포화도 전체 -->
 
-<fieldset style="display:inline;width:650px;height:720px;border-width: 0px">
+		<fieldset
+			style="display: inline; width: 1800px; height: 720px; border-width: 0px">
 <!-----------------------------------------카카오맵포화도--------------------------------->
 
-<iframe src="./kakaomap.jsp" frameborder="1" scrolling="no" style="display:block;height:80%;width:100%"></iframe>
-
+ <iframe src="./kakaomap.jsp" frameborder="1" scrolling="no" style="display:block;height:80%;width:100%"></iframe> 
+			
 <!----------------------------------------포화도표-------------------------------------->
-<iframe src="./Saturation.jsp" frameborder="1" scrolling="yes" style="display:block;height:20%;width:100%"></iframe>
-</fieldset>
 
-<!------------------------------------------------------------------------------------>
+		</fieldset>
+		<iframe src="./Saturation.jsp" frameborder="1" scrolling="yes"
+				style="display: block; height: 20%; width: 100%">
+		</iframe>
+		<!------------------------------------------------------------------------------------>
+
+		<!-----------------------------------------순위---------------------------------------->
+		<fieldset style="height: 720px;">
+
+			<form class="ranking">
+				<table class="info_table02">
+					<caption class="title">자동차 등록 대수</caption>
+					<thead>
+						<tr>
+							<th scope="col" class="th03">순위</th>
+							<th scope="col" class="th01">도시</th>
+							<th scope="col" class="th01">자동차등록수</th>
+						</tr>
+					</thead>
+					<%
+					if (ranklist != null) {
+					%>
+					<%
+					for (int i = 0; i < ranklist.size(); i++) {
+					%>
+					<tbody style="height: 100%">
+						<tr>
+							<th><span class="zone"><%=i + 1%></span></th>
+							<td style="width: 150px; height: 100%"><%=ranklist.get(i).getDo_city()%></td>
+							<td style="width: 150px; height: 100%"><%=ranklist.get(i).getCar_num()%></td>
+						</tr>
+					</tbody>
+					<%
+					}
+					}
+					%>
+				</table>
+			</form>
+		</fieldset>
+		<!------------------------------------------------------------------------------------>
+
+	</fieldset>
+	<iframe src="./Chargenum.jsp" frameborder="1" scrolling="no"
+		style="display: inline; height: 350px; width: 450px"></iframe>
+	<iframe src="./AvgChargenum.jsp" frameborder="1" scrolling="no"
+		style="display: inline; height: 350px; width: 450px"></iframe>
 	
-<!-----------------------------------------순위---------------------------------------->
-	<fieldset style="height: 720px;">
 
-		<form class="ranking">
-			<table class="info_table02" >
-				<caption class="title">자동차 등록 대수</caption>
-				<thead>
-					<tr>
-						<th scope="col" class="th03">순위</th>
-						<th scope="col" class="th01">도시</th>
-						<th scope="col" class="th01">자동차등록수</th>
-					</tr>
-				</thead>
-					<% if(ranklist!=null){%>
-					<%for (int i = 0; i < ranklist.size(); i++) {%>
-				<tbody style="height:100%">
-					<tr>
-						<th><span class="zone"><%=i + 1%></span></th>
-						<td style="width:150px;height:100%"><%=ranklist.get(i).getDo_city()%></td>
-						<td style="width:150px;height:100%"><%=ranklist.get(i).getCar_num()%></td>
-					</tr>
-				</tbody>
-					<%}}%>
-			</table>
-		</form>
-	</fieldset> 
-<!------------------------------------------------------------------------------------>
-
-</fieldset>
-<iframe src="./Chargenum.jsp" frameborder="1" scrolling="no" style="display:inline;height:350px;width:450px"></iframe>
-<iframe src="./AvgChargenum.jsp" frameborder="1" scrolling="no" style="display:inline;height:350px;width:450px"></iframe>
-
-
+	
+	
 </body>
 
 </html>
