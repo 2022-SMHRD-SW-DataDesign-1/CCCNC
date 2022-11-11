@@ -76,6 +76,12 @@
   	<description></description>
   	<servlet-class>com.plugspot.controller.Chart_inner</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>fastcharge</servlet-name>
+  	<display-name>fastcharge</display-name>
+  	<description></description>
+  	<servlet-class>com.plugspot.controller.fastcharge</servlet-class>
+  </servlet>
 
 
   <servlet-mapping>
@@ -125,5 +131,9 @@
   <servlet-mapping>
   	<servlet-name>Chart_inner</servlet-name>
   	<url-pattern>/Chart_inner</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>fastcharge</servlet-name>
+  	<url-pattern>/fastcharge</url-pattern>
   </servlet-mapping>
 </web-app>

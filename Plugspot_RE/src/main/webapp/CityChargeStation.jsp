@@ -1,4 +1,6 @@
 
+<%@page import="com.plugspot.model.fastDTO"%>
+<%@page import="com.plugspot.model.fastDAO"%>
 <%@page import="com.plugspot.model.CityChargeDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.plugspot.model.CityChargeDAO"%>
@@ -11,11 +13,16 @@
 <title>Insert title here</title>
 </head>
 <body>
+   <div style="height:100vh; width:100vw;">
+        <canvas id="myChart"></canvas>
+        <canvas id="myChart2"></canvas>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <%
 CityChargeDAO dao = new CityChargeDAO();
 ArrayList<CityChargeDTO> station = dao.station();
-
-
+fastDAO dao2  = new fastDAO();
+ArrayList<fastDTO> fast = dao2.fast();
 %>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f867e2332325dabbf2acc1f5355d06f"></script>
 <div id="staticMap" style="width:600px;height:350px;"></div>
@@ -70,5 +77,142 @@ for (var i = 0; i < positions.length; i ++) {
    // marker.setMap(map)
 }
 </script>
+<script>
+        new Chart(document.getElementById('myChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['1주', '2주', '3주', '4주', '5주', '6주', '7주', '8주', '9주', '10주', '11주', '12주'],
+                datasets: [
+                    {
+                        label: '전체도시의 평균충전량',
+                        type: 'line',
+                        data: [50, 30, 40, 50, 60, 90, 80, 50, 60, 70, 80, 70],
+                        backgroundColor: 'rgb(129,229,82)',
+                        borderColor: 'rgb(129,229,82)',
+                        fill: false,
+                        steppedLine: true,
+                    },
+                    {
+                        label: '선택도시의 완속 충전기 누적 충전량',
+                        type: 'bar', // 'bar' type, 전체 타입과 같다면 생략가능
+                        backgroundColor: 'rgb(118,158,252)',
+                        borderColor: 'rgb(118,158,252)',
+                        data: [10, 20, 30, 40, 50, 60, 80, 70, 90, 100, 80, 70]
+                    }
+                ]
+            },
+            options: {
+                legend: {
+                    labels: {
+                        fontColor: 'black' // label color
+                    }
+                },
+                scales: {
+                    // y축
+                    yAxes: [{
+                        stacked: true,
+                        ticks: {
+                            fontColor: 'black' // y축 폰트 color
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: '평균충전량'
+                        }
+                    }],
+                    // x축
+                    xAxes: [{
+                        stacked: true,
+                        ticks: {
+                            fontColor: 'black' // x축 폰트 color
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: '서울의 완속 충전기 누적 충전량'
+                        }
+                    }]
+                },
+                responsive: false, //반응형 웹페이지
+                interaction: {
+                    intersect: false,
+                    axis: 'x'
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: (ctx) => 'Step ' + ctx.chart.data.datasets[0].stepped + ' Interpolation',
+                    }
+                }
+            }
+        });
+    </script>
+    <!-- 급속 -->
+    <script>
+        new Chart(document.getElementById('myChart2').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['1주', '2주', '3주', '4주', '5주', '6주', '7주', '8주', '9주', '10주', '11주', '12주'],
+                datasets: [
+                    {
+                        label: '전체도시의 평균충전량',
+                        type: 'line',
+                        data: [50, 30, 40, 50, 60, 90, 80, 50, 60, 70, 80, 70],
+                        backgroundColor: 'rgb(129,229,82)',
+                        borderColor: 'rgb(129,229,82)',
+                        fill: false,
+                        steppedLine: true,
+                    },
+                    {
+                        label: '선택도시의 급속 충전기 누적 충전량',
+                        type: 'bar', // 'bar' type, 전체 타입과 같다면 생략가능
+                        backgroundColor: 'rgb(254,122,112)',
+                        borderColor: 'rgb(254,122,112)',
+                        data: [10, 20, 30, 40, 50, 60, 80, 70, 90, 100, 80, 70]
+                    }
+                ]
+            },
+            options: {
+                legend: {
+                    labels: {
+                        fontColor: 'black' // label color
+                    }
+                },
+                scales: {
+                    // y축
+                    yAxes: [{
+                        stacked: true,
+                        ticks: {
+                            fontColor: 'black' // y축 폰트 color
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: '평균충전량'
+                        }
+                    }],
+                    // x축
+                    xAxes: [{
+                        stacked: true,
+                        ticks: {
+                            fontColor: 'black' // x축 폰트 color
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: '서울의 완속 충전기 누적 충전량'
+                        }
+                    }]
+                },
+                responsive: false, //반응형 웹페이지
+                interaction: {
+                    intersect: false,
+                    axis: 'x'
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: (ctx) => 'Step ' + ctx.chart.data.datasets[0].stepped + ' Interpolation',
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>
