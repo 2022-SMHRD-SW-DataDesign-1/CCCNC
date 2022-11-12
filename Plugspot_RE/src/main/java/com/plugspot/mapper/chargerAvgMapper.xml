@@ -11,5 +11,6 @@
 		group by a.loc_seq,b.do_city
   </select>
   
+  
 
   </mapper>

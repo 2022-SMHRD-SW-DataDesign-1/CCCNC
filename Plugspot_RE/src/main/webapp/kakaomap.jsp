@@ -1,3 +1,5 @@
+<%@page import="com.plugspot.model.citySpeedChargerDAO"%>
+<%@page import="com.plugspot.model.citySpeedChargerDTO"%>
 <%@page import="com.plugspot.model.chargerAvgNumDAO"%>
 <%@page import="com.plugspot.model.chargerAvgNumDTO"%>
 <%@page import="com.plugspot.model.carnumDTO"%>
@@ -52,7 +54,8 @@ ArrayList<carnumDTO> carlist = cardao.carnum();
 chargerAvgNumDAO avdao = new chargerAvgNumDAO();
 ArrayList<chargerAvgNumDTO> avlist = avdao.chargerAvgNum();
 
-
+citySpeedChargerDAO citdao = new citySpeedChargerDAO();
+ArrayList<citySpeedChargerDTO> cilist = citdao.citySpeedCharger();
 %>
 
 
@@ -74,7 +77,7 @@ ArrayList<chargerAvgNumDTO> avlist = avdao.chargerAvgNum();
             <canvas id="myChart3" class="bar-chart" style="width:1200px"> </canvas>
         </div>
 		<div class="chart-container">
-            <canvas id="myChart" class="chart"></canvas>
+            <canvas id="myChart" class="chart" style="width:1200px"></canvas>
         </div>
 		<script>
 		
@@ -249,8 +252,23 @@ ArrayList<chargerAvgNumDTO> avlist = avdao.chargerAvgNum();
             var config = {
                 type: 'line',
                 data: {
-                    labels: [ // Date Objects
-                        '서울', '인천', '대전', '대구', '광주', '부산', '울산', '제주'
+                    labels: ['<%=cilist.get(0).getDo_city()%>',
+	                    	 '<%=cilist.get(1).getDo_city()%>', 
+	                    	 '<%=cilist.get(2).getDo_city()%>', 
+	                    	 '<%=cilist.get(3).getDo_city()%>', 
+	                    	 '<%=cilist.get(4).getDo_city()%>', 
+	                    	 '<%=cilist.get(5).getDo_city()%>', 
+	                    	 '<%=cilist.get(6).getDo_city()%>', 
+	                    	 '<%=cilist.get(7).getDo_city()%>', 
+	                    	 '<%=cilist.get(8).getDo_city()%>', 
+	                    	 '<%=cilist.get(9).getDo_city()%>', 
+	                    	 '<%=cilist.get(10).getDo_city()%>', 
+	                    	 '<%=cilist.get(11).getDo_city()%>', 
+	                    	 '<%=cilist.get(12).getDo_city()%>', 
+	                    	 '<%=cilist.get(13).getDo_city()%>', 
+	                    	 '<%=cilist.get(14).getDo_city()%>',
+	                    	 '<%=cilist.get(15).getDo_city()%>',
+	                    	 '<%=cilist.get(16).getDo_city()%>', 
                     ],
                     datasets: [{
                         label: '완속',
@@ -259,7 +277,23 @@ ArrayList<chargerAvgNumDTO> avlist = avdao.chargerAvgNum();
                         fill: false,
                         lineTension: 0,
                         data: [
-                            50, 60, 80, 70, 64, 70, 60, 80
+                        	 '<%=cilist.get(0).getSlow_charge()%>',
+	                    	 '<%=cilist.get(1).getSlow_charge()%>', 
+	                    	 '<%=cilist.get(2).getSlow_charge()%>', 
+	                    	 '<%=cilist.get(3).getSlow_charge()%>', 
+	                    	 '<%=cilist.get(4).getSlow_charge()%>', 
+	                    	 '<%=cilist.get(5).getSlow_charge()%>', 
+	                    	 '<%=cilist.get(6).getSlow_charge()%>', 
+	                    	 '<%=cilist.get(7).getSlow_charge()%>', 
+	                    	 '<%=cilist.get(8).getSlow_charge()%>', 
+	                    	 '<%=cilist.get(9).getSlow_charge()%>', 
+	                    	 '<%=cilist.get(10).getSlow_charge()%>', 
+	                    	 '<%=cilist.get(11).getSlow_charge()%>', 
+	                    	 '<%=cilist.get(12).getSlow_charge()%>', 
+	                    	 '<%=cilist.get(13).getSlow_charge()%>', 
+	                    	 '<%=cilist.get(14).getSlow_charge()%>',
+	                    	 '<%=cilist.get(15).getSlow_charge()%>',
+	                    	 '<%=cilist.get(16).getSlow_charge()%>', 
                         ],
                     }, {
                         label: '급속',
@@ -268,7 +302,23 @@ ArrayList<chargerAvgNumDTO> avlist = avdao.chargerAvgNum();
                         fill: false,
                         lineTension: 0,
                         data: [
-                            80, 75, 85, 90, 85, 80, 70, 90
+                        	 '<%=cilist.get(0).getFast_charge()%>',
+	                    	 '<%=cilist.get(1).getFast_charge()%>', 
+	                    	 '<%=cilist.get(2).getFast_charge()%>', 
+	                    	 '<%=cilist.get(3).getFast_charge()%>', 
+	                    	 '<%=cilist.get(4).getFast_charge()%>', 
+	                    	 '<%=cilist.get(5).getFast_charge()%>', 
+	                    	 '<%=cilist.get(6).getFast_charge()%>', 
+	                    	 '<%=cilist.get(7).getFast_charge()%>', 
+	                    	 '<%=cilist.get(8).getFast_charge()%>', 
+	                    	 '<%=cilist.get(9).getFast_charge()%>', 
+	                    	 '<%=cilist.get(10).getFast_charge()%>', 
+	                    	 '<%=cilist.get(11).getFast_charge()%>', 
+	                    	 '<%=cilist.get(12).getFast_charge()%>', 
+	                    	 '<%=cilist.get(13).getFast_charge()%>', 
+	                    	 '<%=cilist.get(14).getFast_charge()%>',
+	                    	 '<%=cilist.get(15).getFast_charge()%>',
+	                    	 '<%=cilist.get(16).getFast_charge()%>',
                         ],
                     }]
                 },
@@ -432,7 +482,10 @@ ArrayList<chargerAvgNumDTO> avlist = avdao.chargerAvgNum();
 		        level: 11 // 지도의 확대 레벨
 		    };
 
-		var map2 = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+		var map2 = new kakao.maps.Map(mapContainer, mapOption),
+					customOverlay = new kakao.maps.CustomOverlay({}),
+	    			infowindow = new kakao.maps.InfoWindow({removable: true});
+// 지도를 생성합니다
 
 		//마커생성
 		<%for (kakaoDTO kvm  : list){%>
@@ -560,6 +613,9 @@ var circlepath = [
 	]
 
 for(cyi=0;cyi<circlepath.length;cyi++){
+	displayArea(circlepath[cyi]);
+}
+function displayArea(area){
 		if(cyi < 8){
 		var circle = new kakao.maps.Circle({
 		    center : circlepath[cyi],  // 원의 중심좌표 입니다 
@@ -570,7 +626,6 @@ for(cyi=0;cyi<circlepath.length;cyi++){
 		    strokeStyle: 'line', // 선의 스타일 입니다
 		    fillColor: '#59DA50', // 채우기 색깔입니다
 		    fillOpacity: 0.2  // 채우기 불투명도 입니다
-		   
 		});
 		}else{
 		var circle = new kakao.maps.Circle({
@@ -582,10 +637,42 @@ for(cyi=0;cyi<circlepath.length;cyi++){
 		    strokeStyle: 'line', // 선의 스타일 입니다
 		    fillColor: '#CFE7FF', // 채우기 색깔입니다
 		    fillOpacity: 0.9  // 채우기 불투명도 입니다  
-		    
 		}); 
 	}
+
 		circle.setMap(map2);
+		
+		
+		 // 다각형에 mouseover 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 변경합니다 
+	    // 지역명을 표시하는 커스텀오버레이를 지도위에 표시합니다
+	    kakao.maps.event.addListener(circle, 'mouseover', function(mouseEvent) {
+	    	circle.setOptions({fillColor: '#09f'});
+
+
+	        customOverlay.setPosition(mouseEvent.latLng); 
+	        customOverlay.setMap(map2);
+	    });
+
+	    // 다각형에 mousemove 이벤트를 등록하고 이벤트가 발생하면 커스텀 오버레이의 위치를 변경합니다 
+	    kakao.maps.event.addListener(circle, 'mousemove', function(mouseEvent) {
+	        
+	        customOverlay.setPosition(mouseEvent.latLng); 
+	    });
+
+	    // 다각형에 mouseout 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 원래색으로 변경합니다
+	    // 커스텀 오버레이를 지도에서 제거합니다 
+	    kakao.maps.event.addListener(circle, 'mouseout', function() {
+	    	circle.setOptions({fillColor: '#fff'});
+	        customOverlay.setMap(null);
+	    }); 
+
+	    // 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시합니다 
+	    kakao.maps.event.addListener(circle, 'click', function(mouseEvent) {
+
+	        infowindow.setPosition(mouseEvent.latLng); 
+	        infowindow.setMap(map2);
+	    });
+		
 }
 
 
@@ -623,7 +710,7 @@ for(cyi=0;cyi<circlepath.length;cyi++){
 		    };
 		}	
 
-		function updateChartData(id){
+<%-- 		function updateChartData(id){
 			<%for(int funcnu=0;funcnu<carlist.size();funcnu++){%>
 			if(id==<%=carlist.get(funcnu).getReg_seq()%>){
 				chart.data.datasets[0].data=[<%=carlist.get(funcnu).getCar_num()%>];
@@ -635,7 +722,17 @@ for(cyi=0;cyi<circlepath.length;cyi++){
 				myChart3.update();
 			}
 		<%}%>
-		}
+		} --%>
+		
+
+	
+		
+		
+		
+		
+		
+		
+		
 		</script>
 	</form>
 </body>
