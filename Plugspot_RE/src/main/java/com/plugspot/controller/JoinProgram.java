@@ -39,7 +39,7 @@ public class JoinProgram extends HttpServlet {
        
         if(row > 0) {
         	System.out.println("회원가입 성공");
-        	response.sendRedirect("./JoinSuccess.jsp");
+        	response.sendRedirect("./Main.jsp");
         }else {
         	System.out.println("회원가입 실패");
         	response.sendRedirect("./Join.jsp");
