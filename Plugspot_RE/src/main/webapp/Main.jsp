@@ -63,34 +63,18 @@ fieldset {
 	}
 	%>
 	<fieldset style="display: block; height: 750px;">
-
-		<fieldset style="display: inline; width: 650px; height: 720px;">
-			<!-- 시별지도 -->
-			<% String num_data = request.getParameter("num_data"); %>
-			
-			<% String num_data_d="0";
-				if(num_data==null){
-					num_data_d="0";
-				}else{
-					num_data_d=num_data;
-				} %>
-			
-			
-<!-- 바차트 -->
-	<iframe src="./Caruse.jsp" frameborder="1" scrolling="no" style="display: inline; height: 350px; width: 450px"></iframe>
-	</fieldset>
+	
 <!-- 포화도 전체 -->
-	<fieldset style="display: inline; width: 1800px; height: 720px; border-width: 0px">
+	<fieldset style="display: inline; width: 1800px; height: 1800px; border-width: 0px">
 <!-----------------------------------------카카오맵포화도--------------------------------->
 
  <iframe src="./kakaomap.jsp" frameborder="1" scrolling="no" style="display:block;height:80%;width:100%"></iframe> 
 			
 <!----------------------------------------포화도표-------------------------------------->
+<iframe src="./Saturation.jsp" frameborder="1" scrolling="yes" style="display: block; height: 20%; width: 100%">
+</iframe>
+</fieldset>
 
-		</fieldset>
-		<iframe src="./Saturation.jsp" frameborder="1" scrolling="yes"
-				style="display: block; height: 20%; width: 100%">
-		</iframe>
 <!------------------------------------------------------------------------------------>
 
 <!-----------------------------------------순위---------------------------------------->
@@ -130,8 +114,6 @@ fieldset {
 
 	</fieldset>
 	<iframe src="./Chargenum.jsp" frameborder="1" scrolling="no"
-		style="display: inline; height: 350px; width: 450px"></iframe>
-	<iframe src="./AvgChargenum.jsp" frameborder="1" scrolling="no"
 		style="display: inline; height: 350px; width: 450px"></iframe>
 	
 

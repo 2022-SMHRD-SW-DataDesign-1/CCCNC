@@ -100,6 +100,12 @@
   	<description></description>
   	<servlet-class>com.plugspot.controller.lowavg</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>carnumDTO</servlet-name>
+  	<display-name>carnumDTO</display-name>
+  	<description></description>
+  	<servlet-class>com.plugspot.model.carnumDTO</servlet-class>
+  </servlet>
   
 
 
@@ -166,6 +172,10 @@
   <servlet-mapping>
   	<servlet-name>lowavg</servlet-name>
   	<url-pattern>/lowavg</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>carnumDTO</servlet-name>
+  	<url-pattern>/carnumDTO</url-pattern>
   </servlet-mapping>
 
 </web-app>

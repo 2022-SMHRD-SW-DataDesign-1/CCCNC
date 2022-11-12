@@ -7,3 +7,9 @@ select * from T_MEMBER;
 
 
 select CHARGE_STATE_NAME from T_CHARGER_NUM where ='양우아파트'
+
+
+
+		select *
+		from t_charger_num
+		

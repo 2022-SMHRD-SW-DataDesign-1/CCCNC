@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.plugspot.mapper.chargerAvgMapper">
+  <select id="chargerAvgNum" parameterType="chargerAvgNumDTO" resultType="chargerAvgNumDTO">
+		select a.loc_seq,b.do_city,round(avg(fast_charge_num),2) fast ,round(avg(slow_charge_num),2) slow
+		from t_charger_num a,t_do_city b
+		where a.loc_seq=b.loc_seq
+		group by a.loc_seq,b.do_city
+  </select>
+  
+
+  </mapper>

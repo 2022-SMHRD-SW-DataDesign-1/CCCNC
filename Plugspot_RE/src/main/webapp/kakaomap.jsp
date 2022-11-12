@@ -1,3 +1,7 @@
+<%@page import="com.plugspot.model.chargerAvgNumDAO"%>
+<%@page import="com.plugspot.model.chargerAvgNumDTO"%>
+<%@page import="com.plugspot.model.carnumDTO"%>
+<%@page import="com.plugspot.model.carnumDAO"%>
 <%@page import="java.math.BigDecimal"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.plugspot.model.kakaoDTO"%>
@@ -13,14 +17,17 @@
 
 </head>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f867e2332325dabbf2acc1f5355d06f&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f867e2332325dabbf2acc1f5355d06f&libraries=clusterer"></script>
 
-<body
-	style="margin-left: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px;">
+<body style="margin-left: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px;">
+	
 	<%
 	kakaoDAO dao = new kakaoDAO();
 	ArrayList<kakaoDTO> list = dao.kakao();
 	System.out.print(list.get(0).getSATURATION());
-	int index_list[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 39, 57, 68, 83, 97, 119, 142, 159};
+	int index_list[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 49, 57, 68, 83, 97, 130, 142, 159};
 	ArrayList<kakaoDTO> list2 = new ArrayList();
 
 	for (int i = 0; i < list.size(); i++) {
@@ -35,6 +42,23 @@
 		System.out.println(list2.get(k).getSATURATION());
 	}
 	%>
+<!-- =================================carnum==================================== -->
+
+<% 
+carnumDAO cardao = new carnumDAO(); 
+ArrayList<carnumDTO> carlist = cardao.carnum();
+
+
+chargerAvgNumDAO avdao = new chargerAvgNumDAO();
+ArrayList<chargerAvgNumDTO> avlist = avdao.chargerAvgNum();
+%>
+
+
+
+
+<!-- ============================================================================= -->	
+	
+	
 	<form action="kakaoService" method="post">
 		<p style="margin-top: -30px"></p>
 		<fieldset style="display:inline">
@@ -43,13 +67,136 @@
 		<fieldset style="display:inline">
 			<div id="map" style="width: 650px; height: 720px;"></div>
 		</fieldset>
-		<!-- 200,240 -->
-		<script type="text/javascript"
-			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f867e2332325dabbf2acc1f5355d06f&libraries=services,clusterer,drawing"></script>
-		<script type="text/javascript"
-			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f867e2332325dabbf2acc1f5355d06f&libraries=clusterer"></script>
+		<canvas id="chart" class="barchart2"></canvas>
+		 <div class="chart-container2">
+            <canvas id="myChart3" class="bar-chart"> </canvas>
+        </div>
+		
 		<script>
-			
+		
+                var chart = new Chart('chart', {
+                    type: 'horizontalBar',
+                    data: {
+                        // labels: [],
+                        datasets: [
+                            {
+                                data: [<%=carlist.get(0).getCar_num()%>],
+                                backgroundColor: ['rgb(45,204,106)'],
+                                label: '차량등록대수'
+                            },
+                            {
+                                data: [<%=carlist.get(0).getDat_possible_car()%>],
+                                backgroundColor: ['rgb(48,151,219)'],
+                                label: '1일이용가능대수'
+                            }
+                        ]
+                    },
+                    options: {
+                        legend: {
+                            display: true,
+                            position: 'right',
+                            onClick: 'newLegendClickHandler'
+                        },
+                        responsive: false,
+                        scales: {
+
+                            xAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+            </script>
+		
+
+        <script>
+            var ctx = document.getElementById('myChart3');
+
+            const config2 = {
+                type: 'bar',
+                data: {
+                    labels: [ // Date Objects
+                    	'<%=avlist.get(0).getDo_city()%>', '인천', '대전', '대구', '광주', '부산', '울산', '제주'],
+                    datasets: [{
+                        label: '완속',
+                        backgroundColor: 'rgb(246, 185, 59)',
+                        borderColor: 'rgb(246, 185, 59)',
+                        data: [80, 70, 60, 75, 80, 50, 65, 70],
+                    }, {
+                        label: '급속',
+                        backgroundColor: 'rgb(45, 152, 218)',
+                        borderColor: 'rgb(45, 152, 218)',
+                        data: [80, 75, 85, 90, 85, 80, 70, 90],
+                    }]
+                },
+                options: {
+                    legend: {
+                        position: 'right',
+                        fontSize: 8,
+                        labels: {
+                            fontColor: "black",
+                            fontSize: 10
+                        }
+                    },
+                    responsive: false,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'right',
+                        },
+                        title: {
+                            display: true,
+                            text: '시 별 충전소의 충전기 평균 개수'
+                        },
+                        scales: {
+                            xAxes: [{
+                                stacked: true,
+                                ticks: {
+                                    fontSize: 8,
+                                    fontColor: 'black' // x축 폰트 color
+
+                                },
+                                scaleLabel: {
+                                    display: true,
+                                    fontSize: 9,
+                                    labelString: '도시'
+                                }
+                            }],
+                            yAxes: [{
+                                ticks: {
+                                    fontSize: 8,
+                                    fontColor: 'black' // x축 폰트 color
+                                },
+                                scaleLabel: {
+                                    display: true,
+                                    fontSize: 9,
+                                    labelString: '충전기 개수'
+                                }
+                            }]
+                        }
+                    }
+                },
+
+
+            };
+            var myChart3 = new Chart(ctx, config2);
+
+
+        </script>
+        <script>
+            const myChart3 = new Chart(
+                document.getElementById('myChart3'),
+                config
+            );
+        </script>
+
+		
+		
+		
+		
+	<script>
 			var map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
 				center : new kakao.maps.LatLng(35.1083, 127.6358), // 지도의 중심좌표 
 				level : 13
@@ -87,8 +234,8 @@
 				kakao.maps.event.addListener(oveMarker[ovnum], 'click', function(mouseEvent) {
 					console.log(this.id);
 					id_num=this.id;
-					
-					panTo(this.lt,this.ln)
+					panTo(this.lt,this.ln);
+					updateChartData(this.id);
 				});
 				
 				oveMarker[ovnum].setMap(map);
@@ -112,8 +259,8 @@
 						mouseEvent) {
 					console.log("soso",this.id);
 					id_num=this.id;
-					
-					panTo(this.lt,this.ln)
+					panTo(this.lt,this.ln);
+					updateChartData(this.id);
 				});
 				equMarker[eqnum].setMap(map);
 				i++;
@@ -136,8 +283,8 @@
 						mouseEvent) {
 					console.log(this.id);
 					id_num=this.id;	
-					panTo(this.lt,this.ln)
-					
+					panTo(this.lt,this.ln);
+					updateChartData(this.id);
 				});
 				
 				lowMarker[lwnum].setMap(map);
@@ -347,7 +494,19 @@ for(cyi=0;cyi<circlepath.length;cyi++){
 		    };
 		}	
 
-	
+		function updateChartData(id){
+			<%for(int funcnu=0;funcnu<carlist.size();funcnu++){%>
+			if(id==<%=carlist.get(funcnu).getReg_seq()%>){
+				chart.data.datasets[0].data=[<%=carlist.get(funcnu).getCar_num()%>];
+				chart.data.datasets[1].data=[<%=carlist.get(funcnu).getDat_possible_car()%>];
+				chart.update();
+				
+				myChart3.data.datasets[0].data=[1,2,3,4,5,6,7,8];
+				myChart3.data.datasets[1].data=[1,2,3,4,5,6,7,8];
+				myChart3.update();
+			}
+		<%}%>
+		}
 		</script>
 	</form>
 </body>
