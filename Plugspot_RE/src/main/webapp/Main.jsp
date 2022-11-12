@@ -78,7 +78,7 @@ fieldset {
 <!------------------------------------------------------------------------------------>
 
 <!-----------------------------------------순위---------------------------------------->
-		<fieldset style="height: 720px;">
+<fieldset style="height: 720px;">
 
 			<form class="ranking">
 				<table class="info_table02">
@@ -110,13 +110,9 @@ fieldset {
 				</table>
 			</form>
 		</fieldset>
-		<!------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------>
 
-	</fieldset>
-	<iframe src="./Chargenum.jsp" frameborder="1" scrolling="no"
-		style="display: inline; height: 350px; width: 450px"></iframe>
-	
-
+</fieldset>
 	
 	
 </body>

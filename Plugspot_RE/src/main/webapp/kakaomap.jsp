@@ -51,6 +51,8 @@ ArrayList<carnumDTO> carlist = cardao.carnum();
 
 chargerAvgNumDAO avdao = new chargerAvgNumDAO();
 ArrayList<chargerAvgNumDTO> avlist = avdao.chargerAvgNum();
+
+
 %>
 
 
@@ -69,9 +71,11 @@ ArrayList<chargerAvgNumDTO> avlist = avdao.chargerAvgNum();
 		</fieldset>
 		<canvas id="chart" class="barchart2"></canvas>
 		 <div class="chart-container2">
-            <canvas id="myChart3" class="bar-chart"> </canvas>
+            <canvas id="myChart3" class="bar-chart" style="width:1200px"> </canvas>
         </div>
-		
+		<div class="chart-container">
+            <canvas id="myChart" class="chart"></canvas>
+        </div>
 		<script>
 		
                 var chart = new Chart('chart', {
@@ -117,18 +121,66 @@ ArrayList<chargerAvgNumDTO> avlist = avdao.chargerAvgNum();
             const config2 = {
                 type: 'bar',
                 data: {
-                    labels: [ // Date Objects
-                    	'<%=avlist.get(0).getDo_city()%>', '인천', '대전', '대구', '광주', '부산', '울산', '제주'],
+                    labels: [ '<%=avlist.get(0).getDo_city()%>',
+                    		  '<%=avlist.get(1).getDo_city()%>',
+                    		  '<%=avlist.get(2).getDo_city()%>',
+                    		  '<%=avlist.get(3).getDo_city()%>',
+                    		  '<%=avlist.get(4).getDo_city()%>',
+                    		  '<%=avlist.get(5).getDo_city()%>',
+                    		  '<%=avlist.get(6).getDo_city()%>',
+                    		  '<%=avlist.get(7).getDo_city()%>',
+                    		  '<%=avlist.get(8).getDo_city()%>',
+                    		  '<%=avlist.get(9).getDo_city()%>',
+                    		  '<%=avlist.get(10).getDo_city()%>',
+                    		  '<%=avlist.get(11).getDo_city()%>',
+                    		  '<%=avlist.get(12).getDo_city()%>',
+                    		  '<%=avlist.get(13).getDo_city()%>',
+                    		  '<%=avlist.get(14).getDo_city()%>',
+                    		  '<%=avlist.get(15).getDo_city()%>',
+                    		  '<%=avlist.get(16).getDo_city()%>',
+                    			],
                     datasets: [{
                         label: '완속',
                         backgroundColor: 'rgb(246, 185, 59)',
                         borderColor: 'rgb(246, 185, 59)',
-                        data: [80, 70, 60, 75, 80, 50, 65, 70],
-                    }, {
+                        data: [<%=avlist.get(0).getSlow()%>,
+                        	   <%=avlist.get(1).getSlow()%>,
+                        	   <%=avlist.get(2).getSlow()%>,
+                        	   <%=avlist.get(3).getSlow()%>,
+                        	   <%=avlist.get(4).getSlow()%>,
+                        	   <%=avlist.get(5).getSlow()%>,
+                        	   <%=avlist.get(6).getSlow()%>,
+                        	   <%=avlist.get(7).getSlow()%>,
+                        	   <%=avlist.get(8).getSlow()%>,
+                        	   <%=avlist.get(9).getSlow()%>,
+                        	   <%=avlist.get(10).getSlow()%>,
+                        	   <%=avlist.get(11).getSlow()%>,
+                        	   <%=avlist.get(12).getSlow()%>,
+                        	   <%=avlist.get(13).getSlow()%>,
+                        	   <%=avlist.get(14).getSlow()%>,
+                        	   <%=avlist.get(15).getSlow()%>,
+                        	   <%=avlist.get(16).getSlow()%>],
+                    }, {                
                         label: '급속',
                         backgroundColor: 'rgb(45, 152, 218)',
                         borderColor: 'rgb(45, 152, 218)',
-                        data: [80, 75, 85, 90, 85, 80, 70, 90],
+                        data: [<%=avlist.get(0).getFast()%>,
+	                     	   <%=avlist.get(1).getFast()%>,
+	                    	   <%=avlist.get(2).getFast()%>,
+	                    	   <%=avlist.get(3).getFast()%>,
+	                    	   <%=avlist.get(4).getFast()%>,
+	                    	   <%=avlist.get(5).getFast()%>,
+	                    	   <%=avlist.get(6).getFast()%>,
+	                    	   <%=avlist.get(7).getFast()%>,
+	                    	   <%=avlist.get(8).getFast()%>,
+	                    	   <%=avlist.get(9).getFast()%>,
+	                    	   <%=avlist.get(10).getFast()%>,
+	                    	   <%=avlist.get(11).getFast()%>,
+	                    	   <%=avlist.get(12).getFast()%>,
+	                    	   <%=avlist.get(13).getFast()%>,
+	                    	   <%=avlist.get(14).getFast()%>,
+	                    	   <%=avlist.get(15).getFast()%>,
+	                    	   <%=avlist.get(16).getFast()%>],
                     }]
                 },
                 options: {
@@ -186,12 +238,89 @@ ArrayList<chargerAvgNumDTO> avlist = avdao.chargerAvgNum();
 
         </script>
         <script>
-            const myChart3 = new Chart(
-                document.getElementById('myChart3'),
-                config
-            );
+            const myChart3 = new Chart(document.getElementById('myChart3'),config);
         </script>
 
+		<fieldset>
+
+        <script>
+            var ctx = document.getElementById('myChart');
+
+            var config = {
+                type: 'line',
+                data: {
+                    labels: [ // Date Objects
+                        '서울', '인천', '대전', '대구', '광주', '부산', '울산', '제주'
+                    ],
+                    datasets: [{
+                        label: '완속',
+                        backgroundColor: 'rgb(246, 185, 59)',
+                        borderColor: 'rgb(246, 185, 59)',
+                        fill: false,
+                        lineTension: 0,
+                        data: [
+                            50, 60, 80, 70, 64, 70, 60, 80
+                        ],
+                    }, {
+                        label: '급속',
+                        backgroundColor: 'rgb(45, 152, 218)',
+                        borderColor: 'rgb(45, 152, 218)',
+                        fill: false,
+                        lineTension: 0,
+                        data: [
+                            80, 75, 85, 90, 85, 80, 70, 90
+                        ],
+                    }]
+                },
+                options: {
+                    legend: {
+                        position: 'right',    // 라벨 폰트 색상,크기
+                        labels: {
+                            fontColor: "black",
+                            fontSize: 10
+                        }
+                    },
+                    // maintainAspectRatio: false,
+                    responsive: false,
+                    title: {
+                        text: '시 별 급속/완속 충전기 개수'
+                    },
+                    scales: {
+                        xAxes: [{
+                            stacked: true,
+                            ticks: {
+                                fontSize: 8,
+                                fontColor: 'black' // x축 폰트 color
+
+                            },
+                            scaleLabel: {
+                                display: true,
+                                fontSize: 9,
+                                labelString: '도시'
+                            }
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                fontSize: 8,
+                                fontColor: 'black' // x축 폰트 color
+                            },
+                            scaleLabel: {
+                                display: true,
+                                fontSize: 9,
+                                labelString: '충전기 개수'
+                            }
+                        }]
+                    },
+                }
+            };
+            var myChart = new Chart(ctx, config);
+
+        </script>
+        <script>
+            const myChart = new Chart(document.getElementById('myChart'), config);
+        </script>
+		
+		
 		
 		
 		
