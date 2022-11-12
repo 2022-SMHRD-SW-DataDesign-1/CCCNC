@@ -638,6 +638,7 @@ function displayArea(area){
 		    fillColor: '#CFE7FF', // 채우기 색깔입니다
 		    fillOpacity: 0.9  // 채우기 불투명도 입니다  
 		}); 
+
 	}
 
 		circle.setMap(map2);
@@ -668,9 +669,8 @@ function displayArea(area){
 
 	    // 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시합니다 
 	    kakao.maps.event.addListener(circle, 'click', function(mouseEvent) {
-
-	        infowindow.setPosition(mouseEvent.latLng); 
-	        infowindow.setMap(map2);
+				location.href = "./CityChargeStation.jsp?citydata:123"
+				console.log(this.circleA[0].id);
 	    });
 		
 }
