@@ -18,6 +18,169 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+fieldset {
+	display: inline;
+	width: 200px;
+}
+/* Header */
+.header {
+	width: 83%;
+	padding-top: 10px !important;
+	height: 10% !important;
+	position: fixed;
+}
+.header .inner_header {
+	position: relative;
+	width: 100%;
+	margin: 0 auto;
+	line-height: 100%;
+}
+.header .logo {
+	display: inline-block;
+	width: 190px;
+	margin-top: 0px;
+	margin: 0 auto;
+}
+.header .topMenu {
+	position: absolute;
+	width: 100%;
+	/* border-bottom: 1px solid #D3D3D3; */
+	margin: 0 auto;
+	margin-left: 90%;
+	top: 24px !important;
+}
+.header .topMenu ul {
+	position: fixed;
+	float: right;
+	list-style: none;
+	margin-left: 350px;
+}
+.header img {
+	position: fixed;
+	float: left;
+	width: 80px;
+	height: 35px !important;
+	line-height: 35px !important;
+	border-right: 1px solid #D3D3D3;
+}
+.header .topMenu li {
+	float: left;
+	width: 80px;
+	height: 35px !important;
+	line-height: 35px !important;
+	border-right: 1px solid #D3D3D3;
+}
+.header .topMenu li a {
+	display: block;
+	color: #686868;
+	text-align: center;
+	/*font-family:dotum;*/
+	font-size: 15px;
+	margin: 0 auto;
+}
+.header .topMenu li a:hover {
+	display: block;
+	color: #686868;
+	text-align: center;
+	/*font-weight:800;font-size:13px;*/
+	font-weight: bold !important;
+	font-size: 20px !important;
+}
+content {
+	float: left;
+	width: 1509px;
+	height: 100%;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+.mapimg1 {
+	width: 250px;
+}
+.mapimg2 {
+	height: 189px;
+	width: 212px;
+}
+.select_ct {
+	float: left;
+	margin-top: 50%;
+	margin-left: -4%;
+}
+#chart-area {
+	display: block;
+	width: 320px;
+    height: 160px;
+}
+#chart-area2 {
+	display: block;
+	width: 320px;
+    height: 160px;
+	margin-top: 23%;
+}
+#canvas-holder {
+	display: block;
+	width: 300px;
+	height: 150px;
+	float: left;
+	margin-top: 26%;
+}
+div {
+	display: inline-block;
+}
+li {
+	list-style: none;
+}
+#city {
+	width: 80px;
+	height: 40px;
+	text-align: center;
+	margin-left: 38%;
+}
+.t1 {
+	display: inline;
+	border-radius: 5%;
+	float: left;
+	margin-top: 16%;
+	text-align: center;
+}
+.t2 {
+	display: inline;
+	border-radius: 5%;
+	float: left;
+	margin-top: 16%;
+	text-align: center;
+}
+h3 {
+	text-align: left;
+}
+#canvas-holder2 {
+	margin-top: 16%;
+	float: left;
+}
+.uichart {
+	margin: 10%;
+	float: left;
+}
+#myChart, #myChart2, #myChart3, #myChart4 {
+	width: 517px;
+	height: 247px;
+}
+.article {
+	float: left;
+}
+.article2 {
+	float: left;
+	margin-left: 0%;
+	margin-top: -1%;
+}
+.footer {
+	clear: both;
+	width: 100%;
+	height: 10%;
+	font-family: 한컴 고딕;
+	font-weight: 50px;
+}
+</style>
 </head>
 <body>
    <div style="height:100vh; width:100vw;">
@@ -37,7 +200,32 @@ ArrayList<avgDTO> avg = dao4.avg();
 avgDAO dao5 = new avgDAO();
 ArrayList<avgDTO> avg2 = dao5.lowavg();
 %>
-
+<header class="header">
+		<!-- head 시작 -->
+		<div class="head">
+			<div class="logo">
+				<a href="Main.jsp"> <img src="./img/Logo.png" alt="PlugSpot"
+					class="logo"></a>
+			</div>
+			<div class="topMenu">
+				<div class="clear">
+					<li><a href="Main.jsp"><span>HOME</span></a></li>
+					<li><a href="Login.jsp"><span>LOGIN</span></a></li>
+				</div>
+			</div>
+			<!-- topMenu 끝 -->
+		</div>
+		<!-- head끝  -->
+	</header>
+	<content>
+	<div class="article">
+		<fieldset class="t1">
+			<h3>서울</h3>
+			<div>
+				<script type="text/javascript"
+					src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f867e2332325dabbf2acc1f5355d06f"></script>
+<div id="staticMap" style="width: 260px; height: 230px;"></div>
+				
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f867e2332325dabbf2acc1f5355d06f"></script>
 <div id="staticMap" style="width:600px;height:350px;"></div>
 <script>
@@ -90,6 +278,8 @@ for (var i = 0; i < positions.length; i ++) {
    // marker.setMap(map)
 }
 </script>
+</div>
+</fieldset>
 <!-- 급속평균 -->
  <script>
 let avgfastchartList = [];
