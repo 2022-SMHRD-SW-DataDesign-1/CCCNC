@@ -10,14 +10,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% 
-MemberDTO info = (MemberDTO)session.getAttribute("info"); 
+<%
+MemberDTO info = (MemberDTO)session.getAttribute("info");
 ArrayList<ChargeDTO> list = (ArrayList) session.getAttribute("mystate");
 System.out.print(list);
 %>
-
 <fieldset>
-
 	<legend>내 정보</legend>
 			사업자 등록 번호:<%= info.getMember_num()%>
 			사업자 비밀 번호:<%= info.getPassword() %>
@@ -31,17 +29,13 @@ System.out.print(list);
 			   My 충전소 : <p><%=list.get(i).getLATITUDE()%> : <%=list.get(i).getLONGTITUDE() %>
 			            <%}}else{System.out.print("출력불가");%>
 			               <%} %>
-			               
-			               
+			              
+			              
 			
 			
 			
 			</p>
 			
 </fieldset>
-
-
-
-
 </body>
 </html>

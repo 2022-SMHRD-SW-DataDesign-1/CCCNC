@@ -14,16 +14,12 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f867e2332325dabbf2acc1f5355d06f"></script>
 <script type="text/javascript" src="./js/jquery-3.6.1.min.js"></script>
 <div id="map" style="width:100%;height:350px;"></div>
-<p><em>지도를 클릭해주세요!</em></p> 
+<p><em>지도를 클릭해주세요!</em></p>
 <div id="clickLatlng"></div>
-
-
 <fieldset>
 <legend> 내 충전소 정보</legend>
 <%
-
 MemberDTO info = (MemberDTO)session.getAttribute("info");
-
 %>
 사업자등록번호:<%=info.getMember_num()%>
 <P>
@@ -36,59 +32,36 @@ MemberDTO info = (MemberDTO)session.getAttribute("info");
 <button onclick="ulsan()" name="울산">울산</button>
 <button onclick="sejong()" name="세종">세종</button>
 <button onclick="gyeonggi()" name="경기도">경기도</button>
-
 </P>
 <a href="Mypage.jsp"><button>내 정보 이동</button></a>
 <script>
-var mapContainer = document.getElementById('map'), 
-    mapOption = { 
-        center: new kakao.maps.LatLng(37.56638, 126.977902), 
-        level: 10 
+var mapContainer = document.getElementById('map'),
+    mapOption = {
+        center: new kakao.maps.LatLng(37.56638, 126.977902),
+        level: 10
     };
-
-var map = new kakao.maps.Map(mapContainer, mapOption); 
-
-
-var marker = new kakao.maps.Marker({ 
-    
-    position: map.getCenter() 
-}); 
-
+var map = new kakao.maps.Map(mapContainer, mapOption);
+var marker = new kakao.maps.Marker({
+    position: map.getCenter()
+});
 marker.setMap(map);
-
 var lat;
-var lng; 
-
+var lng;
 let latList = [];
 let lngList = [];
-
-
-
-kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
-    
-   
-    var latlng = mouseEvent.latLng; 
-    
-    
+kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+    var latlng = mouseEvent.latLng;
     marker.setPosition(latlng);
-    
-    
     lat = latlng.getLat();
-    lng = latlng.getLng(); 
-    
+    lng = latlng.getLng();
     latList.push(lat);
     lngList.push(lng);
-    
     var message = '클릭한 위치의 위도는 ' + lat + ' 이고, ';
     message += '경도는 ' + lng + ' 입니다';
-    
     console.log(latList);
     console.log(lngList);
-    
-    var resultDiv = document.getElementById('clickLatlng'); 
+    var resultDiv = document.getElementById('clickLatlng');
     resultDiv.innerHTML = message;
-    
-    
 });
 	kakao.maps.event.addListener(map,'click',function(mouseEvent){
 		addMarker(mouseEvent.latLng);
@@ -144,20 +117,12 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
 		 var moveLatLon = new kakao.maps.LatLng(37.263201,127.028574);
 		 map.panTo(moveLatLon);
 	 }
-	 
+	
 </script>
-
-
-
-
-
-
 </fieldset>
 <button onclick="insertTable()" >위치등록</button>
-
 <script type="text/javascript">
 function insertTable() {
-
 	$.ajax({
 		url : 'StateProgram',
 		data : {'latiList':latList.toString(),
@@ -172,8 +137,5 @@ function insertTable() {
 	}); 	
 }
 </script>
-
-
-
 </body>
 </html>
