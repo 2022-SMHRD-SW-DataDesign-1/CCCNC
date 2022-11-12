@@ -7,16 +7,16 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.plugspot.db.SqlSessionManager;
 
-public class chargerAvgNumDAO {
+public class citySpeedChargerDAO {
+
 	private SqlSessionFactory sqlSessionFactory =SqlSessionManager.getSqlSession();
 	
-	
-	
-	public ArrayList<chargerAvgNumDTO> chargerAvgNum() {
+	public ArrayList<citySpeedChargerDTO> citySpeedCharger() {
 		SqlSession session = sqlSessionFactory.openSession(true);
-		ArrayList<chargerAvgNumDTO> chargerAvgNumList = (ArrayList)session.selectList("chargerAvgNum");
+		ArrayList<citySpeedChargerDTO> citySpeedlist = (ArrayList)session.selectList("citySpeedCharger");
 		session.close();
-		return chargerAvgNumList;
+		return citySpeedlist;
 	}
+	
 	
 }
