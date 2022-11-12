@@ -673,7 +673,7 @@ for(cyi=0;cyi<circlepath.length;cyi++){
 		    };
 		}	
 
-		function updateChartData(id){
+<%-- 		function updateChartData(id){
 			<%for(int funcnu=0;funcnu<carlist.size();funcnu++){%>
 			if(id==<%=carlist.get(funcnu).getReg_seq()%>){
 				chart.data.datasets[0].data=[<%=carlist.get(funcnu).getCar_num()%>];
@@ -685,7 +685,7 @@ for(cyi=0;cyi<circlepath.length;cyi++){
 				myChart3.update();
 			}
 		<%}%>
-		}
+		} --%>
 		</script>
 	</form>
 </body>
