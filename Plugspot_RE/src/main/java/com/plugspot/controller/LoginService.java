@@ -1,6 +1,7 @@
 package com.plugspot.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,8 +19,8 @@ public class LoginService extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 
-		String member_num = request.getParameter("member_num");
-		String password = request.getParameter("password");
+		String member_num = request.getParameter("id");
+		String password = request.getParameter("pw");
 
 		System.out.println("member_num :" + member_num);
 		System.out.println("password :" + password);
@@ -29,20 +30,25 @@ public class LoginService extends HttpServlet {
 		MemberDAO dao = new MemberDAO();
 		MemberDTO info = dao.login(dto);
 
+		PrintWriter out = response.getWriter();
 		String moveURL = "";
 		if(info==null) {
 			System.out.println("로그인 실패");
-			moveURL = "LoginFail.jsp";
+			moveURL = "Login.jsp";
+			out.print("failed");
 		}else {
 			System.out.println("로그인 성공");
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("info",info);
 			
-			moveURL= "LoginSuccess.jsp";
+			moveURL= "Main.jsp";
+			out.print("<checkid>");
 		}
-		RequestDispatcher rd = request.getRequestDispatcher(moveURL);
-		rd.forward(request, response);
+		/*
+		 * RequestDispatcher rd = request.getRequestDispatcher(moveURL);
+		 * rd.forward(request, response);
+		 */
 	}
 
 }
