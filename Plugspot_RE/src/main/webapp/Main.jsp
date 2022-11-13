@@ -206,8 +206,8 @@ footer {
 	font-weight: 50px;
 	height: 10%; /* footer의 높이 */
 	position: absolute;
-	bottom: 0;
 	left: 0;
+	margin-top: 180px;
 }
 
 li {
@@ -236,9 +236,10 @@ li {
 }
 
 #li_4 {
-	/* float: right; */
-	width: 82%;
+    float: right;
+	width: 100%;
 	height: 300px;
+	margin-top: 10px;
 }
 
 .info_table02 {
@@ -266,7 +267,7 @@ li {
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f867e2332325dabbf2acc1f5355d06f&libraries=clusterer"></script>
 
-<body style="height: 2000px;">
+<body style="height: 1560px;">
 	<header class="header">
 		<div class="head">
 			<div class="logo">
@@ -347,12 +348,12 @@ li {
 						<div id="rank">
 							<div class="ranking">
 								<table class="info_table02">
-									<caption class="title">전기차 지역별 순위</caption>
+									<!--<caption class="title">전기차 지역별 순위</caption>-->
 									<thead>
-										<tr>
-											<th style="width: 47px;">순위</th>
+										<tr style="background-color:#74b9ff; color:#dfe4ea; ">
+											<th style="width: 52px;">순위</th>
 											<th>도시</th>
-											<th style="width: 152px;">전기차등록수</th>
+											<th style="width: 172px;">전기차등록수</th>
 										</tr>
 									</thead>
 									<%
@@ -384,12 +385,12 @@ li {
 						<div id="content_bottom">
 							<div id="lineChart">
 								<div class="chart-container">
-									<canvas id="myChart" class="chart" style="width:35%; height:300px; float: left;" ></canvas>
+									<canvas id="myChart" class="chart" style="width:40%; height:300px; float: left; padding-right: 5px;" ></canvas>
 								</div>
 							</div>
 							<div id="barChart2">
 								<div class="chart-container2">
-									<canvas id="myChart3" class="bar-chart" style="width:35%; height:300px; float: left;"> </canvas>
+									<canvas id="myChart3" class="bar-chart" style="width:40%; height:300px; float: left; padding-left: 5px;"> </canvas>
 								</div>
 							</div>
 						</div>
@@ -404,7 +405,7 @@ li {
 			<div class="f_logo">
 				<img src="./img/FootLogo.png" alt="PlugSpot" style=" width: 190px; height: 44px;">
 			</div>
-			<span class="t">|</span> <strong style="color: #686868;">개인정보처리방침</strong>
+			<span class="t">|</span> <span>개인정보처리방침</span >
 			<span class="t">|</span> <span class="m mar_l5">고객센터 1234-5678</span>
 			<p class="mar_t5">
 				사업자번호: 111-222-3333 &nbsp;&nbsp; 대표자: 쿠쿠뉴쿠 &nbsp;&nbsp;주소: 광주광역시 남구
@@ -473,7 +474,7 @@ li {
                     options: {
                         legend: {
                             display: true,
-                            position: 'right',
+                            position: 'bottom',
                             onClick: 'newLegendClickHandler'
                         },
                         responsive: false,
@@ -560,8 +561,8 @@ li {
                 },
                 options: {
                     legend: {
-                        position: 'right',
-                        fontSize: 8,
+                        position: 'bottom',
+                        fontSize: 10,
                         labels: {
                             fontColor: "black",
                             fontSize: 10
@@ -571,7 +572,7 @@ li {
                     plugins: {
                         legend: {
                             display: true,
-                            position: 'right',
+                            position: 'bottom',
                         },
                         title: {
                             display: true,
@@ -581,24 +582,24 @@ li {
                             xAxes: [{
                                 stacked: true,
                                 ticks: {
-                                    fontSize: 8,
+                                    fontSize: 10,
                                     fontColor: 'black' // x축 폰트 color
 
                                 },
                                 scaleLabel: {
                                     display: true,
-                                    fontSize: 9,
-                                    labelString: '도시'
+                                    fontSize: 10,
+                                    labelString: ''
                                 }
                             }],
                             yAxes: [{
                                 ticks: {
-                                    fontSize: 8,
+                                    fontSize: 10,
                                     fontColor: 'black' // x축 폰트 color
                                 },
                                 scaleLabel: {
                                     display: true,
-                                    fontSize: 9,
+                                    fontSize: 10,
                                     labelString: '충전기 개수'
                                 }
                             }]
@@ -696,7 +697,7 @@ li {
                 },
                 options: {
                     legend: {
-                        position: 'right',    // 라벨 폰트 색상,크기
+                        position: 'bottom',    // 라벨 폰트 색상,크기
                         labels: {
                             fontColor: "black",
                             fontSize: 10
@@ -711,24 +712,24 @@ li {
                         xAxes: [{
                             stacked: true,
                             ticks: {
-                                fontSize: 8,
+                                fontSize: 10,
                                 fontColor: 'black' // x축 폰트 color
 
                             },
                             scaleLabel: {
                                 display: true,
-                                fontSize: 9,
-                                labelString: '도시'
+                                fontSize: 10,
+                                labelString: ''
                             }
                         }],
                         yAxes: [{
                             ticks: {
-                                fontSize: 8,
+                                fontSize: 10,
                                 fontColor: 'black' // x축 폰트 color
                             },
                             scaleLabel: {
                                 display: true,
-                                fontSize: 9,
+                                fontSize: 10,
                                 labelString: '충전기 개수'
                             }
                         }]

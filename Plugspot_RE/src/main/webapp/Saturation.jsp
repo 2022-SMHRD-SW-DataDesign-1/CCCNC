@@ -29,24 +29,24 @@
 	  	
 %>	  	
 
-        <table class="info_table02" style="width:600px;text-align:center">
-            <caption class="title" >지역별 충전소 충전기의 상태 현황</caption>
+        <table class="info_table02" style="width:680px;text-align:center">
+            <!--<caption class="title" >지역별 충전소 충전기의 상태 현황</caption>-->
             <thead>
-                <tr >
-                    <th scope="col" class="th03">지역</th>
-                    <th scope="col" class="th01">위도</th>
-                    <th scope="col" class="th01">경도</th>
-                    <th scope="col" class="th01">포화도</th>
+                <tr style="background-color:#74b9ff; color:#dfe4ea; " >
+                    <th>지역</th>
+                    <th>위도</th>
+                    <th>경도</th>
+                    <th>포화도</th>
 
                 </tr>
             </thead>
             <tbody>
 				<%for(int k=0;k<list2.size();k++){ %>
                 <tr>
-                    <th scope="row" class="bg"><span class="zone"><%=list2.get(k).getDo_city() %></span></th>
-                    <td class="bg"><%=list2.get(k).getCity_latitude() %></td>
-                    <td class="bg"><%=list2.get(k).getCity_longitude() %></td>
-                    <td class="bg blue"><%=list2.get(k).getSATURATION() %></td>
+                    <th><span class="zone"><%=list2.get(k).getDo_city() %></span></th>
+                    <td><%=list2.get(k).getCity_latitude() %></td>
+                    <td><%=list2.get(k).getCity_longitude() %></td>
+                    <td><%=list2.get(k).getSATURATION() %></td>
                 </tr>
 				<%} %>
             </tbody>
