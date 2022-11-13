@@ -29,7 +29,7 @@
 	kakaoDAO dao = new kakaoDAO();
 	ArrayList<kakaoDTO> list = dao.kakao();
 	System.out.print(list.get(0).getSATURATION());
-	int index_list[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 49, 57, 68, 83, 97, 130, 142, 159};
+	int index_list[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 49, 57, 68, 83, 97, 130, 142, 159};
 	ArrayList<kakaoDTO> list2 = new ArrayList();
 
 	for (int i = 0; i < list.size(); i++) {
@@ -592,31 +592,33 @@ var mpointw=0;
 	<% System.out.print("t");%>
 } --%>
 var circlepath = [
-	new kakao.maps.LatLng(33.37368259997763,126.56723592747852),
-	new kakao.maps.LatLng(34.82822927263921,126.79483725356336),
-	new kakao.maps.LatLng(35.26603633642619,128.14416640575502),
-	new kakao.maps.LatLng(35.80633969541898,127.31350765087842),
-	new kakao.maps.LatLng(36.507922190697386,126.79049370065155),
-	new kakao.maps.LatLng(36.463394521871166,128.72124873945748),
-	new kakao.maps.LatLng(36.87981252723434,127.6911328100001),
-	new kakao.maps.LatLng(37.742108501142305,128.28575767007206),
-	new kakao.maps.LatLng(37.37925027545884,127.44133385694842),
-	new kakao.maps.LatLng(37.55998597988157,127.01937645416145),
-	new kakao.maps.LatLng(37.39339338582987,126.64928744697255),
-	new kakao.maps.LatLng(36.637081706167294,127.22524127172532),
-	new kakao.maps.LatLng(36.359765620447625,127.40698537056107),
-	new kakao.maps.LatLng(35.90673966145805,128.60702834725345),
-	new kakao.maps.LatLng(35.58086978386315,129.34598950536966),
-	new kakao.maps.LatLng(35.160783429376885,129.10913024617778),
-	new kakao.maps.LatLng(35.14214950781724,126.86147269256132),
+	new kakao.maps.LatLng(37.56157305843904,126.99207721631042),
+	new kakao.maps.LatLng(35.185789313392455,129.08892069918528),
+	new kakao.maps.LatLng(35.86686578241322,128.60219288119984),
+	new kakao.maps.LatLng(37.40422732079655,126.6566913260569),
+	new kakao.maps.LatLng(35.176035898372696,126.85741928640157),
+	new kakao.maps.LatLng(36.36142188986449,127.38582434405983),
+	new kakao.maps.LatLng(35.554648344730886,129.35250218417764),
+	new kakao.maps.LatLng(36.48165792763894,127.28929051779492),
+	new kakao.maps.LatLng(37.37029773144964,127.48196828397913),
+	new kakao.maps.LatLng(37.61730730441426,128.34761940811427),
+	new kakao.maps.LatLng(36.819310188820815,127.84000986756371),
+	new kakao.maps.LatLng(36.57304323463604,126.85346382442455),
+	new kakao.maps.LatLng(35.77017936365488,127.14372195776335),
+	new kakao.maps.LatLng(34.93949318524349,126.83961532041668),
+	new kakao.maps.LatLng(36.448635749767355,128.81251004222787),
+	new kakao.maps.LatLng(35.501933736635756,128.13079422127777),
+	new kakao.maps.LatLng(33.378653640994315,126.54541729800057),
 	
 	]
 
+var index_list=[1, 2, 3, 4, 5, 6, 7, 8, 9, 49, 57, 68, 83, 97, 130, 142, 159];
+var circled= new Array();
 for(cyi=0;cyi<circlepath.length;cyi++){
 	displayArea(circlepath[cyi]);
 }
 function displayArea(area){
-		if(cyi < 8){
+		if(cyi > 7){
 		var circle = new kakao.maps.Circle({
 		    center : circlepath[cyi],  // 원의 중심좌표 입니다 
 		    radius: 50000, // 미터 단위의 원의 반지름입니다 
@@ -624,8 +626,9 @@ function displayArea(area){
 		    strokeColor: '#59DA50', // 선의 색깔입니다
 		    strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
 		    strokeStyle: 'line', // 선의 스타일 입니다
-		    fillColor: '#59DA50', // 채우기 색깔입니다
-		    fillOpacity: 0.2  // 채우기 불투명도 입니다
+		    fillColor: '#CFE7FF', // 채우기 색깔입니다
+		    fillOpacity: 0.5,  // 채우기 불투명도 입니다
+		    zIndex : 1
 		});
 		}else{
 		var circle = new kakao.maps.Circle({
@@ -636,11 +639,13 @@ function displayArea(area){
 		    strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
 		    strokeStyle: 'line', // 선의 스타일 입니다
 		    fillColor: '#CFE7FF', // 채우기 색깔입니다
-		    fillOpacity: 0.9  // 채우기 불투명도 입니다  
+		    fillOpacity: 0.9,  // 채우기 불투명도 입니다  
+		    zIndex: 999
 		}); 
 
 	}
-
+		circled[cyi]=circle;
+		circled[cyi].id=(index_list[cyi]);
 		circle.setMap(map2);
 		
 		
@@ -669,8 +674,8 @@ function displayArea(area){
 
 	    // 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시합니다 
 	    kakao.maps.event.addListener(circle, 'click', function(mouseEvent) {
-				location.href = "./CityChargeStation.jsp?citydata:123"
-				console.log(this.circleA[0].id);
+				location.href = "./CityChargeStation.jsp?citydata="+this.id;
+				console.log(this.id);
 	    });
 		
 }
@@ -710,19 +715,19 @@ function displayArea(area){
 		    };
 		}	
 
-<%-- 		function updateChartData(id){
+ 		function updateChartData(id){
 			<%for(int funcnu=0;funcnu<carlist.size();funcnu++){%>
 			if(id==<%=carlist.get(funcnu).getReg_seq()%>){
 				chart.data.datasets[0].data=[<%=carlist.get(funcnu).getCar_num()%>];
 				chart.data.datasets[1].data=[<%=carlist.get(funcnu).getDat_possible_car()%>];
 				chart.update();
 				
-				myChart3.data.datasets[0].data=[1,2,3,4,5,6,7,8];
-				myChart3.data.datasets[1].data=[1,2,3,4,5,6,7,8];
+				/* myChart3.data.datasets[0].data=[1,2,3,4,5,6,7,8];
+				myChart3.data.datasets[1].data=[1,2,3,4,5,6,7,8]; */
 				myChart3.update();
 			}
 		<%}%>
-		} --%>
+		} 
 		
 
 	
