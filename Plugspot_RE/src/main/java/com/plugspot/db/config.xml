@@ -17,6 +17,7 @@
     <typeAlias type = "com.plugspot.model.carnumDTO" alias="carnumDTO"/>
     <typeAlias type = "com.plugspot.model.chargerAvgNumDTO" alias="chargerAvgNumDTO"/>
     <typeAlias type = "com.plugspot.model.citySpeedChargerDTO" alias="citySpeedChargerDTO"/>
+    <typeAlias type = "com.plugspot.model.chargePercentDTO" alias="chargePercentDTO"/>
     
   </typeAliases>
   <environments default="development">
@@ -43,7 +44,7 @@
      <mapper resource="com/plugspot/mapper/CarnumMapper.xml"/>
      <mapper resource="com/plugspot/mapper/chargerAvgMapper.xml"/>
      <mapper resource="com/plugspot/mapper/cSpeedCMapper.xml"/>
-     
+     <mapper resource="com/plugspot/mapper/chargePercentMapper.xml"/>
 
   </mappers>
 </configuration>

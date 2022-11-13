@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.plugspot.mapper.chargePercentMapper">
+  <select id="chargePercent" parameterType="chargePercentDTO" resultType="chargePercentDTO">
+select loc_seq,do_city,sumcharge,round(sumcharge/sum(sumcharge) over(),3)*100 as percent
+from (select a.loc_seq,b.do_city,(a.fast_charge+a.slow_charge) as sumcharge
+    	from T_SPEED_CITY_CHARGE a, t_do_city b
+  		where a.loc_seq=b.loc_seq)
+  </select>
+  
+  
+
+  </mapper>
