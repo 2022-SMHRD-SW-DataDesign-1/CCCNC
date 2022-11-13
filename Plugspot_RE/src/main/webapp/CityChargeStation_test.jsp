@@ -374,51 +374,7 @@ for (var i2 = 0; i2 < positions2.length; i2 ++) {
 </script>
 
 
-<!-- 셀렉트 선택시 이벤트 -->
-<script>
-var setPercentName="서울시";
-var setPercent=0;
-	function changeCitySelect(){
-		var citySelect = document.getElementById("city");
-		
-		var selectValue = citySelect.options[citySelect.selectedIndex].value;
-		console.log(selectValue);
-		var Lat=0;
-		var Lng=0;
-		<%for(int i=0;i<citylist.size();i++){%>
-			if(selectValue==<%=citylist.get(i).getLoc_seq()%>){
-				Lat=<%=citylist.get(i).getCity_latitude()%>
-				Lng=<%=citylist.get(i).getCity_longitude()%>
-				document.getElementById("selectTitle").innerHTML='<%=citylist.get(i).getDo_city()%>'
-			}
-		<% }%>
-		
-		
-		var moveLatLon = new kakao.maps.LatLng(Lat,Lng);
-		map2.setCenter(moveLatLon);
-		
-		//게이지 차트용
 
-		<%
-		for(int i=0;i<pt_list.size();i++){%>
-			if(selectValue==<%=pt_list.get(i).getLoc_seq().intValue()%>){
-				setPercentName = '<%=pt_list.get(i).getDo_city()%>';
-				setPercent = <%=pt_list.get(i).getPercent()%>;
-			}
-		<%}%>
-		console.log(setPercent,setPercentName);
-		
-		
-		config2.data.datasets.forEach(function(dataset) {
-			  dataset.data = dataset.data.map(function() {
-			   return setPercent;
-			  });
-			 });
-		console.log(ctx2);
-		
-		window.myRadialGauge2.update();
-	}
-</script>
 
  <script>//1. 게이지그래프용
 
@@ -705,6 +661,251 @@ for(int i=0;i<index_list.length;i++){
         });
     </script>
     
+    <script>
+
+    var myChart3 = new Chart(document.getElementById('myChart3').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['1주', '2주', '3주', '4주', '5주', '6주', '7주', '8주', '9주', '10주', '11주', '12주'],
+                datasets: [
+                    {
+                        label: '전체도시의 평균충전량',
+                        type: 'line',
+                        data: avglowchartList,
+                        backgroundColor: 'rgb(129,229,82)',
+                        borderColor: 'rgb(129,229,82)',
+                        fill: false,
+                        steppedLine: true,
+                    },
+                    {
+                        label: '선택도시의 완속 충전기 누적 충전량',
+                        type: 'bar', // 'bar' type, 전체 타입과 같다면 생략가능
+                        backgroundColor: 'rgb(118,158,252)',
+                        borderColor: 'rgb(118,158,252)',
+                        data: <%=inSlowList%>,
+                    }
+                ]
+            },
+            options: {
+                legend: {
+                    labels: {
+                        fontColor: 'black' // label color
+                    }
+                },
+                scales: {
+                    // y축
+                    yAxes: [{
+                        stacked: true,
+                        ticks: {
+                        	min:0,
+                        	max:48,
+                            fontColor: 'black' // y축 폰트 color
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: '평균충전량'
+                        }
+                    }],
+                    // x축
+                    xAxes: [{
+                        stacked: true,
+                        ticks: {
+                            fontColor: 'black' // x축 폰트 color
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: '<%=inPercentName%>의 완속 충전기 누적 충전량'
+                        }
+                    }]
+                },
+                responsive: false, //반응형 웹페이지
+                interaction: {
+                    intersect: false,
+                    axis: 'x'
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: (ctx) => 'Step ' + ctx.chart.data.datasets[0].stepped + ' Interpolation',
+                    }
+                }
+            }
+        });
+    </script>
+    <script>
+  //서울 급속//
+ 
+    </script>
+    <!-- 급속 -->
+    <script>
+   	
+        var myChart4 = new Chart(document.getElementById('myChart4').getContext('2d'), {
+            type: 'bar',
+            
+            data: {
+            	
+                labels: ['1주', '2주', '3주', '4주', '5주', '6주', '7주', '8주', '9주', '10주', '11주', '12주'],
+                datasets: [
+                    {
+                        label: '전체도시의 평균충전량',
+                        type: 'line',
+                        data: avgfastchartList,
+                        backgroundColor: 'rgb(129,229,82)',
+                        borderColor: 'rgb(129,229,82)',
+                        fill: false,
+                        steppedLine: true,
+                    },
+                    {
+                        label: '선택도시의 급속 충전기 누적 충전량',
+                        type: 'bar', // 'bar' type, 전체 타입과 같다면 생략가능
+                        backgroundColor: 'rgb(254,122,112)',
+                        borderColor: 'rgb(254,122,112)',
+                        data: <%=inFastList%>,
+                    }
+                ]
+            },
+            options: {
+                legend: {
+                    labels: {
+                        fontColor: 'black' // label color
+                    }
+                },
+                scales: {
+                    // y축
+                    yAxes: [{
+                        stacked: true,
+                        ticks: {
+                        	min:0,
+                        	max:48,
+                            fontColor: 'black' // y축 폰트 color
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: '평균충전량'
+                        }
+                    }],
+                    // x축
+                    xAxes: [{
+                        stacked: true,
+                        ticks: {
+                            fontColor: 'black' // x축 폰트 color
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: '<%=inPercentName%>의 급속 충전기 누적 충전량'
+                        }
+                    }]
+                },
+                responsive: false, //반응형 웹페이지
+                interaction: {
+                    intersect: false,
+                    axis: 'x'
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: (ctx) => 'Step ' + ctx.chart.data.datasets[0].stepped + ' Interpolation',
+                    }
+                }
+            }
+        });
+    </script>
+    <!-- 셀렉트 선택시 이벤트 -->
+<script>
+var setPercentName="서울시";
+var setPercent=0;
+	function changeCitySelect(){
+		var citySelect = document.getElementById("city");
+		
+		var selectValue = citySelect.options[citySelect.selectedIndex].value;
+		console.log(selectValue);
+		var Lat=0;
+		var Lng=0;
+		<%for(int i=0;i<citylist.size();i++){%>
+			if(selectValue==<%=citylist.get(i).getLoc_seq()%>){
+				Lat=<%=citylist.get(i).getCity_latitude()%>
+				Lng=<%=citylist.get(i).getCity_longitude()%>
+				document.getElementById("selectTitle").innerHTML='<%=citylist.get(i).getDo_city()%>'
+			}
+		<% }%>
+		
+		
+		var moveLatLon = new kakao.maps.LatLng(Lat,Lng);
+		map2.setCenter(moveLatLon);
+		
+		//게이지 차트용
+
+		<%
+		for(int i=0;i<pt_list.size();i++){%>
+			if(selectValue==<%=pt_list.get(i).getLoc_seq().intValue()%>){
+				setPercentName = '<%=pt_list.get(i).getDo_city()%>';
+				setPercent = <%=pt_list.get(i).getPercent()%>;
+			}
+		<%}%>
+		console.log(setPercent,setPercentName);
+		
+		
+		config2.data.datasets.forEach(function(dataset) {
+			  dataset.data = dataset.data.map(function() {
+			   return setPercent;
+			  });
+			 });
+		console.log(ctx2);
+		
+		window.myRadialGauge2.update();
+		
+		
+		
+		//바차트용
+<%-- <%		ArrayList<BigDecimal> setFastList = new ArrayList<BigDecimal>();
+		ArrayList<BigDecimal> setSlowList = new ArrayList<BigDecimal>();%> --%>
+		
+		var setFastList=[];
+		var setSlowList=[];
+		<%for(int i=0;i<index_list.length;i++){%>
+			if(selectValue==<%=index_list[i]%>){
+				console.log(selectValue,<%=index_list[i]%>);
+			  	setFastList.push(<%=(fast.get(i).getOne_week_charge())%>);
+				setFastList.push(<%=(fast.get(i).getTwo_week_charge())%>);
+				setFastList.push(<%=(fast.get(i).getTree_week_charge())%>);
+				setFastList.push(<%=(fast.get(i).getFour_week_charge())%>);
+				setFastList.push(<%=(fast.get(i).getFive_week_charge())%>);
+				setFastList.push(<%=(fast.get(i).getSix_week_charge())%>);
+				setFastList.push(<%=(fast.get(i).getSeven_week_charge())%>);
+				setFastList.push(<%=(fast.get(i).getEight_week_charge())%>);
+				setFastList.push(<%=(fast.get(i).getNine_week_charge())%>);
+				setFastList.push(<%=(fast.get(i).getTen_week_charge())%>);
+				setFastList.push(<%=(fast.get(i).getEleven_week_charge())%>);
+				setFastList.push(<%=(fast.get(i).getTwelve_week_charge())%>);
+				
+				setSlowList.push(<%=(low.get(i).getOne_week_charge())%>);
+				setSlowList.push(<%=(low.get(i).getTwo_week_charge())%>);
+				setSlowList.push(<%=(low.get(i).getTree_week_charge())%>);
+				setSlowList.push(<%=(low.get(i).getFour_week_charge())%>);
+				setSlowList.push(<%=(low.get(i).getFive_week_charge())%>);
+				setSlowList.push(<%=(low.get(i).getSix_week_charge())%>);
+				setSlowList.push(<%=(low.get(i).getSeven_week_charge())%>);
+				setSlowList.push(<%=(low.get(i).getEight_week_charge())%>);
+				setSlowList.push(<%=(low.get(i).getNine_week_charge())%>);
+				setSlowList.push(<%=(low.get(i).getTen_week_charge())%>);
+				setSlowList.push(<%=(low.get(i).getEleven_week_charge())%>);
+				setSlowList.push(<%=(low.get(i).getTwelve_week_charge())%>);
+				
+				console.log(selectValue,setFastList);
+				console.log(selectValue,setSlowList);
+
+			}
+		<%}%>
+		
+		myChart3.data.datasets[1].data=setSlowList; 
+		myChart4.data.datasets[1].data=setFastList; 
+ 		myChart3.update();
+		myChart4.update();
+		
+		
+		
+	}
+</script>
 
 </body>
 </html>
