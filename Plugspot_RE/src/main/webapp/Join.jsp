@@ -184,7 +184,7 @@ fieldset {
 		<div class="f_logo">
 			<img src="./img/FootLogo.png" alt="PlugSpot">
 		</div>
-		<span class="t">|</span> <strong style="color: black;">개인정보처리방침</strong>
+		<span class="t">|</span> <span style="color: black;">개인정보처리방침</span>
 		<span class="t">|</span> <span class="m mar_l5">고객센터
 			010-9313-9935</span>
 		<p class="mar_t5">
