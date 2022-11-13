@@ -17,4 +17,5 @@ public class CityChargeDTO {
 	 private String charge_state_name;
 	 private BigDecimal latitude;
 	 private BigDecimal longitude;
+	 private BigDecimal loc_seq;
 }

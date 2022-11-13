@@ -1,5 +1,3 @@
-
-
 <%@page import="com.plugspot.model.avgDTO"%>
 <%@page import="com.plugspot.model.avgDAO"%>
 <%@page import="com.plugspot.model.lowDTO"%>
@@ -182,12 +180,27 @@ h3 {
 }
 </style>
 </head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<link rel="stylesheet" href="https://uicdn.toast.com/chart/latest/toastui-chart.min.css" />
+<script src="https://uicdn.toast.com/chart/latest/toastui-chart.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f867e2332325dabbf2acc1f5355d06f"></script>
+
 <body>
-   <div style="height:100vh; width:100vw;">
+	<fieldset class="t1" style="display:inline;margin-top: 0px;width: 200px;height: 300px;">
+		<h3>서울</h3>
+		<div>
+	    	<div id="staticMap" style="width: 260px; height: 230px;"></div>
+		</div>
+	</fieldset>
+    <div id="chart-area" style="display:inline"></div>
+	<div style="height:100%; width:100%;">
         <canvas id="myChart"></canvas>
         <canvas id="myChart2"></canvas>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+	
+	
+	
 <%
 CityChargeDAO dao = new CityChargeDAO();
 ArrayList<CityChargeDTO> station = dao.station();
@@ -219,15 +232,7 @@ ArrayList<avgDTO> avg2 = dao5.lowavg();
 	</header>
 	<content>
 	<div class="article">
-		<fieldset class="t1">
-			<h3>서울</h3>
-			<div>
-				<script type="text/javascript"
-					src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f867e2332325dabbf2acc1f5355d06f"></script>
-<div id="staticMap" style="width: 260px; height: 230px;"></div>
-				
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f867e2332325dabbf2acc1f5355d06f"></script>
-<div id="staticMap" style="width:600px;height:350px;"></div>
+
 <script>
 
 
@@ -278,8 +283,7 @@ for (var i = 0; i < positions.length; i ++) {
    // marker.setMap(map)
 }
 </script>
-</div>
-</fieldset>
+
 <!-- 급속평균 -->
  <script>
 let avgfastchartList = [];
@@ -995,7 +999,7 @@ jejulowchartList.push(<%=low.get(16).getTwelve_week_charge()%>);
                         },
                         scaleLabel: {
                             display: true,
-                            labelString: '서울의 완속 충전기 누적 충전량'
+                            labelString: '서울의 급속 충전기 누적 충전량'
                         }
                     }]
                 },
@@ -1012,6 +1016,52 @@ jejulowchartList.push(<%=low.get(16).getTwelve_week_charge()%>);
                 }
             }
         });
+    </script>
+    
+      <script class="uichart">
+
+        const el = document.getElementById('chart-area');
+        const data = {
+            series: [
+                {
+                    // name: 'Speed',
+                    data: [80],
+                },
+            ],
+        };
+        const options = {
+            chart: { title: '전국 대비 서울의 총 충전비율(%)', width: 300, height: 300 },
+            series: {
+                solid: true,
+                dataLabels: { visible: true, offsetY: -30, formatter: (value) => `${value}%` },
+            },
+            theme: {
+                circularAxis: {
+                    lineWidth: 0,
+                    strokeStyle: 'rgba(0, 0, 0, 0)',
+                    tick: {
+                     	lineWidth: 0,
+                        strokeStyle: 'rgba(0, 0, 0, 0)',
+                    },
+                    label: {
+                        color: 'rgba(0, 0, 0, 0)',
+                    },
+                },
+                series: {
+                    dataLabels: {
+                        fontSize: 25,
+                        fontFamily: 'Impact',
+                        fontWeight: 100,
+                        color: 'grey',
+                        textBubble: {
+                            visible: false,
+                        },
+                    },
+                },
+            },
+        };
+
+        const chart_test = toastui.Chart.gaugeChart({ el, data, options });
     </script>
 </body>
 </html>
