@@ -170,7 +170,6 @@ fieldset {
 	margin: 5px 0 10px;
 	text-align: center;
 }
-
 .abs {
 	right: 0;
 	top: 0;
@@ -192,7 +191,6 @@ canvas {
 	width: 100%;
 	height: 300px;
 }
-
 .areMap {
 	width: 100%;
 }
@@ -207,49 +205,41 @@ footer {
     bottom: 0;
     left: 0;
 }
-
 li {
 	list-style: none;
 }
-
 #li_1 {
 	float: left;
 	width: 20%;
 	heigt: 70%;
 	padding-right: 1%;
 }
-
 #li_2 {
 	float: left;
-	width: 45%;
+	width: 35%;
 	height: 70%;
 	padding-right: 1%;
 }
-
 #li_3 {
 	float: left;
 	width: 15%;
 	height: 70%;
 	padding-right: 1%;
 }
-
 #li_4 {
 	/* float: right; */
 	width: 82%;
 	height: 300px;
 }
-
 .info_table02 {
 	text-align: center;
 }
-
 .content .banner {
 	/* background: url(./img/banner2.png) no-repeat;*/
 	background-position: center;
 	text-align: center;
 	background-size: cover !important;
 }
-
 .banner img {
 	width: 79%;
 }
@@ -323,10 +313,10 @@ li {
 		</li>
 		<li id="li_2">
 			<div id="nation">
-				<div id="map" style="width: 650px; height: 720px;"></div>
+				<div id="map" style="width: 630px; height: 720px;"></div>
 			</div>
 			<div id="satu">
-				<iframe src="./Saturation.jsp" frameborder="" scrolling="yes" style="display: block; height: 20%; width: 100%"></iframe>
+				<iframe src="./Saturation.jsp" frameborder="0px;" scrolling="yes" style="display: block; height: 20%; width: 100%"></iframe>
 		 	</div>	
 		</li>
 		<li id="li_3"> 		
@@ -336,9 +326,9 @@ li {
 						<caption class="title">자동차 등록 대수</caption>
 						<thead>
 							<tr>
-								<th scope="col" class="th03">순위</th>
-								<th scope="col" class="th01">도시</th>
-								<th scope="col" class="th01">자동차등록수</th>
+								<th style="width: 40px;">순위</th>
+								<th>도시</th>
+								<th>자동차등록수</th>
 							</tr>
 						</thead>
 						<%
@@ -350,7 +340,7 @@ li {
 						<tbody style="height: 100%">
 							<tr>
 								<th><span class="zone"><%=i + 1%></span></th>
-								<td style="width: 150px; height: 100%"><%=ranklist.get(i).getDo_city()%></td>
+								<td style="width: 160px; height: 100%"><%=ranklist.get(i).getDo_city()%></td>
 								<td style="width: 150px; height: 100%"><%=ranklist.get(i).getCar_num()%></td>
 							</tr>
 						</tbody>
@@ -399,14 +389,7 @@ li {
 </footer>
 <!----------------------------------------포화도표-------------------------------------->
 
-<!------------------------------------------------------------------------------------>
-
 <!-----------------------------------------순위---------------------------------------->
-
-<!------------------------------------------------------------------------------------>
-
-
-	
 	<%
 	kakaoDAO dao = new kakaoDAO();
 	ArrayList<kakaoDTO> list = dao.kakao();
@@ -482,7 +465,7 @@ ArrayList<citySpeedChargerDTO> cilist = citdao.citySpeedCharger();
                         }
                     }
                 });
-            </script>
+        </script>
 		
 
         <script>
@@ -555,8 +538,8 @@ ArrayList<citySpeedChargerDTO> cilist = citdao.citySpeedCharger();
                 },
                 options: {
                     legend: {
-                        position: 'right',
-                        fontSize: 8,
+                        position: 'bottom',
+                        fontSize: 10,
                         labels: {
                             fontColor: "black",
                             fontSize: 10
@@ -576,24 +559,24 @@ ArrayList<citySpeedChargerDTO> cilist = citdao.citySpeedCharger();
                             xAxes: [{
                                 stacked: true,
                                 ticks: {
-                                    fontSize: 8,
+                                    fontSize: 10,
                                     fontColor: 'black' // x축 폰트 color
 
                                 },
                                 scaleLabel: {
                                     display: true,
-                                    fontSize: 9,
+                                    fontSize: 10,
                                     labelString: '도시'
                                 }
                             }],
                             yAxes: [{
                                 ticks: {
-                                    fontSize: 8,
+                                    fontSize: 10,
                                     fontColor: 'black' // x축 폰트 color
                                 },
                                 scaleLabel: {
                                     display: true,
-                                    fontSize: 9,
+                                    fontSize: 10,
                                     labelString: '충전기 개수'
                                 }
                             }]
@@ -691,7 +674,7 @@ ArrayList<citySpeedChargerDTO> cilist = citdao.citySpeedCharger();
                 },
                 options: {
                     legend: {
-                        position: 'right',    // 라벨 폰트 색상,크기
+                        position: 'bottom',    // 라벨 폰트 색상,크기
                         labels: {
                             fontColor: "black",
                             fontSize: 10
@@ -706,24 +689,24 @@ ArrayList<citySpeedChargerDTO> cilist = citdao.citySpeedCharger();
                         xAxes: [{
                             stacked: true,
                             ticks: {
-                                fontSize: 8,
+                                fontSize: 10,
                                 fontColor: 'black' // x축 폰트 color
 
                             },
                             scaleLabel: {
                                 display: true,
-                                fontSize: 9,
+                                fontSize: 10,
                                 labelString: '도시'
                             }
                         }],
                         yAxes: [{
                             ticks: {
-                                fontSize: 8,
+                                fontSize: 10,
                                 fontColor: 'black' // x축 폰트 color
                             },
                             scaleLabel: {
                                 display: true,
-                                fontSize: 9,
+                                fontSize: 10,
                                 labelString: '충전기 개수'
                             }
                         }]
@@ -736,13 +719,8 @@ ArrayList<citySpeedChargerDTO> cilist = citdao.citySpeedCharger();
         <script>
             const myChart = new Chart(document.getElementById('myChart'), config);
         </script>
-		
-		
-		
-		
-		
-		
-	<script>
+
+		<script>
 			var map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
 				center : new kakao.maps.LatLng(35.1083, 127.6358), // 지도의 중심좌표 
 				level : 13
@@ -839,10 +817,7 @@ ArrayList<citySpeedChargerDTO> cilist = citdao.citySpeedCharger();
 			<%}%>
 				
 			<%}%>
-			
-			
-			
-			
+
 		var mapContainer = document.getElementById('map2'), // 지도를 표시할 div 
 		    mapOption = { 
 		        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -890,10 +865,7 @@ ArrayList<citySpeedChargerDTO> cilist = citdao.citySpeedCharger();
 			    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
 			    kakao.maps.event.addListener(marker2, 'mouseover', makeOverListener(map2, marker2, infowindow));
 			    kakao.maps.event.addListener(marker2, 'mouseout', makeOutListener(infowindow));
-			
-			
-			
-			
+	
 			marker2.setMap(map2);
 		<%}%>
 /* =====================================다각형=====================================	 */		
