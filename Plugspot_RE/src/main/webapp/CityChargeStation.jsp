@@ -34,21 +34,18 @@ fieldset {
 	height: 10% !important;
 	position: fixed;
 }
-
 .header .inner_header {
 	position: relative;
 	width: 100%;
 	margin: 0 auto;
 	line-height: 100%;
 }
-
 .header .logo {
 	display: inline-block;
 	width: 190px;
 	margin-top: 0px;
 	margin: 0 auto;
 }
-
 .header .topMenu {
 	position: absolute;
 	width: 100%;
@@ -57,14 +54,12 @@ fieldset {
 	margin-left: 90%;
 	top: 24px !important;
 }
-
 .header .topMenu ul {
 	position: fixed;
 	float: right;
 	list-style: none;
 	margin-left: 350px;
 }
-
 .header img {
 	position: fixed;
 	float: left;
@@ -73,7 +68,6 @@ fieldset {
 	line-height: 35px !important;
 	border-right: 1px solid #D3D3D3;
 }
-
 .header .topMenu li {
 	float: left;
 	width: 80px;
@@ -81,7 +75,6 @@ fieldset {
 	line-height: 35px !important;
 	border-right: 1px solid #D3D3D3;
 }
-
 .header .topMenu li a {
 	display: block;
 	color: #686868;
@@ -90,7 +83,6 @@ fieldset {
 	font-size: 15px;
 	margin: 0 auto;
 }
-
 .header .topMenu li a:hover {
 	display: block;
 	color: #686868;
@@ -99,7 +91,6 @@ fieldset {
 	font-weight: bold !important;
 	font-size: 20px !important;
 }
-
 content {
 	float: left;
 	width: 1509px;
@@ -107,35 +98,29 @@ content {
 	margin-left: 10%;
 	margin-right: 10%;
 }
-
 .mapimg1 {
 	width: 250px;
 }
-
 .mapimg2 {
 	height: 189px;
 	width: 212px;
 }
-
 .select_ct {
 	float: left;
 	margin-top: 50%;
 	margin-left: -4%;
 }
-
 #chart-area {
 	display: block;
 	width: 320px;
     height: 160px;
 }
-
 #chart-area2 {
 	display: block;
 	width: 320px;
     height: 160px;
 	margin-top: 23%;
 }
-
 #canvas-holder {
 	display: block;
 	width: 300px;
@@ -143,22 +128,18 @@ content {
 	float: left;
 	margin-top: 26%;
 }
-
 div {
 	display: inline-block;
 }
-
 li {
 	list-style: none;
 }
-
 #city {
 	width: 80px;
 	height: 40px;
 	text-align: center;
 	margin-left: 38%;
 }
-
 .t1 {
 	display: inline;
 	border-radius: 5%;
@@ -166,7 +147,6 @@ li {
 	margin-top: 16%;
 	text-align: center;
 }
-
 .t2 {
 	display: inline;
 	border-radius: 5%;
@@ -174,36 +154,29 @@ li {
 	margin-top: 16%;
 	text-align: center;
 }
-
 h3 {
 	text-align: left;
 }
-
 #canvas-holder2 {
 	margin-top: 16%;
 	float: left;
 }
-
 .uichart {
 	margin: 10%;
 	float: left;
 }
-
 #myChart, #myChart2, #myChart3, #myChart4 {
 	width: 517px;
 	height: 247px;
 }
-
 .article {
 	float: left;
 }
-
 .article2 {
 	float: left;
 	margin-left: 0%;
 	margin-top: -1%;
 }
-
 .footer {
 	clear: both;
 	width: 100%;
@@ -260,6 +233,8 @@ for(int i=0;i<pt_list.size();i++){
 		inPercent = pt_list.get(i).getPercent();
 	}
 }
+/* 수익률 구조 */
+
 %>
 <header class="header">
 		<!-- head 시작 -->
@@ -282,7 +257,7 @@ for(int i=0;i<pt_list.size();i++){
 	<div class="article">
 <!-- ============================================================================================ -->
 <fieldset>
-	<fieldset class="t1" style="display:inline;margin-top: 0px;width: 200px;height: 300px;">
+	<fieldset class="t1"style="border:0px;">
 		<h3><%=inCenterName %></h3>
 		<div>
 	    	<div id="staticMap" style="width: 260px; height: 230px;"></div>
@@ -435,12 +410,15 @@ var setPercent=0;
 		<%}%>
 		console.log(setPercent,setPercentName);
 		
-		ctx2.data=[setPercent];
+		
+		config2.data.datasets.forEach(function(dataset) {
+			  dataset.data = dataset.data.map(function() {
+			   return setPercent;
+			  });
+			 });
 		console.log(ctx2);
-		window.ctx2.update();
 		
-		
-		
+		window.myRadialGauge2.update();
 	}
 </script>
 
@@ -489,7 +467,7 @@ var setPercent=0;
             labels: ["Metrics"],
             datasets: [
                 {
-                    data: [<%=inPercent%>],
+                    data: [<%=pt_list.get(0).getPercent()%>],
                     backgroundColor: [gradientStroke],
                     borderWidth: 0,
                     label: "Score"
@@ -501,7 +479,7 @@ var setPercent=0;
             legend: {},
             title: {
                 display: true,
-                text: "전국 대비 <%=inPercentName%>의 총 충전비율"
+                text: "전국 대비 서울시의 총 충전비율"
             },
             centerPercentage: 80
         }
@@ -509,6 +487,7 @@ var setPercent=0;
         var ctx2 = document.getElementById("chart-area2").getContext("2d");
         window.myRadialGauge2 = new Chart(ctx2, config2);
 </script>
+
 
 <!-- 급속평균 -->
   <script>
@@ -579,7 +558,7 @@ for(int i=0;i<index_list.length;i++){
 %>
 
 
-<script>
+<script class="bar">
 
         new Chart(document.getElementById('myChart').getContext('2d'), {
             type: 'bar',
@@ -655,7 +634,7 @@ for(int i=0;i<index_list.length;i++){
  
     </script>
     <!-- 급속 -->
-    <script>
+    <script class="bar2">
    	
         new Chart(document.getElementById('myChart2').getContext('2d'), {
             type: 'bar',
@@ -728,7 +707,23 @@ for(int i=0;i<index_list.length;i++){
             }
         });
     </script>
-    
+    	</div>
+	</content>
+    <footer class="footer">
+		<!-- foot 시작 -->
+		<div class="f_logo">
+			<img src="./img/FootLogo.png" alt="PlugSpot"
+				style="width: 190px; height: 35px;">
+		</div>
+		<span class="t">|</span> <span style="color: black;">개인정보처리방침</span>
+		<span class="t">|</span> <span class="m mar_l5">고객센터 1234-5678</span>
+		<p class="mar_t5">
+			사업자번호: 111-222-3333 &nbsp;&nbsp; 대표자: 쿠쿠뉴쿠 &nbsp;&nbsp;주소: 광주광역시 남구
+			송암로 60 광주CGI센터 2층<br> Copyright@2022 PlugSpot. All Rights
+			Reserved
+		</p>
+	</footer>
+	<!-- foot 끝 -->
 
 </body>
 </html>
