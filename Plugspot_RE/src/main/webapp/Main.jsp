@@ -451,7 +451,7 @@ li {
 	<!-- ============================================================================= -->
 
 
-	<script>
+		<script>
 		
                 var chart = new Chart('chart', {
                     type: 'horizontalBar',
@@ -473,7 +473,7 @@ li {
                     options: {
                         legend: {
                             display: true,
-                            position: 'bottom',
+                            position: 'right',
                             onClick: 'newLegendClickHandler'
                         },
                         responsive: false,
@@ -487,10 +487,10 @@ li {
                         }
                     }
                 });
-        </script>
+            </script>
+		
 
-
-	<script>
+        <script>
             var ctx = document.getElementById('myChart3');
 
             const config2 = {
@@ -560,8 +560,8 @@ li {
                 },
                 options: {
                     legend: {
-                        position: 'bottom',
-                        fontSize: 10,
+                        position: 'right',
+                        fontSize: 8,
                         labels: {
                             fontColor: "black",
                             fontSize: 10
@@ -581,24 +581,24 @@ li {
                             xAxes: [{
                                 stacked: true,
                                 ticks: {
-                                    fontSize: 10,
+                                    fontSize: 8,
                                     fontColor: 'black' // x축 폰트 color
 
                                 },
                                 scaleLabel: {
                                     display: true,
-                                    fontSize: 10,
-                                    labelString: ''
+                                    fontSize: 9,
+                                    labelString: '도시'
                                 }
                             }],
                             yAxes: [{
                                 ticks: {
-                                    fontSize: 10,
+                                    fontSize: 8,
                                     fontColor: 'black' // x축 폰트 color
                                 },
                                 scaleLabel: {
                                     display: true,
-                                    fontSize: 10,
+                                    fontSize: 9,
                                     labelString: '충전기 개수'
                                 }
                             }]
@@ -612,13 +612,13 @@ li {
 
 
         </script>
-	<script>
+        <script>
             const myChart3 = new Chart(document.getElementById('myChart3'),config);
         </script>
 
-	<fieldset>
+		<fieldset>
 
-		<script>
+        <script>
             var ctx = document.getElementById('myChart');
 
             var config = {
@@ -696,7 +696,7 @@ li {
                 },
                 options: {
                     legend: {
-                        position: 'bottom',    // 라벨 폰트 색상,크기
+                        position: 'right',    // 라벨 폰트 색상,크기
                         labels: {
                             fontColor: "black",
                             fontSize: 10
@@ -711,24 +711,24 @@ li {
                         xAxes: [{
                             stacked: true,
                             ticks: {
-                                fontSize: 10,
+                                fontSize: 8,
                                 fontColor: 'black' // x축 폰트 color
 
                             },
                             scaleLabel: {
                                 display: true,
-                                fontSize: 10,
-                                labelString: ''
+                                fontSize: 9,
+                                labelString: '도시'
                             }
                         }],
                         yAxes: [{
                             ticks: {
-                                fontSize: 10,
+                                fontSize: 8,
                                 fontColor: 'black' // x축 폰트 color
                             },
                             scaleLabel: {
                                 display: true,
-                                fontSize: 10,
+                                fontSize: 9,
                                 labelString: '충전기 개수'
                             }
                         }]
@@ -738,11 +738,16 @@ li {
             var myChart = new Chart(ctx, config);
 
         </script>
-		<script>
+        <script>
             const myChart = new Chart(document.getElementById('myChart'), config);
         </script>
-
-		<script>
+		
+		
+		
+		
+		
+		
+	<script>
 			var map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
 				center : new kakao.maps.LatLng(35.1083, 127.6358), // 지도의 중심좌표 
 				level : 13
@@ -839,7 +844,10 @@ li {
 			<%}%>
 				
 			<%}%>
-
+			
+			
+			
+			
 		var mapContainer = document.getElementById('map2'), // 지도를 표시할 div 
 		    mapOption = { 
 		        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -852,10 +860,10 @@ li {
 // 지도를 생성합니다
 
 		//마커생성
-		<%for (kakaoDTO kvm : list) {%>
-			var lat=<%=kvm.getCity_latitude()%>;
-			var lon=<%=kvm.getCity_longitude()%>;
-			var city="<%=kvm.getSi_city()%>";
+		<%for (kakaoDTO kvm  : list){%>
+			var lat=<%= kvm.getCity_latitude()%>;
+			var lon=<%= kvm.getCity_longitude()%>;
+			var city="<%= kvm.getSi_city()%>";
 			
 			/* var imageSrc = 'marker/chargelogo.png', imageSize = new kakao.maps.Size(25, 25);
 			var imageOption = {
@@ -865,166 +873,234 @@ li {
 			
 			var positions = 
 			    {
-			        content: '<div style="background-color:blue"><%=kvm.getSi_city()%>
-			</div>',
-				latlng : new kakao.maps.LatLng(lat, lon)
-			};
+			        content: '<div style="background-color:blue"><%= kvm.getSi_city()%></div>',
+			        latlng: new kakao.maps.LatLng(lat,lon)
+			    };
 
-			// 마커를 생성합니다
-			var marker2 = new kakao.maps.Marker({
-				map : map2, // 마커를 표시할 지도
-				position : positions.latlng
-			// 마커의 위치
-			/* image : markerImage */
-			});
+			
+			    // 마커를 생성합니다
+			    var marker2 = new kakao.maps.Marker({
+			        map: map2, // 마커를 표시할 지도
+			        position: positions.latlng // 마커의 위치
+			        /* image : markerImage */
+			    });
 
-			// 마커에 표시할 인포윈도우를 생성합니다 
-			var infowindow = new kakao.maps.InfoWindow({
-				content : positions.content
-			// 인포윈도우에 표시할 내용
-			});
+			    // 마커에 표시할 인포윈도우를 생성합니다 
+			    var infowindow = new kakao.maps.InfoWindow({
+			        content: positions.content // 인포윈도우에 표시할 내용
+			    });
 
-			// 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
-			// 이벤트 리스너로는 클로저를 만들어 등록합니다 
-			// for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-			kakao.maps.event.addListener(marker2, 'mouseover',
-					makeOverListener(map2, marker2, infowindow));
-			kakao.maps.event.addListener(marker2, 'mouseout',
-					makeOutListener(infowindow));
-
+			    // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+			    // 이벤트 리스너로는 클로저를 만들어 등록합니다 
+			    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+			    kakao.maps.event.addListener(marker2, 'mouseover', makeOverListener(map2, marker2, infowindow));
+			    kakao.maps.event.addListener(marker2, 'mouseout', makeOutListener(infowindow));
+			
+			
+			
+			
 			marker2.setMap(map2);
 		<%}%>
-			/* =====================================다각형=====================================	 */
-			var circlepath = [
-					new kakao.maps.LatLng(33.37368259997763, 126.56723592747852),
-					new kakao.maps.LatLng(34.82822927263921, 126.79483725356336),
-					new kakao.maps.LatLng(35.26603633642619, 128.14416640575502),
-					new kakao.maps.LatLng(35.80633969541898, 127.31350765087842),
-					new kakao.maps.LatLng(36.507922190697386,
-							126.79049370065155),
-					new kakao.maps.LatLng(36.463394521871166,
-							128.72124873945748),
-					new kakao.maps.LatLng(36.87981252723434, 127.6911328100001),
-					new kakao.maps.LatLng(37.742108501142305,
-							128.28575767007206),
-					new kakao.maps.LatLng(37.37925027545884, 127.44133385694842),
-					new kakao.maps.LatLng(37.55998597988157, 127.01937645416145),
-					new kakao.maps.LatLng(37.39339338582987, 126.64928744697255),
-					new kakao.maps.LatLng(36.637081706167294,
-							127.22524127172532),
-					new kakao.maps.LatLng(36.359765620447625,
-							127.40698537056107),
-					new kakao.maps.LatLng(35.90673966145805, 128.60702834725345),
-					new kakao.maps.LatLng(35.58086978386315, 129.34598950536966),
-					new kakao.maps.LatLng(35.160783429376885,
-							129.10913024617778),
-					new kakao.maps.LatLng(35.14214950781724, 126.86147269256132),
+/* =====================================다각형=====================================	 */		
 
-			]
-
-			for (cyi = 0; cyi < circlepath.length; cyi++) {
-				displayArea(circlepath[cyi]);
-			}
-			function displayArea(area) {
-				if (cyi < 8) {
-					var circle = new kakao.maps.Circle({
-						center : circlepath[cyi], // 원의 중심좌표 입니다 
-						radius : 50000, // 미터 단위의 원의 반지름입니다 
-						strokeWeight : 5, // 선의 두께입니다 
-						strokeColor : '#59DA50', // 선의 색깔입니다
-						strokeOpacity : 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-						strokeStyle : 'line', // 선의 스타일 입니다
-						fillColor : '#59DA50', // 채우기 색깔입니다
-						fillOpacity : 0.2
-					// 채우기 불투명도 입니다
-					});
-				} else {
-					var circle = new kakao.maps.Circle({
-						center : circlepath[cyi], // 원의 중심좌표 입니다 
-						radius : 8000, // 미터 단위의 원의 반지름입니다 
-						strokeWeight : 5, // 선의 두께입니다 
-						strokeColor : '#75B8FA', // 선의 색깔입니다
-						strokeOpacity : 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-						strokeStyle : 'line', // 선의 스타일 입니다
-						fillColor : '#CFE7FF', // 채우기 색깔입니다
-						fillOpacity : 0.9
-					// 채우기 불투명도 입니다  
-					});
-
+<%--  $.getJSON("./js/geojson2.geojson",function(geojson){
+	
+	var data = geojson.features;
+	var corrdinates=[];
+	var name ='';
+	
+	$.each(data,function(index,val){
+		
+		corrdinates = val.geometry.coordinates;
+		name = val.properties.CTP_ENG_NM;
+		type= val.geometry.type;
+		displayArea(corrdinates,name,type);
+		
+		<% System.out.print("tt");%>
+		})
+	})	
+		
+var polygon=[]; 
+function displayArea(corrdinates,name,type){
+var iland=0;
+var pointw=0;
+var mpointw=0;
+	var path =[];
+	var points=[];
+	for(iland;iland<corrdinates.length;iland++){
+		for(pointw;pointw<corrdinates[iland].length;pointw++){
+			if(type==="Polygon"){
+				x = corrdinates[iland][pointw][1];
+				y = corrdinates[iland][pointw][0];
+				points.push(new kakao.maps.LatLng(x,y));
+				console.log("pol:"+name+type+x,y,corrdinates.length,corrdinates[iland].length);
+			}else{
+				for(mpointw;mpointw<corrdinates[iland][pointw].length;mpointw++){
+					x = corrdinates[iland][pointw][mpointw][1];
+					y = corrdinates[iland][pointw][mpointw][0];
+					points.push(new kakao.maps.LatLng(x,y));
+					console.log("mul:"+name+type+x,y,corrdinates.length,corrdinates[iland].length,corrdinates[iland][pointw].length);
+					
 				}
-
-				circle.setMap(map2);
-
-				// 다각형에 mouseover 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 변경합니다 
-				// 지역명을 표시하는 커스텀오버레이를 지도위에 표시합니다
-				kakao.maps.event.addListener(circle, 'mouseover', function(
-						mouseEvent) {
-					circle.setOptions({
-						fillColor : '#09f'
-					});
-
-					customOverlay.setPosition(mouseEvent.latLng);
-					customOverlay.setMap(map2);
-				});
-
-				// 다각형에 mousemove 이벤트를 등록하고 이벤트가 발생하면 커스텀 오버레이의 위치를 변경합니다 
-				kakao.maps.event.addListener(circle, 'mousemove', function(
-						mouseEvent) {
-
-					customOverlay.setPosition(mouseEvent.latLng);
-				});
-
-				// 다각형에 mouseout 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 원래색으로 변경합니다
-				// 커스텀 오버레이를 지도에서 제거합니다 
-				kakao.maps.event.addListener(circle, 'mouseout', function() {
-					circle.setOptions({
-						fillColor : '#fff'
-					});
-					customOverlay.setMap(null);
-				});
-
-				// 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시합니다 
-				kakao.maps.event.addListener(circle, 'click', function(
-						mouseEvent) {
-					location.href = "./CityChargeStation.jsp?citydata:123"
-					console.log(this.circleA[0].id);
-				});
-
 			}
+		}
+		path.push(points);
+	}
+	
+	
 
-			/* =====================================함수부=====================================	 */
+	var polygon = new kakao.maps.Polygon({
+		map:map2,
+	    path:path, // 그려질 다각형의 좌표 배열입니다
+	    strokeWeight: 3, // 선의 두께입니다
+	    strokeColor: '#39DE2A', // 선의 색깔입니다
+	    strokeOpacity: 0.8, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+	    strokeStyle: 'solid', // 선의 스타일입니다
+	    fillColor: '#A2FF99', // 채우기 색깔입니다
+	    fillOpacity: 0.7 // 채우기 불투명도 입니다
+	});
+	
+	//polygon.setMap(map2);
+	<% System.out.print("t");%>
+} --%>
+var circlepath = [
+	new kakao.maps.LatLng(37.56157305843904,126.99207721631042),
+	new kakao.maps.LatLng(35.185789313392455,129.08892069918528),
+	new kakao.maps.LatLng(35.86686578241322,128.60219288119984),
+	new kakao.maps.LatLng(37.40422732079655,126.6566913260569),
+	new kakao.maps.LatLng(35.176035898372696,126.85741928640157),
+	new kakao.maps.LatLng(36.36142188986449,127.38582434405983),
+	new kakao.maps.LatLng(35.554648344730886,129.35250218417764),
+	new kakao.maps.LatLng(36.48165792763894,127.28929051779492),
+	new kakao.maps.LatLng(37.37029773144964,127.48196828397913),
+	new kakao.maps.LatLng(37.61730730441426,128.34761940811427),
+	new kakao.maps.LatLng(36.819310188820815,127.84000986756371),
+	new kakao.maps.LatLng(36.57304323463604,126.85346382442455),
+	new kakao.maps.LatLng(35.77017936365488,127.14372195776335),
+	new kakao.maps.LatLng(34.93949318524349,126.83961532041668),
+	new kakao.maps.LatLng(36.448635749767355,128.81251004222787),
+	new kakao.maps.LatLng(35.501933736635756,128.13079422127777),
+	new kakao.maps.LatLng(33.378653640994315,126.54541729800057),
+	
+	]
 
-			function setCenter() {
-				// 이동할 위도 경도 위치를 생성합니다 
-				var moveLatLon = new kakao.maps.LatLng(33.452613, 126.570888);
+var index_list=[1, 2, 3, 4, 5, 6, 7, 8, 9, 49, 57, 68, 83, 97, 130, 142, 159];
+var circled= new Array();
+for(cyi=0;cyi<circlepath.length;cyi++){
+	displayArea(circlepath[cyi]);
+}
+function displayArea(area){
+		if(cyi > 7){
+		var circle = new kakao.maps.Circle({
+		    center : circlepath[cyi],  // 원의 중심좌표 입니다 
+		    radius: 50000, // 미터 단위의 원의 반지름입니다 
+		    strokeWeight: 5, // 선의 두께입니다 
+		    strokeColor: '#59DA50', // 선의 색깔입니다
+		    strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+		    strokeStyle: 'line', // 선의 스타일 입니다
+		    fillColor: '#CFE7FF', // 채우기 색깔입니다
+		    fillOpacity: 0.5,  // 채우기 불투명도 입니다
+		    zIndex : 1
+		});
+		}else{
+		var circle = new kakao.maps.Circle({
+		    center : circlepath[cyi],  // 원의 중심좌표 입니다 
+		    radius: 8000, // 미터 단위의 원의 반지름입니다 
+		    strokeWeight: 5, // 선의 두께입니다 
+		    strokeColor: '#75B8FA', // 선의 색깔입니다
+		    strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+		    strokeStyle: 'line', // 선의 스타일 입니다
+		    fillColor: '#CFE7FF', // 채우기 색깔입니다
+		    fillOpacity: 0.9,  // 채우기 불투명도 입니다  
+		    zIndex: 999
+		}); 
 
-				// 지도 중심을 이동 시킵니다
-				map.setCenter(moveLatLon);
+	}
+		circled[cyi]=circle;
+		circled[cyi].id=(index_list[cyi]);
+		circle.setMap(map2);
+		
+		
+		 // 다각형에 mouseover 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 변경합니다 
+	    // 지역명을 표시하는 커스텀오버레이를 지도위에 표시합니다
+	    kakao.maps.event.addListener(circle, 'mouseover', function(mouseEvent) {
+	    	circle.setOptions({fillColor: '#09f'});
+
+
+	        customOverlay.setPosition(mouseEvent.latLng); 
+	        customOverlay.setMap(map2);
+	    });
+
+	    // 다각형에 mousemove 이벤트를 등록하고 이벤트가 발생하면 커스텀 오버레이의 위치를 변경합니다 
+	    kakao.maps.event.addListener(circle, 'mousemove', function(mouseEvent) {
+	        
+	        customOverlay.setPosition(mouseEvent.latLng); 
+	    });
+
+	    // 다각형에 mouseout 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 원래색으로 변경합니다
+	    // 커스텀 오버레이를 지도에서 제거합니다 
+	    kakao.maps.event.addListener(circle, 'mouseout', function() {
+	    	circle.setOptions({fillColor: '#fff'});
+	        customOverlay.setMap(null);
+	    }); 
+
+	    // 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시합니다 
+	    kakao.maps.event.addListener(circle, 'click', function(mouseEvent) {
+				location.href = "./CityChargeStation_test.jsp?citydata="+this.id;
+				console.log(this.id);
+	    });
+		
+}
+
+
+/* =====================================함수부=====================================	 */	
+
+		
+		function setCenter() {            
+		    // 이동할 위도 경도 위치를 생성합니다 
+		    var moveLatLon = new kakao.maps.LatLng(33.452613, 126.570888);
+		    
+		    // 지도 중심을 이동 시킵니다
+		    map.setCenter(moveLatLon);
+		}
+
+		function panTo(lt,ln) {
+		    // 이동할 위도 경도 위치를 생성합니다 
+		    var moveLatLon = new kakao.maps.LatLng(lt, ln);
+		    
+		    // 지도 중심을 부드럽게 이동시킵니다
+		    // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
+		    map2.panTo(moveLatLon);            
+		}  
+			
+		// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+		function makeOverListener(map, marker, infowindow) {
+		    return function() {
+		        infowindow.open(map, marker);
+		    };
+		}
+
+		// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+		function makeOutListener(infowindow) {
+		    return function() {
+		        infowindow.close();
+		    };
+		}	
+
+ 		function updateChartData(id){
+			<%for(int funcnu=0;funcnu<carlist.size();funcnu++){%>
+			if(id==<%=carlist.get(funcnu).getReg_seq()%>){
+				chart.data.datasets[0].data=[<%=carlist.get(funcnu).getCar_num()%>];
+				chart.data.datasets[1].data=[<%=carlist.get(funcnu).getDat_possible_car()%>];
+				chart.update();
+				
+				/* myChart3.data.datasets[0].data=[1,2,3,4,5,6,7,8];
+				myChart3.data.datasets[1].data=[1,2,3,4,5,6,7,8]; */
+				myChart3.update();
 			}
-
-			function panTo(lt, ln) {
-				// 이동할 위도 경도 위치를 생성합니다 
-				var moveLatLon = new kakao.maps.LatLng(lt, ln);
-
-				// 지도 중심을 부드럽게 이동시킵니다
-				// 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
-				map2.panTo(moveLatLon);
-			}
-
-			// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
-			function makeOverListener(map, marker, infowindow) {
-				return function() {
-					infowindow.open(map, marker);
-				};
-			}
-
-			// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
-			function makeOutListener(infowindow) {
-				return function() {
-					infowindow.close();
-				};
-			}
-		</script>
+		<%}%>
+		} 
+	</script>
 </body>
 
 </html>
