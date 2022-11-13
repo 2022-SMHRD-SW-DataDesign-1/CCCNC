@@ -170,6 +170,7 @@ fieldset {
 	margin: 5px 0 10px;
 	text-align: center;
 }
+
 .abs {
 	right: 0;
 	top: 0;
@@ -178,6 +179,7 @@ fieldset {
 	font-weight: normal;
 	float: right;
 }
+
 .left_cont {
 	float: left;
 	width: 700px;
@@ -187,10 +189,12 @@ fieldset {
 	float: right;
 	width: 700px;
 }
-canvas {
+
+canvas.barchart2 {
 	width: 100%;
 	height: 300px;
 }
+
 .areMap {
 	width: 100%;
 }
@@ -200,46 +204,54 @@ footer {
 	width: 100%;
 	font-family: 한컴 고딕;
 	font-weight: 50px;
-    height: 10%;/* footer의 높이 */
-    position: absolute;  
-    bottom: 0;
-    left: 0;
+	height: 10%; /* footer의 높이 */
+	position: absolute;
+	bottom: 0;
+	left: 0;
 }
+
 li {
 	list-style: none;
 }
+
 #li_1 {
 	float: left;
-	width: 20%;
+	width: 26%;
 	heigt: 70%;
 	padding-right: 1%;
 }
+
 #li_2 {
 	float: left;
-	width: 35%;
+	width: 39%;
 	height: 70%;
 	padding-right: 1%;
 }
+
 #li_3 {
 	float: left;
-	width: 15%;
+	width: 14%;
 	height: 70%;
 	padding-right: 1%;
 }
+
 #li_4 {
 	/* float: right; */
 	width: 82%;
 	height: 300px;
 }
+
 .info_table02 {
 	text-align: center;
 }
+
 .content .banner {
 	/* background: url(./img/banner2.png) no-repeat;*/
 	background-position: center;
 	text-align: center;
 	background-size: cover !important;
 }
+
 .banner img {
 	width: 79%;
 }
@@ -247,19 +259,25 @@ li {
 </head>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f867e2332325dabbf2acc1f5355d06f&libraries=services,clusterer,drawing"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f867e2332325dabbf2acc1f5355d06f&libraries=clusterer"></script>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f867e2332325dabbf2acc1f5355d06f&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f867e2332325dabbf2acc1f5355d06f&libraries=clusterer"></script>
 
 <body style="height: 2000px;">
 	<header class="header">
 		<div class="head">
 			<div class="logo">
-				<a href="Main.jsp"> <img src="./img/Logo.png" alt="PlugSpot"class="logo"></a>
+				<a href="Main.jsp"> <img src="./img/Logo.png" alt="PlugSpot"
+					class="logo"></a>
 			</div>
 		</div>
 		<!-- head 끝  -->
-		<%MemberDTO info = (MemberDTO) session.getAttribute("info");%>
+		<%
+		MemberDTO info = (MemberDTO) session.getAttribute("info");
+		%>
 		<div class="topMenu">
 			<div class="clear">
 				<form action="LogoutService" method="post">
@@ -284,112 +302,120 @@ li {
 					%>
 				</form>
 			</div>
-		</div> <!-- topMenu 끝 -->
+		</div>
+		<!-- topMenu 끝 -->
 	</header>
 
- 	<div class="content">
-		<div class="banner" style="position: absolute; top: 100px; left: 0px; width: 100%; z-index: 0; backface-visibility: hidden;">
+	<div class="content">
+		<div class="banner"
+			style="position: absolute; top: 100px; left: 0px; width: 100%; z-index: 0; backface-visibility: hidden;">
 			<img src="./img/banner.png" alt="배너">
 		</div>
-	    <div class="in_content">
-		<% ArrayList<RankDTO> ranklist = (ArrayList) session.getAttribute("ranklist");
-		if (ranklist == null) {
-			response.sendRedirect("rankService");
-			System.out.print("rankService");
-		} else {
-			System.out.println("메인으로 출력테스트" + ranklist.get(0).getDo_city());
-		} %>
-<!-----------------------------------------카카오맵포화도--------------------------------->
-	<form action="kakaoService" method="post">
-	<ul>
-	<li id="li_0">
-		<li id="li_1">
-			<div id="city">
-				<div id="map2" style="width: 650px; height: 650px;"></div>
-            </div>
-			<div id="barChart">
-				<canvas id="chart" class="barchart2"></canvas>
-			</div>
-		</li>
-		<li id="li_2">
-			<div id="nation">
-				<div id="map" style="width: 630px; height: 720px;"></div>
-			</div>
-			<div id="satu">
-				<iframe src="./Saturation.jsp" frameborder="0px;" scrolling="yes" style="display: block; height: 20%; width: 100%"></iframe>
-		 	</div>	
-		</li>
-		<li id="li_3"> 		
-			<div id="rank">
-				<div class="ranking">
-					<table class="info_table02">
-						<caption class="title">자동차 등록 대수</caption>
-						<thead>
-							<tr>
-								<th style="width: 40px;">순위</th>
-								<th>도시</th>
-								<th>자동차등록수</th>
-							</tr>
-						</thead>
-						<%
-						if (ranklist != null) {
-						%>
-						<%
-						for (int i = 0; i < ranklist.size(); i++) {
-						%>
-						<tbody style="height: 100%">
-							<tr>
-								<th><span class="zone"><%=i + 1%></span></th>
-								<td style="width: 160px; height: 100%"><%=ranklist.get(i).getDo_city()%></td>
-								<td style="width: 150px; height: 100%"><%=ranklist.get(i).getCar_num()%></td>
-							</tr>
-						</tbody>
-						<%
-						}
-						}
-						%>
-					</table>
-				</div>
-			</div>
-		</li>
-	</li><!-- li_0 끝 --> 	
-	
-	<li id="li_4">
-		<div id="content_bottom">
-			<div id="lineChart">
-				<div class="chart-container">
-            		<canvas id="myChart" class="chart" style="width:1200px"></canvas>
-        		</div>
-        	</div>
-        	<div id="barChart2">
-		 		<div class="chart-container2">
-            		<canvas id="myChart3" class="bar-chart" style="width:1200px"> </canvas>
-        		</div>
-        	</div>
-        </div>
-    </li>
-    </ul>
-	</form>
-</div>
-</div>
-<footer class="footer">
-<div class="foot">
-		<!-- foot 시작 -->
-		<div class="f_logo">
-			<img src="./img/FootLogo.png" alt="PlugSpot">
-		</div>
-		<span class="t">|</span> <strong style="color: #686868;">개인정보처리방침</strong>
-		<span class="t">|</span> <span class="m mar_l5">고객센터 1234-5678</span>
-		<p class="mar_t5">
-			사업자번호: 111-222-3333 &nbsp;&nbsp; 대표자: 쿠쿠뉴쿠 &nbsp;&nbsp;주소: 광주광역시 남구
-			송암로 60 광주CGI센터 2층<br> Copyright@2022 PlugSpot. All Rights
-			Reserved
-		</p>
-</div>
-</footer>
-<!----------------------------------------포화도표-------------------------------------->
+		<div class="in_content">
+			<%
+			ArrayList<RankDTO> ranklist = (ArrayList) session.getAttribute("ranklist");
+			if (ranklist == null) {
+				response.sendRedirect("rankService");
+				System.out.print("rankService");
+			} else {
+				System.out.println("메인으로 출력테스트" + ranklist.get(0).getDo_city());
+			}
+			%>
+			<!-----------------------------------------카카오맵포화도--------------------------------->
+			<form action="kakaoService" method="post">
+				<ul>
+				<li id="li_0"> 
+					<li id="li_1">
+						<div id="city">
+							<div id="map2" style="width: 100%; height: 430px;"></div>
+						</div>
+						<div id="barChart">
+							<canvas id="chart" class="barchart2"></canvas>
+						</div>
+					</li>
+					<li id="li_2">
+						<div id="nation">
+							<div id="map" style="width: 720px; height: 560px;"></div>
+						</div>
+						<div id="satu">
+							<iframe src="./Saturation.jsp" frameborder="0px;" scrolling="yes"
+								style="display: block; height: 20%; width: 100%"></iframe>
+						</div>
+					</li>
+				
+					<li id="li_3">
+						<div id="rank">
+							<div class="ranking">
+								<table class="info_table02">
+									<caption class="title">전기차 지역별 순위</caption>
+									<thead>
+										<tr>
+											<th style="width: 47px;">순위</th>
+											<th>도시</th>
+											<th style="width: 152px;">전기차등록수</th>
+										</tr>
+									</thead>
+									<%
+									if (ranklist != null) {
+									%>
+									<%
+									for (int i = 0; i < ranklist.size(); i++) {
+									%>
+									<tbody style="height: 100%">
+										<tr>
+											<th><span class="zone"><%=i + 1%></span></th>
+											<td style="width: 263px; height: 100%"><%=ranklist.get(i).getDo_city()%></td>
+											<td style="width: 170px; height: 100%"><%=ranklist.get(i).getCar_num()%></td>
+										</tr>
+									</tbody>
+									<%
+									}
+									}
+									%>
+								</table>
+							</div>
+						</div>
+					</li>
+				</li>
+			
+					<!-- li_0 끝 -->
 
-<!-----------------------------------------순위---------------------------------------->
+					<li id="li_4">
+						<div id="content_bottom">
+							<div id="lineChart">
+								<div class="chart-container">
+									<canvas id="myChart" class="chart" style="width:35%; height:300px; float: left;" ></canvas>
+								</div>
+							</div>
+							<div id="barChart2">
+								<div class="chart-container2">
+									<canvas id="myChart3" class="bar-chart" style="width:35%; height:300px; float: left;"> </canvas>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</form>
+		</div>
+	</div>
+	<footer class="footer">
+		<div class="foot">
+			<!-- foot 시작 -->
+			<div class="f_logo">
+				<img src="./img/FootLogo.png" alt="PlugSpot" style=" width: 190px; height: 44px;">
+			</div>
+			<span class="t">|</span> <strong style="color: #686868;">개인정보처리방침</strong>
+			<span class="t">|</span> <span class="m mar_l5">고객센터 1234-5678</span>
+			<p class="mar_t5">
+				사업자번호: 111-222-3333 &nbsp;&nbsp; 대표자: 쿠쿠뉴쿠 &nbsp;&nbsp;주소: 광주광역시 남구
+				송암로 60 광주CGI센터 2층<br> Copyright@2022 PlugSpot. All Rights
+				Reserved
+			</p>
+		</div>
+	</footer>
+	<!----------------------------------------포화도표-------------------------------------->
+
+	<!-----------------------------------------순위---------------------------------------->
 	<%
 	kakaoDAO dao = new kakaoDAO();
 	ArrayList<kakaoDTO> list = dao.kakao();
@@ -409,27 +435,23 @@ li {
 		System.out.println(list2.get(k).getSATURATION());
 	}
 	%>
-<!-- =================================carnum==================================== -->
+	<!-- =================================carnum==================================== -->
 
-<% 
-carnumDAO cardao = new carnumDAO(); 
-ArrayList<carnumDTO> carlist = cardao.carnum();
+	<%
+	carnumDAO cardao = new carnumDAO();
+	ArrayList<carnumDTO> carlist = cardao.carnum();
+
+	chargerAvgNumDAO avdao = new chargerAvgNumDAO();
+	ArrayList<chargerAvgNumDTO> avlist = avdao.chargerAvgNum();
+
+	citySpeedChargerDAO citdao = new citySpeedChargerDAO();
+	ArrayList<citySpeedChargerDTO> cilist = citdao.citySpeedCharger();
+	%>
+
+	<!-- ============================================================================= -->
 
 
-chargerAvgNumDAO avdao = new chargerAvgNumDAO();
-ArrayList<chargerAvgNumDTO> avlist = avdao.chargerAvgNum();
-
-citySpeedChargerDAO citdao = new citySpeedChargerDAO();
-ArrayList<citySpeedChargerDTO> cilist = citdao.citySpeedCharger();
-%>
-
-
-
-
-<!-- ============================================================================= -->	
-	
-
-<script>
+	<script>
 		
                 var chart = new Chart('chart', {
                     type: 'horizontalBar',
@@ -451,7 +473,7 @@ ArrayList<citySpeedChargerDTO> cilist = citdao.citySpeedCharger();
                     options: {
                         legend: {
                             display: true,
-                            position: 'right',
+                            position: 'bottom',
                             onClick: 'newLegendClickHandler'
                         },
                         responsive: false,
@@ -466,9 +488,9 @@ ArrayList<citySpeedChargerDTO> cilist = citdao.citySpeedCharger();
                     }
                 });
         </script>
-		
 
-        <script>
+
+	<script>
             var ctx = document.getElementById('myChart3');
 
             const config2 = {
@@ -566,7 +588,7 @@ ArrayList<citySpeedChargerDTO> cilist = citdao.citySpeedCharger();
                                 scaleLabel: {
                                     display: true,
                                     fontSize: 10,
-                                    labelString: '도시'
+                                    labelString: ''
                                 }
                             }],
                             yAxes: [{
@@ -590,13 +612,13 @@ ArrayList<citySpeedChargerDTO> cilist = citdao.citySpeedCharger();
 
 
         </script>
-        <script>
+	<script>
             const myChart3 = new Chart(document.getElementById('myChart3'),config);
         </script>
 
-		<fieldset>
+	<fieldset>
 
-        <script>
+		<script>
             var ctx = document.getElementById('myChart');
 
             var config = {
@@ -696,7 +718,7 @@ ArrayList<citySpeedChargerDTO> cilist = citdao.citySpeedCharger();
                             scaleLabel: {
                                 display: true,
                                 fontSize: 10,
-                                labelString: '도시'
+                                labelString: ''
                             }
                         }],
                         yAxes: [{
@@ -716,7 +738,7 @@ ArrayList<citySpeedChargerDTO> cilist = citdao.citySpeedCharger();
             var myChart = new Chart(ctx, config);
 
         </script>
-        <script>
+		<script>
             const myChart = new Chart(document.getElementById('myChart'), config);
         </script>
 
@@ -830,10 +852,10 @@ ArrayList<citySpeedChargerDTO> cilist = citdao.citySpeedCharger();
 // 지도를 생성합니다
 
 		//마커생성
-		<%for (kakaoDTO kvm  : list){%>
-			var lat=<%= kvm.getCity_latitude()%>;
-			var lon=<%= kvm.getCity_longitude()%>;
-			var city="<%= kvm.getSi_city()%>";
+		<%for (kakaoDTO kvm : list) {%>
+			var lat=<%=kvm.getCity_latitude()%>;
+			var lon=<%=kvm.getCity_longitude()%>;
+			var city="<%=kvm.getSi_city()%>";
 			
 			/* var imageSrc = 'marker/chargelogo.png', imageSize = new kakao.maps.Size(25, 25);
 			var imageOption = {
@@ -843,156 +865,166 @@ ArrayList<citySpeedChargerDTO> cilist = citdao.citySpeedCharger();
 			
 			var positions = 
 			    {
-			        content: '<div style="background-color:blue"><%= kvm.getSi_city()%></div>',
-			        latlng: new kakao.maps.LatLng(lat,lon)
-			    };
+			        content: '<div style="background-color:blue"><%=kvm.getSi_city()%>
+			</div>',
+				latlng : new kakao.maps.LatLng(lat, lon)
+			};
 
-			
-			    // 마커를 생성합니다
-			    var marker2 = new kakao.maps.Marker({
-			        map: map2, // 마커를 표시할 지도
-			        position: positions.latlng // 마커의 위치
-			        /* image : markerImage */
-			    });
+			// 마커를 생성합니다
+			var marker2 = new kakao.maps.Marker({
+				map : map2, // 마커를 표시할 지도
+				position : positions.latlng
+			// 마커의 위치
+			/* image : markerImage */
+			});
 
-			    // 마커에 표시할 인포윈도우를 생성합니다 
-			    var infowindow = new kakao.maps.InfoWindow({
-			        content: positions.content // 인포윈도우에 표시할 내용
-			    });
+			// 마커에 표시할 인포윈도우를 생성합니다 
+			var infowindow = new kakao.maps.InfoWindow({
+				content : positions.content
+			// 인포윈도우에 표시할 내용
+			});
 
-			    // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
-			    // 이벤트 리스너로는 클로저를 만들어 등록합니다 
-			    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-			    kakao.maps.event.addListener(marker2, 'mouseover', makeOverListener(map2, marker2, infowindow));
-			    kakao.maps.event.addListener(marker2, 'mouseout', makeOutListener(infowindow));
-	
+			// 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+			// 이벤트 리스너로는 클로저를 만들어 등록합니다 
+			// for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+			kakao.maps.event.addListener(marker2, 'mouseover',
+					makeOverListener(map2, marker2, infowindow));
+			kakao.maps.event.addListener(marker2, 'mouseout',
+					makeOutListener(infowindow));
+
 			marker2.setMap(map2);
 		<%}%>
-/* =====================================다각형=====================================	 */		
-var circlepath = [
-	new kakao.maps.LatLng(33.37368259997763,126.56723592747852),
-	new kakao.maps.LatLng(34.82822927263921,126.79483725356336),
-	new kakao.maps.LatLng(35.26603633642619,128.14416640575502),
-	new kakao.maps.LatLng(35.80633969541898,127.31350765087842),
-	new kakao.maps.LatLng(36.507922190697386,126.79049370065155),
-	new kakao.maps.LatLng(36.463394521871166,128.72124873945748),
-	new kakao.maps.LatLng(36.87981252723434,127.6911328100001),
-	new kakao.maps.LatLng(37.742108501142305,128.28575767007206),
-	new kakao.maps.LatLng(37.37925027545884,127.44133385694842),
-	new kakao.maps.LatLng(37.55998597988157,127.01937645416145),
-	new kakao.maps.LatLng(37.39339338582987,126.64928744697255),
-	new kakao.maps.LatLng(36.637081706167294,127.22524127172532),
-	new kakao.maps.LatLng(36.359765620447625,127.40698537056107),
-	new kakao.maps.LatLng(35.90673966145805,128.60702834725345),
-	new kakao.maps.LatLng(35.58086978386315,129.34598950536966),
-	new kakao.maps.LatLng(35.160783429376885,129.10913024617778),
-	new kakao.maps.LatLng(35.14214950781724,126.86147269256132),
-	
-	]
+			/* =====================================다각형=====================================	 */
+			var circlepath = [
+					new kakao.maps.LatLng(33.37368259997763, 126.56723592747852),
+					new kakao.maps.LatLng(34.82822927263921, 126.79483725356336),
+					new kakao.maps.LatLng(35.26603633642619, 128.14416640575502),
+					new kakao.maps.LatLng(35.80633969541898, 127.31350765087842),
+					new kakao.maps.LatLng(36.507922190697386,
+							126.79049370065155),
+					new kakao.maps.LatLng(36.463394521871166,
+							128.72124873945748),
+					new kakao.maps.LatLng(36.87981252723434, 127.6911328100001),
+					new kakao.maps.LatLng(37.742108501142305,
+							128.28575767007206),
+					new kakao.maps.LatLng(37.37925027545884, 127.44133385694842),
+					new kakao.maps.LatLng(37.55998597988157, 127.01937645416145),
+					new kakao.maps.LatLng(37.39339338582987, 126.64928744697255),
+					new kakao.maps.LatLng(36.637081706167294,
+							127.22524127172532),
+					new kakao.maps.LatLng(36.359765620447625,
+							127.40698537056107),
+					new kakao.maps.LatLng(35.90673966145805, 128.60702834725345),
+					new kakao.maps.LatLng(35.58086978386315, 129.34598950536966),
+					new kakao.maps.LatLng(35.160783429376885,
+							129.10913024617778),
+					new kakao.maps.LatLng(35.14214950781724, 126.86147269256132),
 
-for(cyi=0;cyi<circlepath.length;cyi++){
-	displayArea(circlepath[cyi]);
-}
-function displayArea(area){
-		if(cyi < 8){
-		var circle = new kakao.maps.Circle({
-		    center : circlepath[cyi],  // 원의 중심좌표 입니다 
-		    radius: 50000, // 미터 단위의 원의 반지름입니다 
-		    strokeWeight: 5, // 선의 두께입니다 
-		    strokeColor: '#59DA50', // 선의 색깔입니다
-		    strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-		    strokeStyle: 'line', // 선의 스타일 입니다
-		    fillColor: '#59DA50', // 채우기 색깔입니다
-		    fillOpacity: 0.2  // 채우기 불투명도 입니다
-		});
-		}else{
-		var circle = new kakao.maps.Circle({
-		    center : circlepath[cyi],  // 원의 중심좌표 입니다 
-		    radius: 8000, // 미터 단위의 원의 반지름입니다 
-		    strokeWeight: 5, // 선의 두께입니다 
-		    strokeColor: '#75B8FA', // 선의 색깔입니다
-		    strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-		    strokeStyle: 'line', // 선의 스타일 입니다
-		    fillColor: '#CFE7FF', // 채우기 색깔입니다
-		    fillOpacity: 0.9  // 채우기 불투명도 입니다  
-		}); 
+			]
 
-	}
+			for (cyi = 0; cyi < circlepath.length; cyi++) {
+				displayArea(circlepath[cyi]);
+			}
+			function displayArea(area) {
+				if (cyi < 8) {
+					var circle = new kakao.maps.Circle({
+						center : circlepath[cyi], // 원의 중심좌표 입니다 
+						radius : 50000, // 미터 단위의 원의 반지름입니다 
+						strokeWeight : 5, // 선의 두께입니다 
+						strokeColor : '#59DA50', // 선의 색깔입니다
+						strokeOpacity : 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+						strokeStyle : 'line', // 선의 스타일 입니다
+						fillColor : '#59DA50', // 채우기 색깔입니다
+						fillOpacity : 0.2
+					// 채우기 불투명도 입니다
+					});
+				} else {
+					var circle = new kakao.maps.Circle({
+						center : circlepath[cyi], // 원의 중심좌표 입니다 
+						radius : 8000, // 미터 단위의 원의 반지름입니다 
+						strokeWeight : 5, // 선의 두께입니다 
+						strokeColor : '#75B8FA', // 선의 색깔입니다
+						strokeOpacity : 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+						strokeStyle : 'line', // 선의 스타일 입니다
+						fillColor : '#CFE7FF', // 채우기 색깔입니다
+						fillOpacity : 0.9
+					// 채우기 불투명도 입니다  
+					});
 
-		circle.setMap(map2);
-		
-		
-		 // 다각형에 mouseover 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 변경합니다 
-	    // 지역명을 표시하는 커스텀오버레이를 지도위에 표시합니다
-	    kakao.maps.event.addListener(circle, 'mouseover', function(mouseEvent) {
-	    	circle.setOptions({fillColor: '#09f'});
+				}
 
+				circle.setMap(map2);
 
-	        customOverlay.setPosition(mouseEvent.latLng); 
-	        customOverlay.setMap(map2);
-	    });
+				// 다각형에 mouseover 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 변경합니다 
+				// 지역명을 표시하는 커스텀오버레이를 지도위에 표시합니다
+				kakao.maps.event.addListener(circle, 'mouseover', function(
+						mouseEvent) {
+					circle.setOptions({
+						fillColor : '#09f'
+					});
 
-	    // 다각형에 mousemove 이벤트를 등록하고 이벤트가 발생하면 커스텀 오버레이의 위치를 변경합니다 
-	    kakao.maps.event.addListener(circle, 'mousemove', function(mouseEvent) {
-	        
-	        customOverlay.setPosition(mouseEvent.latLng); 
-	    });
+					customOverlay.setPosition(mouseEvent.latLng);
+					customOverlay.setMap(map2);
+				});
 
-	    // 다각형에 mouseout 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 원래색으로 변경합니다
-	    // 커스텀 오버레이를 지도에서 제거합니다 
-	    kakao.maps.event.addListener(circle, 'mouseout', function() {
-	    	circle.setOptions({fillColor: '#fff'});
-	        customOverlay.setMap(null);
-	    }); 
+				// 다각형에 mousemove 이벤트를 등록하고 이벤트가 발생하면 커스텀 오버레이의 위치를 변경합니다 
+				kakao.maps.event.addListener(circle, 'mousemove', function(
+						mouseEvent) {
 
-	    // 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시합니다 
-	    kakao.maps.event.addListener(circle, 'click', function(mouseEvent) {
-				location.href = "./CityChargeStation.jsp?citydata:123"
-				console.log(this.circleA[0].id);
-	    });
-		
-}
+					customOverlay.setPosition(mouseEvent.latLng);
+				});
 
+				// 다각형에 mouseout 이벤트를 등록하고 이벤트가 발생하면 폴리곤의 채움색을 원래색으로 변경합니다
+				// 커스텀 오버레이를 지도에서 제거합니다 
+				kakao.maps.event.addListener(circle, 'mouseout', function() {
+					circle.setOptions({
+						fillColor : '#fff'
+					});
+					customOverlay.setMap(null);
+				});
 
-/* =====================================함수부=====================================	 */	
+				// 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시합니다 
+				kakao.maps.event.addListener(circle, 'click', function(
+						mouseEvent) {
+					location.href = "./CityChargeStation.jsp?citydata:123"
+					console.log(this.circleA[0].id);
+				});
 
-		
-		function setCenter() {            
-		    // 이동할 위도 경도 위치를 생성합니다 
-		    var moveLatLon = new kakao.maps.LatLng(33.452613, 126.570888);
-		    
-		    // 지도 중심을 이동 시킵니다
-		    map.setCenter(moveLatLon);
-		}
+			}
 
-		function panTo(lt,ln) {
-		    // 이동할 위도 경도 위치를 생성합니다 
-		    var moveLatLon = new kakao.maps.LatLng(lt, ln);
-		    
-		    // 지도 중심을 부드럽게 이동시킵니다
-		    // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
-		    map2.panTo(moveLatLon);            
-		}  
-			
-		// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
-		function makeOverListener(map, marker, infowindow) {
-		    return function() {
-		        infowindow.open(map, marker);
-		    };
-		}
+			/* =====================================함수부=====================================	 */
 
-		// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
-		function makeOutListener(infowindow) {
-		    return function() {
-		        infowindow.close();
-		    };
-		}	
+			function setCenter() {
+				// 이동할 위도 경도 위치를 생성합니다 
+				var moveLatLon = new kakao.maps.LatLng(33.452613, 126.570888);
 
-		
+				// 지도 중심을 이동 시킵니다
+				map.setCenter(moveLatLon);
+			}
+
+			function panTo(lt, ln) {
+				// 이동할 위도 경도 위치를 생성합니다 
+				var moveLatLon = new kakao.maps.LatLng(lt, ln);
+
+				// 지도 중심을 부드럽게 이동시킵니다
+				// 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
+				map2.panTo(moveLatLon);
+			}
+
+			// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+			function makeOverListener(map, marker, infowindow) {
+				return function() {
+					infowindow.open(map, marker);
+				};
+			}
+
+			// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+			function makeOutListener(infowindow) {
+				return function() {
+					infowindow.close();
+				};
+			}
 		</script>
-
-	
-	
 </body>
 
 </html>
