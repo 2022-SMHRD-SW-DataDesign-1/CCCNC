@@ -191,7 +191,8 @@ h3 {
 <link rel="stylesheet" href="https://uicdn.toast.com/chart/latest/toastui-chart.min.css" />
 <script src="https://uicdn.toast.com/chart/latest/toastui-chart.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f867e2332325dabbf2acc1f5355d06f"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<script src="https://pandameister.github.io/chartjs-chart-radial-gauge/docs/js/Chart.RadialGauge.umd.js"></script>
 <body>
 
 <%
@@ -261,7 +262,9 @@ for(int i=0;i<pt_list.size();i++){
 		</div>
 	</fieldset>
 	
-	<div id="chart-area" style="display:inline"></div>
+    <div id="canvas-holder" style="width: 40%">
+    	<canvas id="chart-area"></canvas>
+    </div>
 	
 	<div style="height:100%; width:100%;">
 	       <canvas id="myChart"></canvas>
@@ -269,7 +272,7 @@ for(int i=0;i<pt_list.size();i++){
 	</div>
 </fieldset>
 
-<select>
+<select id="city" name="city" onchange="changeCitySelect()">
 	<% 
 	int index_list[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 49, 57, 68, 83, 97, 130, 142, 159};
 	
@@ -277,23 +280,25 @@ for(int i=0;i<pt_list.size();i++){
 		for(int i=0;i<citylist.size();i++){ 
 		%>
 		<%if(citylist.get(i).getLoc_seq().intValue()==index_list[j]){ %>
-		<option> <%=citylist.get(i).getDo_city() %>
+		<option value=<%=citylist.get(i).getLoc_seq()%>> <%=citylist.get(i).getDo_city() %>
 	<%}}} %>	
 </select>
 
 <fieldset>
 	<fieldset class="t1" style="display:inline;margin-top: 0px;width: 200px;height: 300px;">
-		<h3><%=inCenterName %></h3>
+		<h3 id=selectTitle>서울시</h3>
 		<div>
-	    	<div id="staticMap" style="width: 260px; height: 230px;"></div>
+	    	<div id="staticMap2" style="width: 260px; height: 230px;"></div>
 		</div>
 	</fieldset>
 	
-	<div id="chart-area" style="display:inline"></div>
+	<div id="canvas-holder2" style="width: 40%">
+		<canvas id="chart-area2"></canvas>
+	</div>
 	
 	<div style="height:100%; width:100%;">
-	       <canvas id="myChart"></canvas>
-	       <canvas id="myChart2"></canvas>
+	       <canvas id="myChart3"></canvas>
+	       <canvas id="myChart4"></canvas>
 	</div>
 </fieldset>
 
@@ -330,56 +335,153 @@ for (var i = 0; i < positions.length; i ++) {
         title : positions[i].title,
         image : markerImage // 마커 이미지 
     });
-   // marker.setMap(map)
+    marker.setMap(map)
+}
+</script>
+
+<script> //2. 지도용
+var mapContainer2 = document.getElementById('staticMap2'), // 지도를 표시할 div  
+mapOption2 = { 
+    center: new kakao.maps.LatLng(<%=citylist.get(0).getCity_latitude()%>, <%=citylist.get(0).getCity_longitude()%>), // 지도의 중심좌표
+    level: 6 // 지도의 확대 레벨
+};
+
+var map2 = new kakao.maps.Map(mapContainer2, mapOption2);
+let positions2 = [];
+<% for(CityChargeDTO ccd : station){%> 
+	positions2.push({
+	    title: '<%= ccd.getCharge_state_name()%>' , 
+	    latlng: new kakao.maps.LatLng(<%= ccd.getLatitude()%>,<%= ccd.getLongitude()%>)
+	});
+<%}%>
+
+var marker2, i2; 
+for (var i2 = 0; i2 < positions2.length; i2 ++) {
+	var imageSrc2 = 'marker/chargelogo.png', imageSize2 = new kakao.maps.Size(25, 25); 
+	var imageOption2 = {
+			offset : new kakao.maps.Point(9,9)
+	};										
+	var markerImage2 = new kakao.maps.MarkerImage(imageSrc2, imageSize2,imageOption2);
+    
+    var marker2 = new kakao.maps.Marker({
+        map: map2, // 마커를 표시할 지도
+        position: positions2[i2].latlng,
+        title : positions2[i2].title,
+        image : markerImage2 // 마커 이미지 
+    });
+    marker.setMap(map2)
 }
 </script>
 
 
- <script class="uichart">//2. 게이지그래프용
+<!-- 셀렉트 선택시 이벤트 -->
+<script>
+var setPercentName="서울시";
+var setPercent=0;
+	function changeCitySelect(){
+		var citySelect = document.getElementById("city");
+		
+		var selectValue = citySelect.options[citySelect.selectedIndex].value;
+		console.log(selectValue);
+		var Lat=0;
+		var Lng=0;
+		<%for(int i=0;i<citylist.size();i++){%>
+			if(selectValue==<%=citylist.get(i).getLoc_seq()%>){
+				Lat=<%=citylist.get(i).getCity_latitude()%>
+				Lng=<%=citylist.get(i).getCity_longitude()%>
+				document.getElementById("selectTitle").innerHTML='<%=citylist.get(i).getDo_city()%>'
+			}
+		<% }%>
+		
+		
+		var moveLatLon = new kakao.maps.LatLng(Lat,Lng);
+		map2.setCenter(moveLatLon);
+		
+		//게이지 차트용
 
-        const el = document.getElementById('chart-area');
-        const data = {
-            series: [
+		<%
+		for(int i=0;i<pt_list.size();i++){%>
+			if(selectValue==<%=pt_list.get(i).getLoc_seq().intValue()%>){
+				setPercentName = '<%=pt_list.get(i).getDo_city()%>';
+				setPercent = <%=pt_list.get(i).getPercent()%>;
+			}
+		<%}%>
+		console.log(setPercent,setPercentName);
+		
+		ctx2.data=[setPercent];
+		console.log(ctx2);
+		window.ctx2.update();
+		
+		
+		
+	}
+</script>
+
+ <script>//1. 게이지그래프용
+
+ Chart.defaults.global.defaultFontFamily = "Verdana";
+ var ctx = document.getElementById("chart-area").getContext("2d");
+ var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+ gradientStroke.addColorStop(0, "rgb(45,204,106");  //차트색깔
+ //gradientStroke.addColorStop(1, "#F49080");  //차트색깔
+ var config = {
+     type: "radialGauge",
+     data: {
+         labels: ["Metrics"],
+         datasets: [
+             {
+                 data: [<%=inPercent%>],
+                 backgroundColor: [gradientStroke],
+                 borderWidth: 0,
+                 label: "Score"
+             }
+         ]
+     },
+     options: {
+         responsive: false,
+         legend: {},
+         title: {
+             display: true,
+             text: "전국 대비 <%=inPercentName%>의 총 충전비율"
+         },
+         centerPercentage: 80
+     }
+ };
+     var ctx = document.getElementById("chart-area").getContext("2d");
+     window.myRadialGauge = new Chart(ctx, config);
+</script>
+
+
+ <script>
+    var ctx = document.getElementById("chart-area2").getContext("2d");
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "rgb(45,204,106");
+    var config2 = {
+        type: "radialGauge",
+        data: {
+            labels: ["Metrics"],
+            datasets: [
                 {
-                    // name: 'Speed',
                     data: [<%=inPercent%>],
-                },
-            ],
-        };
-        const options = {
-            chart: { title: '전국 대비 <%=inPercentName%>의 총 충전비율(%)', width: 300, height: 300 },
-            series: {
-                solid: true,
-                dataLabels: { visible: true, offsetY: -30, formatter: (value) => `${value}%` },
+                    backgroundColor: [gradientStroke],
+                    borderWidth: 0,
+                    label: "Score"
+                }
+            ]
+        },
+        options: {
+            responsive: false,
+            legend: {},
+            title: {
+                display: true,
+                text: "전국 대비 <%=inPercentName%>의 총 충전비율"
             },
-            theme: {
-                circularAxis: {
-                    lineWidth: 0,
-                    strokeStyle: 'rgba(0, 0, 0, 0)',
-                    tick: {
-                     	lineWidth: 0,
-                        strokeStyle: 'rgba(0, 0, 0, 0)',
-                    },
-                    label: {
-                        color: 'rgba(0, 0, 0, 0)',
-                    },
-                },
-                series: {
-                    dataLabels: {
-                        fontSize: 25,
-                        fontFamily: 'Impact',
-                        fontWeight: 100,
-                        color: 'grey',
-                        textBubble: {
-                            visible: false,
-                        },
-                    },
-                },
-            },
-        };
-
-        const chart_test = toastui.Chart.gaugeChart({ el, data, options });
-    </script>
+            centerPercentage: 80
+        }
+    };
+        var ctx2 = document.getElementById("chart-area2").getContext("2d");
+        window.myRadialGauge2 = new Chart(ctx2, config2);
+</script>
 
 <!-- 급속평균 -->
   <script>
