@@ -408,12 +408,15 @@ var setPercent=0;
 		<%}%>
 		console.log(setPercent,setPercentName);
 		
-		ctx2.data=[setPercent];
+		
+		config2.data.datasets.forEach(function(dataset) {
+			  dataset.data = dataset.data.map(function() {
+			   return setPercent;
+			  });
+			 });
 		console.log(ctx2);
-		window.ctx2.update();
 		
-		
-		
+		window.myRadialGauge2.update();
 	}
 </script>
 
@@ -462,7 +465,7 @@ var setPercent=0;
             labels: ["Metrics"],
             datasets: [
                 {
-                    data: [<%=inPercent%>],
+                    data: [<%=pt_list.get(0).getPercent()%>],
                     backgroundColor: [gradientStroke],
                     borderWidth: 0,
                     label: "Score"
@@ -474,7 +477,7 @@ var setPercent=0;
             legend: {},
             title: {
                 display: true,
-                text: "전국 대비 <%=inPercentName%>의 총 충전비율"
+                text: "전국 대비 서울시의 총 충전비율"
             },
             centerPercentage: 80
         }
