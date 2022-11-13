@@ -35,7 +35,10 @@ public class CityChargeStation extends HttpServlet {
 		System.out.println(longitude);
 		
 		 
-		 CityChargeDTO dto =new CityChargeDTO(charge_num, charge_state_name, latitude, longitude);
+		/*
+		 * CityChargeDTO dto =new CityChargeDTO(charge_num, charge_state_name, latitude,
+		 * longitude);
+		 */
 		 ArrayList<CityChargeDTO> station = new CityChargeDAO().station();
 		 
 		 session.setAttribute("station", station);
