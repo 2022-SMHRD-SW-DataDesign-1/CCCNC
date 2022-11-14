@@ -23,9 +23,21 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-fieldset {
+.t11{
 	display: inline;
-	width: 200px;
+	width: 37%;
+	float:left;
+	margin-top:5%;
+	border:0;
+}
+
+.t22 {
+	display: inline;
+	width: 37%;
+	float:left;
+	margin-top: 5%;
+    margin-left: 5%;
+    border:0;
 }
 /* Header */
 .header {
@@ -112,15 +124,20 @@ content {
 }
 #chart-area {
 	display: block;
-	width: 320px;
-    height: 160px;
+	width: 300px;
+    height: 150px;
+    margin-top: -25%;
 }
 #chart-area2 {
 	display: block;
-	width: 320px;
-    height: 160px;
-	margin-top: 23%;
+	width: 300px;
+    height: 150px;
+	margin-top: 1%;
 }
+/* select {
+	background-color: rgb(4,220,87);
+	
+} */
 #canvas-holder {
 	display: block;
 	width: 300px;
@@ -138,7 +155,9 @@ li {
 	width: 80px;
 	height: 40px;
 	text-align: center;
-	margin-left: 38%;
+	float:left;
+	margin-left: 5%;
+    margin-top: 54%;
 }
 .t1 {
 	display: inline;
@@ -146,6 +165,7 @@ li {
 	float: left;
 	margin-top: 16%;
 	text-align: center;
+	border: 0;
 }
 .t2 {
 	display: inline;
@@ -153,9 +173,11 @@ li {
 	float: left;
 	margin-top: 16%;
 	text-align: center;
+	border: 0;
 }
 h3 {
 	text-align: left;
+	margin-left: 12%;
 }
 #canvas-holder2 {
 	margin-top: 16%;
@@ -166,7 +188,7 @@ h3 {
 	float: left;
 }
 #myChart, #myChart2, #myChart3, #myChart4 {
-	width: 517px;
+	width: 553px;
 	height: 247px;
 }
 .article {
@@ -183,6 +205,8 @@ h3 {
 	height: 10%;
 	font-family: 한컴 고딕;
 	font-weight: 50px;
+	position : absolute;
+	bottom : 0;
 }
 </style>
 </head>
@@ -252,13 +276,13 @@ for(int i=0;i<pt_list.size();i++){
 		<!-- head끝  -->
 	</header>
 	<content>
-	<div class="article">
+	
 <!-- ============================================================================================ -->
-<fieldset>
+<fieldset class="t11">
 	<fieldset class="t1" style="display:inline;margin-top: 0px;width: 200px;height: 300px;">
 		<h3><%=inCenterName %></h3>
 		<div>
-	    	<div id="staticMap" style="width: 260px; height: 230px;"></div>
+	    	<div id="staticMap" style="width: 260px; height: 230px; box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%); margin-left: 9%;"></div>
 		</div>
 	</fieldset>
 	
@@ -272,7 +296,7 @@ for(int i=0;i<pt_list.size();i++){
 	</div>
 </fieldset>
 
-<select id="city" name="city" onchange="changeCitySelect()">
+<select id="city" name="city" onchange="changeCitySelect()"  border-radius: 30px;">
 	<% 
 	int index_list[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 49, 57, 68, 83, 97, 130, 142, 159};
 	
@@ -284,11 +308,11 @@ for(int i=0;i<pt_list.size();i++){
 	<%}}} %>	
 </select>
 
-<fieldset>
+<fieldset class="t22">
 	<fieldset class="t1" style="display:inline;margin-top: 0px;width: 200px;height: 300px;">
 		<h3 id=selectTitle>서울시</h3>
-		<div>
-	    	<div id="staticMap2" style="width: 260px; height: 230px;"></div>
+		<div >
+	    	<div id="staticMap2" style="width: 260px; height: 230px; box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%); margin-left: 9%;""></div>
 		</div>
 	</fieldset>
 	
@@ -301,6 +325,21 @@ for(int i=0;i<pt_list.size();i++){
 	       <canvas id="myChart4"></canvas>
 	</div>
 </fieldset>
+<footer class="footer">
+		<div class="foot" style="margin-top:4%; margin-left:-10%;">
+			<!-- foot 시작 -->
+			<div class="f_logo">
+				<img src="./img/FootLogo.png" alt="PlugSpot" style=" width: 190px; height: 44px;">
+			</div>
+			<span class="t">|</span> <span>개인정보처리방침</span >
+			<span class="t">|</span> <span class="m mar_l5">고객센터 1234-5678</span>
+			<p class="mar_t5">
+				사업자번호: 111-222-3333 &nbsp;&nbsp; 대표자: 쿠쿠뉴쿠 &nbsp;&nbsp;주소: 광주광역시 남구
+				송암로 60 광주CGI센터 2층<br> Copyright@2022 PlugSpot. All Rights
+				Reserved
+			</p>
+		</div>
+	</footer>
 
 
 
@@ -530,8 +569,8 @@ for(int i=0;i<index_list.length;i++){
                     {
                         label: '선택도시의 완속 충전기 누적 충전량',
                         type: 'bar', // 'bar' type, 전체 타입과 같다면 생략가능
-                        backgroundColor: 'rgb(118,158,252)',
-                        borderColor: 'rgb(118,158,252)',
+                        backgroundColor: 'rgb(246,185,59)',
+                        borderColor: 'rgb(246,185,59)',
                         data: <%=inSlowList%>,
                     }
                 ]
@@ -608,8 +647,8 @@ for(int i=0;i<index_list.length;i++){
                     {
                         label: '선택도시의 급속 충전기 누적 충전량',
                         type: 'bar', // 'bar' type, 전체 타입과 같다면 생략가능
-                        backgroundColor: 'rgb(254,122,112)',
-                        borderColor: 'rgb(254,122,112)',
+                        backgroundColor: 'rgb(45,152,218)',
+                        borderColor: 'rgb(45,152,218)',
                         data: <%=inFastList%>,
                     }
                 ]
@@ -680,8 +719,8 @@ for(int i=0;i<index_list.length;i++){
                     {
                         label: '선택도시의 완속 충전기 누적 충전량',
                         type: 'bar', // 'bar' type, 전체 타입과 같다면 생략가능
-                        backgroundColor: 'rgb(118,158,252)',
-                        borderColor: 'rgb(118,158,252)',
+                        backgroundColor: 'rgb(246,185,59)',
+                        borderColor: 'rgb(246,185,59)',
                         data: <%=inSlowList%>,
                     }
                 ]
@@ -714,7 +753,7 @@ for(int i=0;i<index_list.length;i++){
                         },
                         scaleLabel: {
                             display: true,
-                            labelString: '<%=inPercentName%>의 완속 충전기 누적 충전량'
+                            labelString: '해당도시의 완속 충전기 누적 충전량'
                         }
                     }]
                 },
@@ -758,8 +797,8 @@ for(int i=0;i<index_list.length;i++){
                     {
                         label: '선택도시의 급속 충전기 누적 충전량',
                         type: 'bar', // 'bar' type, 전체 타입과 같다면 생략가능
-                        backgroundColor: 'rgb(254,122,112)',
-                        borderColor: 'rgb(254,122,112)',
+                        backgroundColor: 'rgb(45,152,218)',
+                        borderColor: 'rgb(45,152,218)',
                         data: <%=inFastList%>,
                     }
                 ]
@@ -792,7 +831,7 @@ for(int i=0;i<index_list.length;i++){
                         },
                         scaleLabel: {
                             display: true,
-                            labelString: '<%=inPercentName%>의 급속 충전기 누적 충전량'
+                            labelString: '해당도시의 급속 충전기 누적 충전량'
                         }
                     }]
                 },
