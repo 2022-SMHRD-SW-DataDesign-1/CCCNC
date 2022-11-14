@@ -1,3 +1,4 @@
+<%@page import="com.plugspot.model.MemberDTO"%>
 <%@page import="com.plugspot.model.chargePercentDTO"%>
 <%@page import="com.plugspot.model.chargePercentDAO"%>
 <%@page import="com.plugspot.model.kakaoDTO"%>
@@ -41,23 +42,26 @@
 }
 /* Header */
 .header {
-	width: 83%;
+	width: 80.5%;
 	padding-top: 10px !important;
 	height: 10% !important;
 	position: fixed;
 }
+
 .header .inner_header {
 	position: relative;
 	width: 100%;
 	margin: 0 auto;
 	line-height: 100%;
 }
+
 .header .logo {
 	display: inline-block;
 	width: 190px;
 	margin-top: 0px;
 	margin: 0 auto;
 }
+
 .header .topMenu {
 	position: absolute;
 	width: 100%;
@@ -66,12 +70,14 @@
 	margin-left: 90%;
 	top: 24px !important;
 }
+
 .header .topMenu ul {
 	position: fixed;
 	float: right;
 	list-style: none;
 	margin-left: 350px;
 }
+
 .header img {
 	position: fixed;
 	float: left;
@@ -80,28 +86,54 @@
 	line-height: 35px !important;
 	border-right: 1px solid #D3D3D3;
 }
-.header .topMenu li {
+
+.home, .login, .logout, .mypage {
+	background-color: white;
+	border: 0px;
 	float: left;
 	width: 80px;
 	height: 35px !important;
 	line-height: 35px !important;
 	border-right: 1px solid #D3D3D3;
-}
-.header .topMenu li a {
-	display: block;
-	color: #686868;
 	text-align: center;
-	/*font-family:dotum;*/
-	font-size: 15px;
 	margin: 0 auto;
+	color: #686868;
 }
-.header .topMenu li a:hover {
+
+.logout, .mypage {
+	width: 100px;
+}
+
+.home:hover {
 	display: block;
 	color: #686868;
 	text-align: center;
-	/*font-weight:800;font-size:13px;*/
-	font-weight: bold !important;
 	font-size: 20px !important;
+	cursor: pointer;
+}
+
+.login:hover {
+	display: block;
+	color: #686868;
+	text-align: center;
+	font-size: 20px !important;
+	cursor: pointer;
+}
+
+.logout:hover {
+	display: block;
+	color: #686868;
+	text-align: center;
+	font-size: 20px !important;
+	cursor: pointer;
+}
+
+.mypage:hover {
+	display: block;
+	color: #686868;
+	text-align: center;
+	font-size: 20px !important;
+	cursor: pointer;
 }
 content {
 	float: left;
@@ -258,22 +290,45 @@ for(int i=0;i<pt_list.size();i++){
 	}
 }
 %>
-<header class="header">
-		<!-- head 시작 -->
+
+	<header class="header">
 		<div class="head">
 			<div class="logo">
 				<a href="Main.jsp"> <img src="./img/Logo.png" alt="PlugSpot"
 					class="logo"></a>
 			</div>
-			<div class="topMenu">
-				<div class="clear">
-					<li><a href="Main.jsp"><span>HOME</span></a></li>
-					<li><a href="Login.jsp"><span>LOGIN</span></a></li>
-				</div>
-			</div>
-			<!-- topMenu 끝 -->
 		</div>
-		<!-- head끝  -->
+		<!-- head 끝  -->
+		<%
+		MemberDTO info = (MemberDTO) session.getAttribute("info");
+		%>
+		<div class="topMenu">
+			<div class="clear">
+				<form action="LogoutService" method="post">
+					<%
+					if (info == null) {
+					%>
+					<li><a href="Main.jsp"><input type="button" class="home"
+							value="HOME"></a></li>
+					<li><a href="Login.jsp"><input type="button" class="login"
+							value="LOGIN"></a></li>
+					<%
+					} else {
+					%>
+					<li><a href="Main.jsp"><input type="button" class="home"
+							value="HOME"></a></li>
+					<li><a href="Mypage.jsp"><input type="button"
+							class="mypage" value="MYPAGE"></a></li>
+					<li><a href="Main.jsp"><input type="submit" class="logout"
+							value="LOGOUT"></a></li>
+					<%
+					
+					}
+					%>
+				</form>
+			</div>
+		</div>
+		<!-- topMenu 끝 -->
 	</header>
 	<content>
 	
