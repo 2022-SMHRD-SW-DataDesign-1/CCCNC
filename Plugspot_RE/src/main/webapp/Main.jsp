@@ -81,7 +81,7 @@ fieldset {
 	text-align: center;
 	margin: 0 auto;
 	color: #686868;
-	position: fixed;
+	
 }
 
 .logout, .mypage {
