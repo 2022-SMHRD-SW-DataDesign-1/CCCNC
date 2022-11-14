@@ -723,7 +723,7 @@ li {
                             }
                         }],
                         yAxes: [{
-                            ticks: {
+                            ticks: { /* min*0.0001, max*0.0001, */
                                 fontSize: 10,
                                 fontColor: 'black' // x축 폰트 color
                             },
