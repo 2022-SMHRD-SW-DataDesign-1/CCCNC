@@ -876,28 +876,28 @@ td {
 			
 			var positions = 
 			    {
-			        content: '<div style="background-color:blue"><%=kvm.getSi_city()%></div>',
+			        <%-- content: '<div style="background-color:blue"><%=kvm.getSi_city()%></div>', --%>
 			        latlng: new kakao.maps.LatLng(lat,lon)
 			    };
 
 			
 			    // 마커를 생성합니다
 			    var marker2 = new kakao.maps.Marker({
-			        map: map2, // 마커를 표시할 지도
-			        position: positions.latlng // 마커의 위치
+			      /*   map: map2, // 마커를 표시할 지도
+			        position: positions.latlng // 마커의 위치 */
 			        /* image : markerImage */
 			    });
 
 			    // 마커에 표시할 인포윈도우를 생성합니다 
 			    var infowindow = new kakao.maps.InfoWindow({
-			        content: positions.content // 인포윈도우에 표시할 내용
+			       /*  content: positions.content // 인포윈도우에 표시할 내용 */
 			    });
 
 			    // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
 			    // 이벤트 리스너로는 클로저를 만들어 등록합니다 
 			    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-			    kakao.maps.event.addListener(marker2, 'mouseover', makeOverListener(map2, marker2, infowindow));
-			    kakao.maps.event.addListener(marker2, 'mouseout', makeOutListener(infowindow));
+			  /*   kakao.maps.event.addListener(marker2, 'mouseover', makeOverListener(map2, marker2, infowindow));
+			    kakao.maps.event.addListener(marker2, 'mouseout', makeOutListener(infowindow)); */
 			
 			
 			
