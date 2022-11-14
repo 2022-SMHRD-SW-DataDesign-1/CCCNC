@@ -135,42 +135,6 @@ fieldset {
 	top: 300px;
 	width: 100% /* margin-left: 30px; */
 }
-/* title */
-.h4_title {
-	position: relative;
-	background: none;
-	/*background:url(/publish/images/bullet_bar.png) no-repeat left 50%;*/
-	padding-left: 14px !important;
-	font-size: 22px !important;
-	font-weight: bold !important;
-	color: #3C3C3C !important;
-	margin: 40px 0 10px;
-}
-
-.h4_title:before {
-	position: absolute;
-	left: 0;
-	top: 8px;
-	width: 5px;
-	height: 20px;
-	background: #004A98;
-	content: '';
-}
-
-.h4_title:first-child {
-	margin-top: 0;
-}
-
-.h5_title {
-	position: relative;
-	font-size: 18px;
-	color: #003073;
-	line-height: 120%;
-	font-weight: 700;
-	padding-left: 19px;
-	margin: 5px 0 10px;
-	text-align: center;
-}
 
 .abs {
 	right: 0;
@@ -199,6 +163,9 @@ canvas.barchart2 {
 .areMap {
 	width: 100%;
 }
+.title{
+	text-align: center;
+}
 /* Footer */
 footer {
 	/* clear: both; */
@@ -208,7 +175,7 @@ footer {
 	height: 10%; /* footer의 높이 */
 	position: absolute;
 	left: 0;
-	margin-top: 180px;
+	margin-top: 200px;
 }
 
 li {
@@ -237,7 +204,7 @@ li {
 }
 
 #li_4 {
-    float: right;
+	float: right;
 	width: 100%;
 	height: 300px;
 	margin-top: 10px;
@@ -257,13 +224,14 @@ li {
 .banner img {
 	width: 79%;
 }
-td{
-padding-bottom: 5px;
-}
-.clear li{
-background-color: fff !important;
+
+td {
+	padding-bottom: 5px;
 }
 
+.clear li {
+	background-color: fff !important;
+}
 </style>
 </head>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -333,7 +301,7 @@ background-color: fff !important;
 			<!-----------------------------------------카카오맵포화도--------------------------------->
 			<form action="kakaoService" method="post">
 				<ul>
-				<li id="li_0"> 
+					<li id="li_0">
 					<li id="li_1">
 						<div id="city">
 							<div id="map2" style="width: 100%; height: 430px;"></div>
@@ -351,14 +319,14 @@ background-color: fff !important;
 								style="display: block; height: 20%; width: 100%"></iframe>
 						</div>
 					</li>
-				
+
 					<li id="li_3">
 						<div id="rank">
 							<div class="ranking">
 								<table class="info_table02">
 									<!--<caption class="title">전기차 지역별 순위</caption>-->
 									<thead>
-										<tr style="background-color:#74b9ff; color:#dfe4ea; ">
+										<tr style="background-color: #74b9ff; color: #dfe4ea;">
 											<th style="width: 52px;">순위</th>
 											<th>도시</th>
 											<th style="width: 172px;">전기차등록수</th>
@@ -385,21 +353,28 @@ background-color: fff !important;
 							</div>
 						</div>
 					</li>
-				</li>
-			
+					</li>
+
 					<!-- li_0 끝 -->
 
 					<li id="li_4">
 						<div id="content_bottom">
 							<div id="lineChart">
+								<caption class="title">지역별 충전기 수량</caption>
 								<div class="chart-container">
-									<canvas id="myChart" class="chart" style="width:40%; height:300px; float: left; padding-right: 5px;" ></canvas>
+									<canvas id="myChart" class="chart"
+										style="width: 40%; height: 300px; float: left; padding-right: 5px; margin-top: 22px;"></canvas>
 								</div>
+
 							</div>
 							<div id="barChart2">
+								<caption class="title">지역별 평균 충전기 수량</caption>
 								<div class="chart-container2">
-									<canvas id="myChart3" class="bar-chart" style="width:40%; height:300px; float: left; padding-left: 5px;"> </canvas>
+
+									<canvas id="myChart3" class="bar-chart"
+										style="width: 40%; height: 300px; float: left; padding-left: 5px;"> </canvas>
 								</div>
+
 							</div>
 						</div>
 					</li>
@@ -411,11 +386,12 @@ background-color: fff !important;
 		<div class="foot">
 			<!-- foot 시작 -->
 			<div class="f_logo">
-				<img src="./img/FootLogo.png" alt="PlugSpot" style=" width: 190px; height: 44px;">
+				<img src="./img/FootLogo.png" alt="PlugSpot"
+					style="width: 190px; height: 44px;">
 			</div>
-			<span class="t">|</span> <span>개인정보처리방침</span >
-			<span class="t">|</span> <span class="m mar_l5">고객센터 1234-5678</span>
-			<p class="mar_t5">
+			<span class="t">|</span> <span>개인정보처리방침</span> <span class="t">|</span>
+			<span class="m mar_l5">고객센터 1234-5678</span>
+			<p class="mar_t5" style="margin-top: 0px;"> 
 				사업자번호: 111-222-3333 &nbsp;&nbsp; 대표자: 쿠쿠뉴쿠 &nbsp;&nbsp;주소: 광주광역시 남구
 				송암로 60 광주CGI센터 2층<br> Copyright@2022 PlugSpot. All Rights
 				Reserved
@@ -460,7 +436,7 @@ background-color: fff !important;
 	<!-- ============================================================================= -->
 
 
-		<script>
+	<script>
 		
                 var chart = new Chart('chart', {
                     type: 'horizontalBar',
@@ -497,9 +473,9 @@ background-color: fff !important;
                     }
                 });
             </script>
-		
 
-        <script>
+
+	<script>
             var ctx = document.getElementById('myChart3');
 
             const config2 = {
@@ -621,13 +597,13 @@ background-color: fff !important;
 
 
         </script>
-        <script>
+	<script>
             const myChart3 = new Chart(document.getElementById('myChart3'),config);
         </script>
 
-		<fieldset>
+	<fieldset>
 
-        <script>
+		<script>
             var ctx = document.getElementById('myChart');
 
             var config = {
@@ -747,16 +723,16 @@ background-color: fff !important;
             var myChart = new Chart(ctx, config);
 
         </script>
-        <script>
+		<script>
             const myChart = new Chart(document.getElementById('myChart'), config);
         </script>
-		
-		
-		
-		
-		
-		
-	<script>
+
+
+
+
+
+
+		<script>
 			var map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
 				center : new kakao.maps.LatLng(35.1083, 127.6358), // 지도의 중심좌표 
 				level : 13
@@ -869,10 +845,10 @@ background-color: fff !important;
 // 지도를 생성합니다
 
 		//마커생성
-		<%for (kakaoDTO kvm  : list){%>
-			var lat=<%= kvm.getCity_latitude()%>;
-			var lon=<%= kvm.getCity_longitude()%>;
-			var city="<%= kvm.getSi_city()%>";
+		<%for (kakaoDTO kvm : list) {%>
+			var lat=<%=kvm.getCity_latitude()%>;
+			var lon=<%=kvm.getCity_longitude()%>;
+			var city="<%=kvm.getSi_city()%>";
 			
 			/* var imageSrc = 'marker/chargelogo.png', imageSize = new kakao.maps.Size(25, 25);
 			var imageOption = {
@@ -882,7 +858,7 @@ background-color: fff !important;
 			
 			var positions = 
 			    {
-			        content: '<div style="background-color:blue"><%= kvm.getSi_city()%></div>',
+			        content: '<div style="background-color:blue"><%=kvm.getSi_city()%></div>',
 			        latlng: new kakao.maps.LatLng(lat,lon)
 			    };
 
@@ -1097,7 +1073,7 @@ function displayArea(area){
 		}	
 
  		function updateChartData(id){
-			<%for(int funcnu=0;funcnu<carlist.size();funcnu++){%>
+			<%for (int funcnu = 0; funcnu < carlist.size(); funcnu++) {%>
 			if(id==<%=carlist.get(funcnu).getReg_seq()%>){
 				chart.data.datasets[0].data=[<%=carlist.get(funcnu).getCar_num()%>];
 				chart.data.datasets[1].data=[<%=carlist.get(funcnu).getDat_possible_car()%>];
