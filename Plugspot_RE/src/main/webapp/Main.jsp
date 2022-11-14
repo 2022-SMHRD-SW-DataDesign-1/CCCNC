@@ -202,7 +202,7 @@ canvas.barchart2 {
 footer {
 	/* clear: both; */
 	width: 100%;
-	font-family: 한컴 고딕;
+	font-family:;
 	font-weight: 50px;
 	height: 10%; /* footer의 높이 */
 	position: absolute;
@@ -256,6 +256,13 @@ li {
 .banner img {
 	width: 79%;
 }
+td{
+padding-bottom: 5px;
+}
+.clear li{
+background-color: fff !important;
+}
+
 </style>
 </head>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
