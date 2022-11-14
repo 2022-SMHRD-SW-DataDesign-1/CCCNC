@@ -433,7 +433,7 @@ for (var i2 = 0; i2 < positions2.length; i2 ++) {
             legend: {},
             title: {
                 display: true,
-                text: "전국 대비 서울시의 총 충전비율"
+                text: "전국 대비 해당도시의 총 충전비율"
             },
             centerPercentage: 80
         }
