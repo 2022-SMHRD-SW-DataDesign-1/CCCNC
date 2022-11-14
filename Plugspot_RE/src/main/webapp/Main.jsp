@@ -23,12 +23,18 @@ fieldset {
 	text-align: center;
 	border: 0px;
 }
+body{
+	margin-top: 0px;
+}
 /* Header */
 .header {
-	width: 80.5%;
+	width: 89.5%;
 	padding-top: 10px !important;
-	height: 10% !important;
+	height: 8% !important;
 	position: fixed;
+	z-index: 999;
+    margin-top: 0px;
+    background-color: white;
 }
 
 .header .inner_header {
@@ -81,10 +87,6 @@ fieldset {
 	text-align: center;
 	margin: 0 auto;
 	color: #686868;
-<<<<<<< HEAD
-=======
-	
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-SW-DataDesign-1/CCCNC.git
 }
 
 .logout, .mypage {
@@ -126,7 +128,7 @@ fieldset {
 .content {
 	float: left;
 	width: 100%;
-	height: 1200px;
+	height: 1270px;
 	margin-left: 8%;
 	margin-right: 8%;
 	margin-top: 2.5%;
@@ -166,7 +168,8 @@ canvas.barchart2 {
 .areMap {
 	width: 100%;
 }
-.title{
+
+.title {
 	text-align: center;
 }
 /* Footer */
@@ -234,6 +237,16 @@ td {
 
 .clear li {
 	background-color: fff !important;
+}
+
+.h5_title1, .h5_title2 {
+	position: relative;
+	font-size: 18px;
+	color: #003073;
+	line-height: 120%;
+	font-weight: 700;
+	padding-left: 19px;
+	margin: 30px 0 -32px;
 }
 </style>
 </head>
@@ -363,21 +376,23 @@ td {
 					<li id="li_4">
 						<div id="content_bottom">
 							<div id="lineChart">
-								<caption class="title">지역별 충전기 수량</caption>
+								<h5 class="h5_title1"
+									style="margin-bottom: 0%; margin-left: 16%;">지역별 충전기 수량</h5>
 								<div class="chart-container">
 									<canvas id="myChart" class="chart"
 										style="width: 40%; height: 300px; float: left; padding-right: 5px; margin-top: 22px;"></canvas>
 								</div>
-
 							</div>
+
 							<div id="barChart2">
-								<caption class="title">지역별 평균 충전기 수량</caption>
+								<h5 class="h5_title2"
+									style="margin-top: -1%; padding-bottom: 2.8%; text-align: center; margin-right: 18%;">지역별
+									평균 충전기 수량</h5>
 								<div class="chart-container2">
 
 									<canvas id="myChart3" class="bar-chart"
 										style="width: 40%; height: 300px; float: left; padding-left: 5px;"> </canvas>
 								</div>
-
 							</div>
 						</div>
 					</li>
@@ -394,7 +409,7 @@ td {
 			</div>
 			<span class="t">|</span> <span>개인정보처리방침</span> <span class="t">|</span>
 			<span class="m mar_l5">고객센터 1234-5678</span>
-			<p class="mar_t5" style="margin-top: 0px;"> 
+			<p class="mar_t5" style="margin-top: 0px;">
 				사업자번호: 111-222-3333 &nbsp;&nbsp; 대표자: 쿠쿠뉴쿠 &nbsp;&nbsp;주소: 광주광역시 남구
 				송암로 60 광주CGI센터 2층<br> Copyright@2022 PlugSpot. All Rights
 				Reserved
