@@ -81,6 +81,10 @@ fieldset {
 	text-align: center;
 	margin: 0 auto;
 	color: #686868;
+<<<<<<< HEAD
+=======
+	
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-SW-DataDesign-1/CCCNC.git
 }
 
 .logout, .mypage {
