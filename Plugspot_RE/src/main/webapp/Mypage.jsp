@@ -21,10 +21,10 @@ img.logo {
 }
 
 img {
-	position: fixed;
+	/* position: fixed; */
 	float: left;
-	width: 80px;
-	height: 35px !important;
+	width: 500px;
+	height: 600px !important;
 	line-height: 35px !important;
 }
 
@@ -263,7 +263,7 @@ hr {
 			<div class="left_con"
 				style="width: 40%; height: 50%; float: left; margin-right: 5%; margin-left: 8%;">
 				<div class="img_1">
-					<img src="./image<%=info.getFilename()%>" class="info_img">
+					<img src="./image/<%=info.getFilename()%>" class="info_img">
 				</div>
 				<!-- 	<div class="update">
 					<a href="Update.jsp">
