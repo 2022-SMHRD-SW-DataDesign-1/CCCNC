@@ -12,13 +12,14 @@
 img.logo {
 	position: fixed;
 	float: left;
-	width: 180px;
+	width: 189px;
 	height: 35px !important;
 	line-height: 35px !important;
-	margin-left: -90px;
-	margin-top: 25px;
+	margin-left: -95px;
+	margin-top: 17px;
 	/* border-right: 1px solid #D3D3D3; */
 }
+
 
 img {
 	position: fixed;
@@ -280,7 +281,7 @@ hr {
 			<a href="Main.jsp"> <img src="./img/Logo.png" alt="PlugSpot"
 				class="logo" style=""></a>
 		</div>
-		<h2 style="color: black; font-family: 한컴 고딕; margin-top: 39%;">마이페이지</h2>
+		<h2 style="color: black; font-family: 한컴 고딕; margin-top: 50%;">마이페이지</h2>
 		<h4>
 			<a href="Mypage.jsp" style="color: black;">내정보 <a>
 		</h4>

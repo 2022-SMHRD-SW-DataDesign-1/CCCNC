@@ -221,7 +221,7 @@ footer {
 			<a href="Main.jsp"> <img src="./img/Logo.png" alt="PlugSpot"
 				class="logo"></a>
 		</div>
-		<h2 style="color: black; font-family: 한컴 고딕; margin-top: 39%;">마이페이지</h2>
+		<h2 style="color: black; font-family: 한컴 고딕; margin-top: 38.5%;">마이페이지</h2>
 		<div class="in_tap">
 			<h4>
 				<a href="Mypage.jsp" style="color: black;">내정보 <a>
