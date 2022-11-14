@@ -18,6 +18,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -196,23 +197,35 @@ h3 {
 <body>
 
 <%
+
+int citydata = Integer.parseInt(request.getParameter("citydata"));
+
+long beforeTime = System.currentTimeMillis();
 CityChargeDAO dao = new CityChargeDAO();
-ArrayList<CityChargeDTO> station = dao.station();
+ArrayList<CityChargeDTO> station = dao.station(citydata);
+long afterTime = System.currentTimeMillis(); 
+long secDiffTime = (afterTime - beforeTime);
+System.out.println("시간차이(m) : "+secDiffTime);
 fastDAO dao2  = new fastDAO();
 ArrayList<fastDTO> fast = dao2.fast();
 lowDAO dao3 = new lowDAO();
 ArrayList<lowDTO> low = dao3.low();
 avgDAO dao4 = new avgDAO();
 ArrayList<avgDTO> avg = dao4.avg();
+
 avgDAO dao5 = new avgDAO();
 ArrayList<avgDTO> avg2 = dao5.lowavg();
 
+
+
+
 kakaoDAO citydao = new kakaoDAO();
 ArrayList<kakaoDTO> citylist = citydao.kakao();
-int citydata = Integer.parseInt(request.getParameter("citydata"));
 BigDecimal inCenterLatitude=null;
 BigDecimal inCenterLongitude=null;
 String inCenterName="";
+
+
 
 for(int i=0;i<citylist.size();i++){
 	if(citylist.get(i).getLoc_seq().intValue()==(citydata)){
@@ -236,6 +249,7 @@ for(int i=0;i<pt_list.size();i++){
 /* 수익률 구조 */
 
 %>
+
 <header class="header">
 		<!-- head 시작 -->
 		<div class="head">
@@ -274,7 +288,9 @@ for(int i=0;i<pt_list.size();i++){
 	</div>
 </fieldset>
 
+        
 <select id="city" name="city" onchange="changeCitySelect()">
+
 	<% 
 	int index_list[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 49, 57, 68, 83, 97, 130, 142, 159};
 	
@@ -285,6 +301,7 @@ for(int i=0;i<pt_list.size();i++){
 		<option value=<%=citylist.get(i).getLoc_seq()%>> <%=citylist.get(i).getDo_city() %>
 	<%}}} %>	
 </select>
+
 
 <fieldset>
 	<fieldset class="t1" style="display:inline;margin-top: 0px;width: 200px;height: 300px;">
@@ -350,7 +367,9 @@ mapOption2 = {
 
 var map2 = new kakao.maps.Map(mapContainer2, mapOption2);
 let positions2 = [];
-<% for(CityChargeDTO ccd : station){%> 
+
+<% 
+for(CityChargeDTO ccd : station){%> 
 	positions2.push({
 	    title: '<%= ccd.getCharge_state_name()%>' , 
 	    latlng: new kakao.maps.LatLng(<%= ccd.getLatitude()%>,<%= ccd.getLongitude()%>)
@@ -378,6 +397,7 @@ for (var i2 = 0; i2 < positions2.length; i2 ++) {
 
 <!-- 셀렉트 선택시 이벤트 -->
 <script>
+
 var setPercentName="서울시";
 var setPercent=0;
 	function changeCitySelect(){
@@ -392,9 +412,12 @@ var setPercent=0;
 				Lat=<%=citylist.get(i).getCity_latitude()%>
 				Lng=<%=citylist.get(i).getCity_longitude()%>
 				document.getElementById("selectTitle").innerHTML='<%=citylist.get(i).getDo_city()%>'
+				<%CityChargeDAO seldao = new CityChargeDAO();
+				ArrayList<CityChargeDTO> station2 = seldao.station(citylist.get(i).getLoc_seq().intValue());%>
 			}
 		<% }%>
 		
+
 		
 		var moveLatLon = new kakao.maps.LatLng(Lat,Lng);
 		map2.setCenter(moveLatLon);

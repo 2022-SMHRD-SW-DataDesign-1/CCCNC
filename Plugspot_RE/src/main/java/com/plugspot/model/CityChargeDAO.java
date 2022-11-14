@@ -9,10 +9,12 @@ import com.plugspot.db.SqlSessionManager;
 
 public class CityChargeDAO {
 	private SqlSessionFactory sqlSessionFactory =SqlSessionManager.getSqlSession();
-	public ArrayList<CityChargeDTO> station() {
-		
+	
+	
+	
+	public ArrayList<CityChargeDTO> station(int loc_seq) {
 		SqlSession session = sqlSessionFactory.openSession(true);
-		ArrayList<CityChargeDTO> list = (ArrayList)session.selectList("station");
+		ArrayList<CityChargeDTO> list = (ArrayList)session.selectList("station",loc_seq);
 		System.out.println(list.size());
 		session.close();
 		

@@ -261,8 +261,13 @@ h3 {
 <body>
 
 <%
+long beforeTime = System.currentTimeMillis();
+int citydata = Integer.parseInt(request.getParameter("citydata"));
 CityChargeDAO dao = new CityChargeDAO();
-ArrayList<CityChargeDTO> station = dao.station();
+ArrayList<CityChargeDTO> station = dao.station(citydata);
+long afterTime = System.currentTimeMillis(); 
+long secDiffTime = (afterTime - beforeTime);
+System.out.println("시간차이(m) : "+secDiffTime);
 fastDAO dao2  = new fastDAO();
 ArrayList<fastDTO> fast = dao2.fast();
 lowDAO dao3 = new lowDAO();
@@ -274,7 +279,6 @@ ArrayList<avgDTO> avg2 = dao5.lowavg();
 
 kakaoDAO citydao = new kakaoDAO();
 ArrayList<kakaoDTO> citylist = citydao.kakao();
-int citydata = Integer.parseInt(request.getParameter("citydata"));
 BigDecimal inCenterLatitude=null;
 BigDecimal inCenterLongitude=null;
 String inCenterName="";
@@ -449,12 +453,12 @@ mapOption2 = {
 
 var map2 = new kakao.maps.Map(mapContainer2, mapOption2);
 let positions2 = [];
-<% for(CityChargeDTO ccd : station){%> 
+<%-- <% for(CityChargeDTO ccd : station){%> 
 	positions2.push({
 	    title: '<%= ccd.getCharge_state_name()%>' , 
 	    latlng: new kakao.maps.LatLng(<%= ccd.getLatitude()%>,<%= ccd.getLongitude()%>)
 	});
-<%}%>
+<%}%> --%>
 
 var marker2, i2; 
 for (var i2 = 0; i2 < positions2.length; i2 ++) {
