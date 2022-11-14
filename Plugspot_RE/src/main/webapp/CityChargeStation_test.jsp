@@ -189,7 +189,7 @@ li {
 	text-align: center;
 	float:left;
 	margin-left: 5%;
-    margin-top: 54%;
+    margin-top: 48%;
 }
 .t1 {
 	display: inline;
