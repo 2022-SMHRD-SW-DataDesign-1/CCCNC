@@ -24,19 +24,23 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+body{
+	margin:0;
+}
 .t11{
 	display: inline;
-	width: 37%;
+	width: 31%;
 	float:left;
-	margin-top:5%;
+	margin-top: 3%;
+	margin-left: 9%;
 	border:0;
 }
 
 .t22 {
 	display: inline;
-	width: 37%;
+	width: 31%;
 	float:left;
-	margin-top: 5%;
+	margin-top: 3%;
     margin-left: 5%;
     border:0;
 }
@@ -67,7 +71,7 @@
 	width: 100%;
 	/* border-bottom: 1px solid #D3D3D3; */
 	margin: 0 auto;
-	margin-left: 90%;
+	margin-left: 81%;
 	top: 24px !important;
 }
 
@@ -135,13 +139,18 @@
 	font-size: 20px !important;
 	cursor: pointer;
 }
-content {
+/* content {
 	float: left;
 	width: 1509px;
 	height: 100%;
 	margin-left: 10%;
 	margin-right: 10%;
-}
+} */
+content{
+    float: left;
+    width: 100%;
+    height: 1200px;
+    }
 .mapimg1 {
 	width: 250px;
 }
@@ -188,8 +197,8 @@ li {
 	height: 40px;
 	text-align: center;
 	float:left;
-	margin-left: 5%;
-    margin-top: 48%;
+	margin-left: 4%;
+    margin-top: 25%;
 }
 .t1 {
 	display: inline;
@@ -290,7 +299,6 @@ for(int i=0;i<pt_list.size();i++){
 	}
 }
 %>
-
 	<header class="header">
 		<div class="head">
 			<div class="logo">
@@ -309,20 +317,19 @@ for(int i=0;i<pt_list.size();i++){
 					if (info == null) {
 					%>
 					<li><a href="Main.jsp"><input type="button" class="home"
-							value="HOME"></a></li>
-					<li><a href="Login.jsp"><input type="button" class="login"
+							value="HOME"></a>
+					<a href="Login.jsp"><input type="button" class="login"
 							value="LOGIN"></a></li>
 					<%
 					} else {
 					%>
 					<li><a href="Main.jsp"><input type="button" class="home"
-							value="HOME"></a></li>
-					<li><a href="Mypage.jsp"><input type="button"
-							class="mypage" value="MYPAGE"></a></li>
-					<li><a href="Main.jsp"><input type="submit" class="logout"
+							value="HOME"></a>
+					<a href="Mypage.jsp"><input type="button"
+							class="mypage" value="MYPAGE"></a>
+					<a href="Main.jsp"><input type="submit" class="logout"
 							value="LOGOUT"></a></li>
 					<%
-					
 					}
 					%>
 				</form>
@@ -330,7 +337,7 @@ for(int i=0;i<pt_list.size();i++){
 		</div>
 		<!-- topMenu 끝 -->
 	</header>
-	<content>
+
 	
 <!-- ============================================================================================ -->
 <fieldset class="t11">
@@ -381,7 +388,7 @@ for(int i=0;i<pt_list.size();i++){
 	</div>
 </fieldset>
 <footer class="footer">
-		<div class="foot" style="margin-top:4%; margin-left:-10%;">
+		<div class="foot" style="margin-top:2%; margin-left:0.5%;">
 			<!-- foot 시작 -->
 			<div class="f_logo">
 				<img src="./img/FootLogo.png" alt="PlugSpot" style=" width: 190px; height: 44px;">
