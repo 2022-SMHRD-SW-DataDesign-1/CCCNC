@@ -20,14 +20,14 @@ img.logo {
 	/* border-right: 1px solid #D3D3D3; */
 }
 
-img {
+/* img { */
 	/* position: fixed; */
-	float: left;
+	/* float: left;
 	width: 500px;
 	height: 600px !important;
 	line-height: 35px !important;
-}
-
+} */
+ 
 /* left */
 .v-line {
 	border-right: 1px solid #D3D3D3;
@@ -157,8 +157,11 @@ center {
 }
 
 .info_img {
-	style width: 100%;
-	height: 100%;
+	/* position: fixed; */
+	float: left;
+	width: 500px;
+	height: 600px !important;
+	line-height: 35px !important;
 }
 
 .sub_title {
@@ -205,9 +208,9 @@ footer {
 	bottom: 0;
 }
 
-.f_content {
+/* .f_content {
 	margin-top: 40px;
-}
+} */
 
 hr {
 	margin-right: 20px;
