@@ -50,6 +50,7 @@ a {
 
 body {
 	background-color: rgb(242, 244, 255);
+	margin: 0px;
 }
 
 /* content */
@@ -77,7 +78,7 @@ legend {
 	margin-left: 22%;*/
 	box-shadow: 0 10px 20px rgb(0 0 0/ 19%), 0 6px 6px rgb(0 0 0/ 23%);
 	float: left;
-	margin-left:18%;
+	margin-left: 18%;
 	width: 500px;
 	height: 600px;
 	border: solid 1px rgb(48, 151, 219);
@@ -102,7 +103,6 @@ h4 {
 	/*margin: 30px 0 10px;*/
 	font-family: 한컴 고딕;
 	font-weight: bold !important;
-	
 }
 
 button {
@@ -182,7 +182,6 @@ li {
 	height: 30px;
 	margin-left: 40px;
 	padding: 4px;
-	    
 }
 
 .member img {
@@ -190,9 +189,11 @@ li {
 	height: 25px;
 	width: 25px;
 }
+
 span .2 {
- font-weight: bolder;
+	font-weight: bolder;
 }
+
 footer {
 	clear: both;
 	width: 100%;
@@ -201,21 +202,31 @@ footer {
 	font-weight: 50px;
 	background-color: white;
 	position: absolute;
-    bottom: 0;
+	bottom: 0;
 }
 
 .f_content {
 	margin-top: 40px;
 }
-hr{
-    margin-right: 20px;
-    height: 0.01px; 
-    background-color: #D3D3D3;
-    }
+
+hr {
+	margin-right: 20px;
+	height: 0.01px;
+	background-color: #D3D3D3;
+}
+
+.mem_img {
+	margin-left: 64px;
+	font-size: 20px;
+	font-weight: bolder;
+}
+
+.con_title {
+	height: 30px;
+}
 </style>
 </head>
 <body>
-
 	<left class="tap"> <!-- left태그 -->
 	<div class="v-line">
 
@@ -243,9 +254,9 @@ hr{
 	%>
 	<center>
 		<div class="con_title">
-			<h1 style="font-family: 한컴 고딕; "></h1>
+			<h1 style="font-family: 한컴 고딕;"></h1>
 			<div class="sub_title">
-				<h2 style="margin-left: 50px;" >< 사업자등록증 ></h2>
+				<span class="mem_img">< 사업자등록증 ></span>
 			</div>
 		</div>
 		<div class="content">
@@ -265,21 +276,23 @@ hr{
 				</ul>
 				<li>
 					<div class="mem_num">
-						<img alt="프로필이미지" src="./img/프로필이미지사진.png"> <span class="2" style="font-weight:bold">사업자등록번호</span>
-						<br> <span class="3"><%=info.getMember_num()%></span>
+						<img alt="프로필이미지" src="./img/프로필이미지사진.png"> <span class="2"
+							style="font-weight: bold">사업자등록번호</span> <br> <span
+							class="3"><%=info.getMember_num()%></span>
 					</div>
 					<hr>
 				</li>
 				<li>
 					<div class="pw">
-						<img alt="pw이미지" src="./img/pw.png"> <span class="2" style="font-weight:bold">비밀번호</span>
-						<br> <span class="3"><%=info.getPassword()%></span>
+						<img alt="pw이미지" src="./img/pw.png"> <span class="2"
+							style="font-weight: bold">비밀번호</span> <br> <span class="3"><%=info.getPassword()%></span>
 					</div>
 					<hr>
 				</li>
 				<li>
 					<div class="position">
-						<img alt="위치이미지" src="./img/위치.png"> <span class="2" style="font-weight:bold">내 충전소 위치</span> <br>
+						<img alt="위치이미지" src="./img/위치.png"> <span class="2"
+							style="font-weight: bold">내 충전소 위치</span> <br>
 						<%
 						if (list != null) {
 						%>

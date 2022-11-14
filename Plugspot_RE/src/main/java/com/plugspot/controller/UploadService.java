@@ -32,7 +32,7 @@ public class UploadService  extends HttpServlet {
 		System.out.println(savePath);
 		
 	
-		int maxSize = 10*400*500; // 10*1024*1024에서  수정
+		int maxSize = 10*500*600; // 10*1024*1024에서  수정
 		
 	
 		String encoding = "UTF-8";

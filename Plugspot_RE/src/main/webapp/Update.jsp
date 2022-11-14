@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.plugspot.model.ChargeDTO"%>
 <%@page import="com.plugspot.model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -6,96 +8,51 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-/* Header
-.header {
-	width: 100%;
-	padding-top: 10px !important;
-	height: 10% !important;
+<style type="text/css">
+img.logo {
 	position: fixed;
+	float: left;
+	width: 180px;
+	height: 35px !important;
+	line-height: 35px !important;
+	margin-left: -90px;
+	margin-top: 25px;
+	/* border-right: 1px solid #D3D3D3; */
 }
-.header .inner_header {
-	position: relative;
-	width: 100%;
-	margin: 0 auto;
-	line-height: 100%;
-}*/
-left .logo {
-	display: inline-block;
-	width: 190px;
-	
-	margin: 0 auto;
-}
-/*.header .topMenu {
-	position: absolute;
-	width: 100%;
-	border-bottom: 1px solid #D3D3D3;
-	margin: 0 auto;
-	margin-left: 90%;
-	top: 24px !important;
-}
-.header .topMenu ul {
-	position: fixed;
-	float: right;
-	list-style: none;
-	margin-left: 350px;
-}*/
-left img {
+
+img {
 	position: fixed;
 	float: left;
 	width: 80px;
 	height: 35px !important;
 	line-height: 35px !important;
-	border-right: 1px solid #D3D3D3;
 }
-/*.header .topMenu li {
-	float: left;
-	width: 80px;
-	height: 35px !important;
-	line-height: 35px !important;
-	border-right: 1px solid #D3D3D3;
-}
-.header .topMenu li a {
-	display: block;
-	color: #686868;
-	text-align: center;
-	font-family:dotum;
-	font-size: 15px;
-	margin: 0 auto;
-}
-.header .topMenu li a:hover {
-	display: block;
-	color: #686868;
-	text-align: center;
-	font-weight:800;font-size:13px;
-	font-weight: bold !important;
-	font-size: 20px !important;
-}*/
-h4 {
-	position: relative;
-	color: #003073;
-	line-height: 120%;
-	font-weight: 700;
-	/* padding-left: 19px; */
-	margin: 30px 0 10px;
-	font-family: 한컴 고딕;
-	/* font-size: 15px; */
-	/* font-color: #686868 !important; */
-	margin-left: 8%;
-}
+
 /* left */
 .v-line {
-	border-right: 2px solid #D3D3D3;
+	border-right: 1px solid #D3D3D3;
 	width: 190px;
-	height: 72%;
+	height: 90%;
 	position: absolute;
 	text-align: center;
-	margin-top: 80px;
+	margin-top: -110px;
 	font-family: 한컴 고딕;
 	display: block !important;
 	color: #686868 !important;
 	/* box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); */
+	text-align: center;
+	background-color: white;
 }
+
+a {
+	text-decoration-line: none;
+}
+
+body {
+	background-color: rgb(242, 244, 255);
+	margin: 0px;
+}
+
 /* content */
 content {
 	/* padding: 50px 0 0;
@@ -107,64 +64,47 @@ content {
 	background-color: rgb(249, 251, 252);
 	margin-left: 50%;
 }
+
 legend {
 	margin-top: 3%;
 	margin-left: 15%;
 	font-family: 한컴 고딕;
 	font-size: xx-large;
+	width: 100px
 }
+
 .img_1 {
 	/*margin-top: -1%;
 	margin-left: 22%;*/
 	box-shadow: 0 10px 20px rgb(0 0 0/ 19%), 0 6px 6px rgb(0 0 0/ 23%);
 	float: left;
-	margin-top: 1%;
-    margin-left: 25%;
-	width: 400px;
-    height: 500px;
-    border: solid 1px rgb(48,151,219);
-    background-color: #fff;
-    border-radius: 12px;
+	margin-left: 18%;
+	width: 500px;
+	height: 600px;
+	border: solid 1px rgb(48, 151, 219);
+	background-color: #fff;
+	border-radius: 12px;
 }
-.update button {
-	margin-top: -8%;
-	margin-left: 36%;
-	float: left;
-}
-.number1>h6 {
-	margin-left: 1%;
-	margin-top: 12%;
-	margin-bottom: 12%;
-}
-.number1>h6>a {
+
+.member>h4>a {
 	width: 39%;
 	margin-bottom: -1%;
 }
+
 input {
-	margin-left: 1%;
-	margin-top: -3%;
+	margin-left: 9%;
+	margin-top: -1%;
 }
-.btn {
-	background-color: rgb(45, 204, 106);
-	box-shadow: 0px 4px 0px rgb(45, 204, 106);
-	position: relative;
-	border: 0;
-	padding: 5px 15px;
-	display: inline-block;
-	text-align: center;
-	color: white;
-	border-radius: 10px;
-	cursor: pointer;
-	margin-left: 81%;
-	float: left;
-    margin-top: -7%;
-	box-shadow: 5px 5px 5px darkgray;
-}
-h6 {
+
+h4 {
+	/* color: #636E72; */
+	line-height: 140%;
+	font-weight: bold;
+	/*margin: 30px 0 10px;*/
 	font-family: 한컴 고딕;
-	font-size: medium;
-	margin-left: 22%;
+	font-weight: bold !important;
 }
+
 button {
 	background-color: rgb(45, 204, 106);
 	box-shadow: 0px 4px 0px rgb(45, 204, 106);
@@ -180,33 +120,17 @@ button {
 	margin-left: 1%;
 	box-shadow: 5px 5px 5px darkgray;
 }
+.Rpw .btn{
+    border: 0px;
+    float: left;
+    margin-left: 10px;
+}
+
 /* a {
 	text-decoration: none;
 } */
-.v-line h4:hover {
-	font-size: large;
-	cursor: pointer;
-	display: block font-weight: bold !important;
-	font-size: 20px !important;
-	text-align: center;
-}
-.number1 {
-	padding: 20px 17px 20px;
-	border-radius: 12px;
-	box-shadow: 2px 2px 14px 0 rgb(0 164 73/ 8%);
-	border: solid 1px rgba(3, 213, 128, .8);
-	background-color: #fff;
-	box-sizing: border-box;
-	float: left;
-	width: 22%;
-	height: 100%;
-	margin-top: -22%;
-    margin-left: 52%;
-	font-family: 한컴 고딕;
-	box-shadow: 0 10px 20px rgb(0 0 0/ 19%), 0 6px 6px rgb(0 0 0/ 23%);
-}
-.update{
-	background-color: rgb(45, 204, 106);
+.update, .btn {
+	background-color: #74b9ff;
 	box-shadow: 0px 4px 0px rgb(45, 204, 106);
 	position: relative;
 	border: 0;
@@ -215,138 +139,255 @@ button {
 	text-align: center;
 	color: white;
 	border-radius: 10px;
-	margin: 8px;
+	margin: -9px;
 	cursor: pointer;
-	margin-left: 1%;
-    margin-top: 23%;
 	box-shadow: 5px 5px 5px darkgray;
 }
-#frm{
-	margin-left: 40%;
-    margin-top: -4%;
-}
-.update_2{
-	margin-top: -6%;
-    margin-left: 31%;
+.update{
+	margin-left: 102%;
+    margin-top: -8%;
     float: left;
 }
-#1{
-    width: 330px;
-    float: left;
+.v-line h4:hover {
+	font-size: large;
+	cursor: pointer;
+	display: block;
+	font-weight: bold !important;
+	font-size: 20px !important;
+	text-align: center;
 }
-#2{
-	float:left;
+
+.member {
+	padding: 25px 17px 50px;
+	border-radius: 12px;
+	box-shadow: 2px 2px 14px 0 rgb(0 164 73/ 8%);
+	border: solid 1px rgb(48, 151, 219);
+	background-color: #fff;
+	box-sizing: border-box;
+	float: left;
+	width: 32%;
+	height: 50%;
+	margin-top: -35.5%;
+	margin-left: 52%;
+	font-family: 한컴 고딕;
+	box-shadow: 0 10px 20px rgb(0 0 0/ 19%), 0 6px 6px rgb(0 0 0/ 23%);
 }
-li {
-	list-style: none;
-}
+
 center {
 	width: 1697px;
-	height: 697px;
+	height: 100%;
 	margin-left: 190px;
-    margin-top: -78px;
-	background-color:rgb(242,244,255);
+	margin-top: -78px;
+	background-color: rgb(242, 244, 255);
 }
-/* Footer */
-.footer {
+
+.info_img {
+	style width: 100%;
+	height: 100%;
+}
+
+.sub_title {
+	text-align: left;
+	margin-top: 11%;
+	font-family: 한컴 고딕;
+	margin-left: 22%;
+	height: 20px;
+}
+
+li {
+	list-style: none;
+	height: 100%;
+	text-align: left;
+	font-family: '한컴 고딕';
+	margin-left: 20px;
+}
+
+.mem_num span, .pw span, .position span, .Rpw span {
+	width: 100%;
+	height: 30px;
+	margin-left: 40px;
+	padding: 4px;
+}
+
+.member img {
+	position: fixed;
+	height: 25px;
+	width: 25px;
+}
+.Rpw img{
+    position: fixed;
+	height: 25px;
+	width: 25px;
+}
+
+span .2 {
+	font-weight: bolder;
+}
+
+footer {
 	clear: both;
 	width: 100%;
-	height: 10%;
+	height: 15%;
 	font-family: 한컴 고딕;
 	font-weight: 50px;
-	margin-top: 41%;
-	margin-top: 7%;
+	background-color: white;
+	position: absolute;
+	bottom: 0;
 }
-a {
-	text-decoration-line: none;
+
+.f_content {
+	margin-top: 40px;
+}
+
+hr {
+	margin-right: 20px;
+	height: 0.01px;
+	background-color: #D3D3D3;
+}
+
+.mem_img {
+	margin-left: 64px;
+	font-size: 20px;
+	font-weight: bolder;
+}
+
+.con_title {
+	height: 30px;
+}
+.btn1{
+	  display: inline-block;
+	  padding: .5em .75em;
+	  color: black;
+	  font-size: inherit;
+	  line-height: normal;
+	  vertical-align: middle;
+	  background-color: rgb(242, 244, 255);
+	  cursor: pointer;
+	  border: 0px solid #ebebeb;
+	  border-bottom-color: #e2e2e2;
+	  border-radius: .25em;
+	  margin-left: 101%;
+   	  margin-top: -20%;
+}
 }
 </style>
 </head>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
 <body>
-	<!--  <header class="header">
-		<div class="head">
-			
-			<div class="topMenu">
-				<div class="clear">
-					<li><a href="Main.jsp"><span>HOME</span></a></li>
-					<li><a href="Login.jsp"><span>LOGIN</span></a></li>
-				</div>
-			</div>
-		</div>
-	</header>-->
-	<!-- left태그 -->
-	<left class="tap">
+	<left class="tap"> <!-- left태그 -->
 	<div class="v-line">
-	<div class="logo">
-				<a href="Main.jsp"> <img src="./img/Logo.png" alt="PlugSpot"
-					class="logo"></a>
-			</div>
-		<h2 style="color: black;">마이 페이지</h2>
+
+		<div class="logo">
+			<a href="Main.jsp"> <img src="./img/Logo.png" alt="PlugSpot"
+				class="logo" style=""></a>
+		</div>
+		<h2 style="color: black; font-family: 한컴 고딕; margin-top: 39%;">마이페이지</h2>
 		<h4>
 			<a href="Mypage.jsp" style="color: black;">내정보 <a>
 		</h4>
 		<h4>
 			<a href="Mycharge.jsp" style="color: black;"> My충전소 </a>
 		</h4>
-		<h4><a href="Update.jsp" style="color: black;"> 개인정보수정 </a>  </h4>
+		<h4>
+			<a href="Update.jsp" style="color: black;"> 개인정보수정 </a>
+		</h4>
 	</div>
 	</left>
-	<!-- left 끝 -->
-	<center>
+	<!-- left태그 끝 -->
 	<%
 	MemberDTO info = (MemberDTO) session.getAttribute("info");
+	ArrayList<ChargeDTO> list = (ArrayList) session.getAttribute("mystate");
+	System.out.print(list);
 	%>
-	<content>
-	<!-- <legend>내 정보</legend> -->
-	<h6> < 사업자등록증 > </h6>
-	<div class="img_1">
-	<img src="<%=info.getFilename()%>"></div>
-	<input class="update" type="submit" value="등록증 등록" >
-		<form id="frm" action="UploadService" method="post"enctype="multipart/form-data">
-			
-			<input id="file" type="submit" name="filename" class="btn1">
-				
-		</form>
-			
-			
-			<div class="number1">
-			<h6>
-			사업자 등록 번호:
-			<%=info.getMember_num()%><br><br>
-			사업자 비밀 번호:
-			<%=info.getPassword()%><br><br>
-			<form action="UpdateService" method="post">
-			<!--   <div id="1">
-			비밀번호 수정 :
-			<input class="update_2" type="password" name="password">
+	<center>
+		<div class="con_title">
+			<h1 style="font-family: 한컴 고딕;"></h1>
+			<div class="sub_title">
+				<span class="mem_img">< 사업자등록증 ></span>
 			</div>
-			<div id="2">
-			<input type="submit" value="수정" class="btn">
-			</div>-->
-			</form>
-		<br>
-				
-			충전소  위치 : <!-- <input type="text" name="plugspot"> <a href="Mycharge.jsp">
-				<button class="btn2">등록</button></a>  -->
-</h6>
-	</div>
-	</content>
+		</div>
+		<div class="content">
+			<div class="left_con"
+				style="width: 40%; height: 50%; float: left; margin-right: 5%; margin-left: 8%;">
+				<div class="img_1">
+					<img src="./image<%=info.getFilename()%>" class="info_img">
+				</div>
+				<form id="frm" action="UploadService" method="post" enctype="multipart/form-data" style="width:582px;">
+					<input id="file" type="file" name="filename" class="btn1" value="파일선택">
+					<input class="update" type="submit" value="등록증 등록">
+				</form>
+				<!-- 	<div class="update">
+					<a href="Update.jsp">
+						<button class="re_img">등록증 수정</button>
+					</a>
+				</div> -->
+			</div>
+			<div class="member">
+				<ul class="mem_info">
+				</ul>
+				<li>
+					<div class="mem_num">
+						<img alt="프로필이미지" src="./img/프로필이미지사진.png"> <span class="2"
+							style="font-weight: bold">사업자등록번호</span> <br> <span
+							class="3"><%=info.getMember_num()%></span>
+					</div>
+					<hr>
+				</li>
+				<li>
+					<div class="pw">
+						<img alt="pw이미지" src="./img/pw.png"> <span class="2" style="font-weight: bold">비밀번호</span> <br> 
+															  <span class="3"><%=info.getPassword()%></span>
+					</div>
+					
+				</li>
+				<li>
+					<form action="UpdateService" method="post">
+						<div class="Rpw">
+						 	<!--  <img alt="pw이미지" src="./img/pw.png">--> <span class="2" style="font-weight: bold; float: left;" >비밀번호 수정</span> <br>
+																<span><input class="update_2" type="password" name="password" style="float: left;"> </span> 
+							<span><input type="submit" value="수정" class="btn" style="border: 0px; float: left;"></span>
+						</div>
+					</form>
+					<hr>
+				</li>
+				<li>
+					<div class="position">
+						<img alt="위치이미지" src="./img/위치.png"> <span class="2"
+							style="font-weight: bold">내 충전소 위치</span> <br>
+						<%
+						if (list != null) {
+						%>
+						<%
+						for (int i = 0; i < list.size(); i++) {
+						%>
+						<span class="3">위도: <%=list.get(i).getLATITUDE()%></span> <span
+							style="margin-left: 0px;">경도: <%=list.get(i).getLONGTITUDE()%>
+							<br> <%
+									 }
+									 } else {
+									 System.out.print("출력불가");
+									 %> <%
+									 }
+									 %>
+						</span>
+
+					</div>
+				</li>
+			</div>
+		</div>
 	</center>
 	<footer class="footer">
-		<!-- foot 시작 -->
-		<div class="f_logo">
-			<img src="./img/FootLogo.png" alt="PlugSpot"
-				style="width: 190px; height: 35px;">
+		<img src="./img/FootLogo.png" alt="PlugSpot"
+			style="width: 190px; height: 35px;">
+		<div class="f_content">
+			<span class="t">|</span> <span style="color: black">개인정보처리방침</span> <span
+				class="t">|</span> <span class="m mar_l5">고객센터 1234-5678</span>
+			<p class="mar_t5">
+				사업자번호: 111-222-3333 &nbsp;&nbsp; 대표자: 쿠쿠뉴쿠 &nbsp;&nbsp;주소: 광주광역시 남구
+				송암로 60 광주CGI센터 2층<br> Copyright@2022 PlugSpot. All Rights
+				Reserved
+			</p>
 		</div>
-		<span class="t">|</span> <strong style="color: #686868;">개인정보처리방침</strong>
-		<span class="t">|</span> <span class="m mar_l5">고객센터 1234-5678</span>
-		<p class="mar_t5">
-			사업자번호: 111-222-3333 &nbsp;&nbsp; 대표자: 쿠쿠뉴쿠 &nbsp;&nbsp;주소: 광주광역시 남구
-			송암로 60 광주CGI센터 2층<br> Copyright@2022 PlugSpot. All Rights
-			Reserved
-		</p>
 	</footer>
-	<!-- foot 끝 -->
 </body>
+
 </html>

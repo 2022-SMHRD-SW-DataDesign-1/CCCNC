@@ -10,40 +10,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-/* Header
-.header {
-	width: 100%;
-	padding-top: 10px !important;
-	height: 10% !important;
-	position: fixed;
+
+body{
+	margin: 0px;
 }
-.header .inner_header {
-	position: relative;
-	width: 100%;
-	margin: 0 auto;
-	line-height: 100%;
-}*/
 left .logo {
 	display: inline-block;
 	width: 189px;
 	margin: 0 auto;
 	margin-left: -4.7%;
 }
-/*
-.header .topMenu {
-	position: absolute;
-	width: 100%;
-	border-bottom: 1px solid #D3D3D3;
-	margin: 0 auto;
-	margin-left: 90%;
-	top: 24px !important;
-}
-.header .topMenu ul {
-	position: fixed;
-	float: right;
-	list-style: none;
-	margin-left: 350px;
-}*/
+
 left img {
 	position: fixed;
 	float: left;
@@ -52,29 +29,7 @@ left img {
 	line-height: 35px !important;
 	/*border-right: 1px solid #D3D3D3;*/
 }
-/*.header .topMenu li {
-	float: left;
-	width: 80px;
-	height: 35px !important;
-	line-height: 35px !important;
-	border-right: 1px solid #D3D3D3;
-}
-.header .topMenu li a {
-	display: block;
-	color: #686868;
-	text-align: center;
-	font-family:dotum;
-	font-size: 15px;
-	margin: 0 auto;
-}
-.header .topMenu li a:hover {
-	display: block;
-	color: #686868;
-	text-align: center;
-	font-weight:800;font-size:13px;
-	font-weight: bold !important;
-	font-size: 20px !important;
-}*/
+
 content {
 	/* padding: 50px 0 0;
             position: relative; */
@@ -89,7 +44,7 @@ content {
 	width: 50%;
 	height: 30%;
 	float: left;
-	margin-top: 8%;
+	margin-top: 6%;
 	margin-left: 11%;
 }
 
@@ -102,14 +57,14 @@ content {
 }
 
 #content_msg {
-	width: 30%;
+	width: 26%;
 	float: left;
 	margin-top: 200px;
 }
 
 h4 {
 	position: relative;
-	color: #74b9ff;
+	color: #7f8c8d;
 	line-height: 140%;
 	font-weight: 700;
 	/* padding-left: 19px; */
@@ -139,11 +94,9 @@ h4 {
 	width: 160px;
 	height: 20px;
 }
-
 a {
 	text-decoration: none;
 }
-
 .v-line h4:hover {
 	font-size: large;
 	cursor: pointer;
@@ -159,9 +112,8 @@ a {
 	background-color: #fff;
 	box-sizing: border-box;
 	float: left;
-	width: 60%;
+	width: 345px;
 	height: 100%;
-	
 	font-family: 한컴 고딕;
 	box-shadow: 0 10px 20px rgb(0 0 0/ 19%), 0 6px 6px rgb(0 0 0/ 23%);
 	border: solid 1px rgb(48, 151, 219);
@@ -173,7 +125,7 @@ li {
 
 center {
 	width: 1912px;
-	height: 770px;
+	height: 786px;
 	/* 	margin-left: 190px;
     margin-top: -78px; */
 	background-color: rgb(242, 244, 255);
@@ -181,7 +133,8 @@ center {
 
 .btns {
 	float: right;
-	margin-top: 60px;
+	margin-top: 30px;
+	width: 250px;
 }
 
 button {
@@ -196,20 +149,19 @@ button {
 	border-radius: 10px;
 	margin: 8px;
 	cursor: pointer;
-	
 	box-shadow: 5px 5px 5px darkgray;
 }
 
 button.spot {
 	margin-left: 3%;
-	margin-top: 10%;
+	margin-top: 53.5%;
 }
 
 .myphoto img {
 	border: 0;
-	width: 80px;
+	width: 70px;
 	aspect-ratio: auto 56/56;
-	height: 80px;
+	height: 70px;
 	/* margin-bottom:5%; */
 	float: left;
 	box-shadow: 0 3px 6px 0 rgb(29 34 53/ 8%);
@@ -246,6 +198,7 @@ legend {
 	text-align: left;
 	font-weight: bold;
 	font-family: 한컴 고딕;
+	font-size: 20px;
 }
 /* Footer */
 footer {
@@ -260,23 +213,6 @@ footer {
 </style>
 </head>
 <body>
-	<!--  <header class="header">
-		
-		<div class="head">
-			
-			<div class="topMenu">
-				<div class="clear">
-					<li><a href="Main.jsp"><span>HOME</span></a></li>
-					<li><a href="Login.jsp"><span>LOGIN</span></a></li>
-				</div>
-			</div>
-			
-		</div>
-		
-	</header>
-	<!-- head 끝 -->
-
-
 	<!-- left태그 -->
 	<left class="tap">
 
@@ -285,21 +221,17 @@ footer {
 			<a href="Main.jsp"> <img src="./img/Logo.png" alt="PlugSpot"
 				class="logo"></a>
 		</div>
-		<h2 style="color: black; font-family: 한컴 고딕; margin-top: 39%;">마이
-			페이지</h2>
+		<h2 style="color: black; font-family: 한컴 고딕; margin-top: 39%;">마이페이지</h2>
 		<div class="in_tap">
 			<h4>
 				<a href="Mypage.jsp" style="color: black;">내정보 <a>
 			</h4>
-
-
 			<h4>
 				<a href="Mycharge.jsp" style="color: black;"> My충전소 </a>
 			</h4>
 			<h4>
 				<a href="Update.jsp" style="color: black;"> 개인정보수정 </a>
 			</h4>
-
 		</div>
 	</div>
 	</left>
@@ -315,7 +247,7 @@ footer {
 				<!-- content_map 끝 -->
 				<div id="content_msg">
 					<span>
-						<h4>* 지도에서 원하는 지역을 클릭하거나 아래 버튼을 클릭하시오.</h4>
+						<h4>* 지도에서 원하는 지역을 클릭하거나 <br> 아래 버튼을 클릭하시오.</h4>
 					</span> <span id="clickLatlng" style="display: none;"></span>
 					<div id="info">
 						<legend>My충전소</legend>
