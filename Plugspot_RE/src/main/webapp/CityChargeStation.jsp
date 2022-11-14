@@ -367,7 +367,6 @@ mapOption2 = {
 
 var map2 = new kakao.maps.Map(mapContainer2, mapOption2);
 let positions2 = [];
-
 <% 
 for(CityChargeDTO ccd : station){%> 
 	positions2.push({
