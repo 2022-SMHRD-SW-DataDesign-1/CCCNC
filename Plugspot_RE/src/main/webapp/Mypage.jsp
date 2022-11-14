@@ -9,81 +9,29 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-/*  Header
-.header {
-	width: 10%;
-	margin-top:-1%;
-	padding-top: 10px !important;
-	height: 10% !important;
-	position: fixed;
-	background-color: white;
-}
-.header .inner_header {
-	position: relative;
-	width: 100%;
-	margin: 0 auto;
-	line-height: 100%;
-*/
+
 left .logo {
 	display: inline-block;
 	width: 190px;
 	margin: 0 auto;
     margin-left: -4.7%;
 }
-/*
-.header .topMenu {
-	position: absolute;
-	width: 100%;
-	border-bottom: 1px solid #D3D3D3;
-	margin: 0 auto;
-	margin-left: 90%;
-	top: 24px !important;
-}
-.header .topMenu ul {
-	position: fixed;
-	float: right;
-	list-style: none;
-	margin-left: 350px;
-}
-*/
+
 img {
 	position: fixed;
 	float: left;
 	width: 80px;
 	height: 35px !important;
 	line-height: 35px !important;
-	border-right: 1px solid #D3D3D3;
+
 }
-/* .header .topMenu li {
-	float: left;
-	width: 80px;
-	height: 35px !important;
-	line-height: 35px !important;
-	border-right: 1px solid #D3D3D3;
-}
-.header .topMenu li a {
-	display: block;
-	color: #686868;
-	text-align: center;
-	font-family:dotum;
-	font-size: 15px;
-	margin: 0 auto;
-}
-/* .header .topMenu li a:hover {
-	display: block;
-	color: #686868;
-	text-align: center;
-	font-weight:800;font-size:13px;
-	
-}  */
+
 /* left */
-/* .tap{
-	background-color: white;
-} */
+
 .v-line {
 	border-right: 1px solid #D3D3D3;
 	width: 190px;
-	height: 86.3%;
+	height: 90%;
 	position: absolute;
 	text-align: center;
 	margin-top: -110px;
@@ -131,7 +79,7 @@ legend {
     background-color: #fff;
     border-radius: 12px;
 }
-.number1>h4>a {
+.member>h4>a {
 	width: 39%;
 	margin-bottom: -1%;
 }
@@ -171,7 +119,7 @@ button {
 	font-size: 20px !important;
 	text-align: center;
 }
-.number1 {
+.member {
 	padding: 20px 17px 20px;
 	border-radius: 12px;
 	box-shadow: 2px 2px 14px 0 rgb(0 164 73/ 8%);
@@ -179,16 +127,14 @@ button {
 	background-color: #fff;
 	box-sizing: border-box;
 	float: left;
-	width: 19%;
-    height: 270px;
-	margin-top: -23%;
+	width: 30%;
+    height: 50%;
+	margin-top: -30%;
     margin-left: 52%;
 	font-family: 한컴 고딕;
 	box-shadow: 0 10px 20px rgb(0 0 0/ 19%), 0 6px 6px rgb(0 0 0/ 23%);
 }
-li {
-	list-style: none;
-}
+
 /* Footer */
 /* Footer */
 .footer {
@@ -201,7 +147,7 @@ li {
 }
 center {
 	width: 1697px;
-	height: 707px;
+	height: 100%;
 	margin-left: 190px;
     margin-top: -78px;
 	background-color:rgb(242,244,255);
@@ -215,6 +161,25 @@ center {
 	margin-top: 11%;
 	font-family: 한컴 고딕;
 	margin-left:22%;
+}
+li{
+list-style: none;
+height: 100%;
+text-align: left;
+font-family: '한컴 고딕';
+margin-left: 20px;
+}
+
+.mem_num span, .pw span, .position span{
+width: 100%;
+height: 30px;
+margin-left: 40px;
+}
+.member img{
+position: fixed;
+height: 25px;
+width: 25px;
+
 }
 </style>
 </head>
@@ -278,47 +243,66 @@ center {
 					</a>
 				</div> -->
 			</div>
-			<div class="number1">
-			<table style="border: 2px;">
-				<tr> <td>사업자 등록번호</td> <td><%=info.getMember_num()%></td> </tr>
-				<tr> <td>비밀번호</td> <td><%=info.getPassword()%></td> </tr>
-				<tr> <td>내 충전소 위치</td> </tr>
-				<tr> 
-				<td>
-					<%
-					if (list != null) {
-					%>
-					<%
-					for (int i = 0; i < list.size(); i++) {
-					%>
-					<%=list.get(i).getLATITUDE()%>
-				</td> 
-				<td> <%=list.get(i).getLONGTITUDE()%>
-						<%
-					}
-					} else {
-					System.out.print("출력불가");
-					%>
-					<%
-					}
-					%>
-				</td>
-				</tr>
-			</table>
+			<div class="member">
+				<ul class="mem_info"> </ul>
+					<li> 
+						<div class="mem_num">
+							<img alt="프로필이미지" src="./img/프로필이미지사진.png" >
+							<span class="2" >사업자등록번호</span>
+							<br>
+							<span class="3"><%=info.getMember_num()%></span>
+						</div>
+					</li>
+					<li>
+						<div class="pw">
+							<img alt="pw이미지" src="./img/pw.png" >
+							<span class="2">비밀번호</span>
+							<br>
+							<span class="3"><%=info.getPassword()%></span>							
+						</div> 
+					</li>
+					<li> 
+						<div class="position">
+							<img alt="위치이미지" src="./img/위치.png">
+							<span class="2">내 충전소 위치</span>
+							<br>
+							<%
+										if (list != null) {
+										%>
+										<%
+										for (int i = 0; i < list.size(); i++) {
+										%>
+										<span class="3">위도:  
+										<%=list.get(i).getLATITUDE()%></span>
+						    <span style="margin-left: 0px;">경도: <%=list.get(i).getLONGTITUDE()%> <br>
+											<%
+										}
+										} else {
+										System.out.print("출력불가");
+										%>
+										<%
+										}
+										%>
+							</span>
+							
+						</div>
+					</li>
+					
+
 				<!--  <h4 style="text-align: left;">
 					사업자 등록 번호:
-					 <%=info.getMember_num()%> 
-					<br> 비밀 번호 확인 :
-					<%=info.getPassword()%>
-					<br> 충전소 위치 :
-					<%
+					 <%-- <%=info.getMember_num()%> 
+	 --%>				<br> 비밀 번호 확인 :
+					<%-- <%=info.getPassword()%>
+		 --%>			<br> 충전소 위치 :
+					<%-- <%
 					if (list != null) {
 					%>
 					<%
 					for (int i = 0; i < list.size(); i++) {
 					%>
-					<h4>
-						My 충전소 :<%=list.get(i).getLATITUDE()%>,
+					 --%><h4>
+						<%-- My 충전소 :<%=list.get(i).getLATITUDE()%>,
 						<%=list.get(i).getLONGTITUDE()%></h4>
 					<%
 					}
@@ -327,7 +311,7 @@ center {
 					%>
 					<%
 					}
-					%>
+					%> --%>
 				</h4> -->
 			</div>
 		</div>
