@@ -182,6 +182,7 @@ footer {
 	position: absolute;
 	left: 0;
 	margin-top: 200px;
+	margin-left: 9px;
 }
 
 li {
@@ -422,7 +423,7 @@ td {
 			<!-- foot 시작 -->
 			<div class="f_logo">
 				<img src="./img/FootLogo.png" alt="PlugSpot"
-					style="width: 190px; height: 44px;">
+					style="width: 160px; height: 35px;">
 			</div>
 			<span class="t">|</span> <span>개인정보처리방침</span> <span class="t">|</span>
 			<span class="m mar_l5">고객센터 1234-5678</span>
@@ -601,24 +602,24 @@ td {
                             xAxes: [{
                                 stacked: true,
                                 ticks: {
-                                    fontSize: 10,
+                                    fontSize: 9,
                                     fontColor: 'black' // x축 폰트 color
 
                                 },
                                 scaleLabel: {
                                     display: true,
-                                    fontSize: 10,
+                                    fontSize: 9,
                                     labelString: ''
                                 }
                             }],
                             yAxes: [{
                                 ticks: {
-                                    fontSize: 10,
+                                    fontSize: 9,
                                     fontColor: 'black' // x축 폰트 color
                                 },
                                 scaleLabel: {
                                     display: true,
-                                    fontSize: 10,
+                                    fontSize: 9,
                                     labelString: '충전기 개수'
                                 }
                             }]
@@ -737,7 +738,7 @@ td {
                             },
                             scaleLabel: {
                                 display: true,
-                                fontSize: 10,
+                                fontSize: 12,
                                 labelString: ''
                             }
                         }],
@@ -749,7 +750,7 @@ td {
                             scaleLabel: {
                                 display: true,
                                 fontSize: 10,
-                                labelString: '충전기 개수'
+                                labelString: ''
                             }
                         }]
                     },

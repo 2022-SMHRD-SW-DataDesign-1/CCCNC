@@ -206,6 +206,7 @@ footer {
 	background-color: white;
 	position: absolute;
 	bottom: 0;
+	margin-left: 5px;
 }
 
 /* .f_content {
@@ -321,7 +322,7 @@ hr {
 	</center>
 	<footer class="footer">
 		<img src="./img/FootLogo.png" alt="PlugSpot"
-			style="width: 190px; height: 35px;">
+			style="width: 160px; height: 35px;">
 		<div class="f_content">
 			<span class="t">|</span> <span style="color: black">개인정보처리방침</span> <span
 				class="t">|</span> <span class="m mar_l5">고객센터 1234-5678</span>

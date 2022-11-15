@@ -79,7 +79,7 @@ h4 {
 .v-line {
 	border-right: 1px solid #D3D3D3;
 	width: 190px;
-	height: 84%;
+	height: 86%;
 	position: absolute;
 	text-align: center;
 	/* margin-top: 80px; */
@@ -209,6 +209,7 @@ footer {
 	font-weight: 50px;
 	position: absolute;
 	bottom: 0;
+	    margin-left: 5px;
 }
 </style>
 </head>
@@ -411,7 +412,7 @@ footer {
 
 		<div class="f_logo">
 			<img src="./img/FootLogo.png" alt="PlugSpot"
-				style="width: 190px; height: 35px;">
+				style="width: 160px; height: 35px;">
 		</div>
 		<span class="t">|</span> <strong style="color: #686868;">개인정보처리방침</strong>
 		<span class="t">|</span> <span class="m mar_l5">고객센터 1234-5678</span>
