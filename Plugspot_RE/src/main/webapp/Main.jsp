@@ -248,6 +248,17 @@ td {
 	padding-left: 19px;
 	margin: 30px 0 -32px;
 }
+#from{
+	width:15px;
+	height: 15px;
+	
+}
+.from{
+    height: 54px;
+    margin-top: 60%;
+    float: right;
+    width: 240px;
+    }
 </style>
 </head>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -368,8 +379,14 @@ td {
 								</table>
 							</div>
 						</div>
+							<div class="from">
+								<span>
+										※ 2022.2월(출처 :  <img alt="국토부" src="./img/국토부.png" id="from">국토부)
+								</span>
+							</div>
+							
 					</li>
-					</li>
+				</li>
 
 					<!-- li_0 끝 -->
 
@@ -380,7 +397,7 @@ td {
 									style="margin-bottom: 0%; margin-left: 16%;">지역별 충전기 수량</h5>
 								<div class="chart-container">
 									<canvas id="myChart" class="chart"
-										style="width: 40%; height: 300px; float: left; padding-right: 5px; margin-top: 22px;"></canvas>
+										style="width: 40%; height: 300px; float: left; padding-right: 5px; margin-top: 27px;"></canvas>
 								</div>
 							</div>
 
