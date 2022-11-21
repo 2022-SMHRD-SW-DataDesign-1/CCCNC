@@ -1,4 +1,5 @@
-# CCCNC
+# PlugSpot(팀명 :Cookie cookie new cookie)
+![image](https://user-images.githubusercontent.com/80088459/202999366-d9000d9d-24d3-4ccb-978d-7606175bd949.png)
 1.프로젝트명
 2.서비스소개
 3.프로젝트기간
