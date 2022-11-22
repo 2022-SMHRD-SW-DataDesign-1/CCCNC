@@ -119,7 +119,7 @@ _Cookie cookie new Cookie_
   </tr>
   <tr>
     <td>차트 데이터 정제, 카카오 맵 api 이벤트 구성,  총괄</td>
-    <td마이페이지 기능 구성, 차트 데이터 시각화, 카카오 맵 api 클러스터 기능 구성</td>
+    <td>마이페이지 기능 구성, 차트 데이터 시각화, 카카오 맵 api 클러스터 기능 구성</td>
     <td>UI/UX 구성, chart js 라이브러리 구축, css 구현</td>
     <td>페이지 css 구성, 레이아웃 구성, 회원기능 구현</td>
   </tr>
