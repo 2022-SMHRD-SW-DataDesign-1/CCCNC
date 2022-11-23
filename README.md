@@ -155,7 +155,7 @@ MainPage
 ### 🧱 시스템 아키텍처
 ---
 <div align ='center'>
-![아키텍처](https://user-images.githubusercontent.com/112475774/203481890-c47cbd4b-933e-455e-a5f5-861b027ea08b.png)
+![아키텍처]<img src="https://user-images.githubusercontent.com/112475774/203481890-c47cbd4b-933e-455e-a5f5-861b027ea08b.png">
 
 
 <br>
@@ -163,7 +163,7 @@ MainPage
 ### 🙋‍♂️ 유스케이스
 ---
 <div align ='center'>
-![유스케이스](https://user-images.githubusercontent.com/112475774/203482095-d5c38aa0-4b26-4876-8783-0de911ad00a5.png)
+![유스케이스]<img src="https://user-images.githubusercontent.com/112475774/203482095-d5c38aa0-4b26-4876-8783-0de911ad00a5.png">
 
 <br>
 
