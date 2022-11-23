@@ -194,12 +194,10 @@ MainPage
 
 ### 🖥 화면구성
 ---
-- **메인페이지 **
+- 메인페이지 
 ![메인 1](https://user-images.githubusercontent.com/112475774/203485736-15263cf6-154d-4b0c-b233-943f2fa6c7ea.png)
 ![메인2](https://user-images.githubusercontent.com/112475774/203485768-75079de8-7aed-4da9-bf58-79f96f26eaae.png)
-
-  
-  
+ 
 - **시도별페이지 화면**
 
 ![시도별페이지](https://user-images.githubusercontent.com/112459519/202892902-ca44722c-aa1a-4328-b093-4fafc5c367b1.PNG)
