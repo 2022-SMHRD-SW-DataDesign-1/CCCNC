@@ -155,7 +155,8 @@ MainPage
 ### 🧱 시스템 아키텍처
 ---
 <div align ='center'>
-<img src="https://user-images.githubusercontent.com/112475774/203481890-c47cbd4b-933e-455e-a5f5-861b027ea08b.png">
+<img src="https://user-images.githubusercontent.com/112475774/203485093-639adb4f-bdeb-4c57-bc26-7183b079e107.png">
+
 
 
 <br>
