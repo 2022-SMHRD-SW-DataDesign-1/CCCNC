@@ -154,7 +154,7 @@ MainPage
 
 ### 🧱 시스템 아키텍처
 ---
-<div align ='center'>
+
 <img src="https://user-images.githubusercontent.com/112475774/203485093-639adb4f-bdeb-4c57-bc26-7183b079e107.png">
 
 
@@ -163,7 +163,7 @@ MainPage
 
 ### 🙋‍♂️ 유스케이스
 ---
-<div align ='center'>
+
 <img src="https://user-images.githubusercontent.com/112475774/203482095-d5c38aa0-4b26-4876-8783-0de911ad00a5.png">
 
 <br>
@@ -171,7 +171,7 @@ MainPage
 ### 🔎 서비스 흐름도
 ---
 
-<div align ='center'>
+
 
 ![쿠쿠뉴쿠_서비스흐름도](https://user-images.githubusercontent.com/112459519/202892822-9bd5ecd9-7f99-4ddd-a5ed-8ff4980d7c3f.png)
 
@@ -179,7 +179,7 @@ MainPage
 
 - **메뉴구성**
 
-<div align ='center'>
+
 
 ![쿠쿠뉴쿠메뉴구성](https://user-images.githubusercontent.com/112459519/202892838-678e275a-d8dd-4b91-9a4c-88eec9919264.png)
 
